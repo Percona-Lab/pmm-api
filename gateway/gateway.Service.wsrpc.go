@@ -3,7 +3,7 @@
 // protoc version: 3.5.1
 // protoc-gen-wsrpc version: 0.1.0-dev
 
-package api
+package gateway
 
 import (
 	"github.com/Percona-Lab/wsrpc"
@@ -11,7 +11,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-// Client API for api.Service service
+// Client API for gateway.Service service
 
 type ServiceClient interface {
 	CreateTunnel(*CreateTunnelRequest) (*CreateTunnelResponse, error)
@@ -43,7 +43,7 @@ func (c *serviceClient) CreateTunnel(req *CreateTunnelRequest) (*CreateTunnelRes
 // check interface
 var _ ServiceClient = (*serviceClient)(nil)
 
-// Server API for api.Service service
+// Server API for gateway.Service service
 
 type ServiceServer interface {
 	CreateTunnel(*CreateTunnelRequest) (*CreateTunnelResponse, error)

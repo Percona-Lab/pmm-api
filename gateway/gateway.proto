@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package api;
+package gateway;
 
 message CreateTunnelRequest {
     string agent_uuid = 1;
