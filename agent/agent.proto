@@ -7,8 +7,8 @@ message CreateTunnelRequest {
 }
 
 message CreateTunnelResponse {
-    string tunnel_id = 1;
-    string error = 2;
+    string error = 1;
+    string tunnel_id = 2;
 }
 
 message WriteToTunnelRequest {
