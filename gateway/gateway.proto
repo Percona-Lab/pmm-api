@@ -9,8 +9,7 @@ message CreateTunnelRequest {
 
 message CreateTunnelResponse {
     string error = 1;
-    string tunnel_id = 2;
-    string listen = 3;
+    string listen = 2;
 }
 
 message WriteToTunnelRequest {
