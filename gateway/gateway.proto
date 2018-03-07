@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package api;
+
+message CreateTunnelRequest {
+    string agent_uuid = 1;
+}
+
+message CreateTunnelResponse {
+}
+
+service Service {
+    rpc CreateTunnel (CreateTunnelRequest) returns (CreateTunnelResponse);
+}
