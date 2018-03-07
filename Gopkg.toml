@@ -1,0 +1,10 @@
+# tools
+required = [
+  "github.com/golang/protobuf/protoc-gen-go",
+  "github.com/Percona-Lab/wsrpc/cmd/protoc-gen-wsrpc",
+]
+
+[prune]
+  non-go = true
+  go-tests = true
+  unused-packages = true
