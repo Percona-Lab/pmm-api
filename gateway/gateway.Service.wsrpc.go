@@ -14,6 +14,7 @@ import (
 // Client API for gateway.Service service
 
 type ServiceClient interface {
+	CreateTunnel(*CreateTunnelRequest) (*CreateTunnelResponse, error)
 	WriteToTunnel(*WriteToTunnelRequest) (*WriteToTunnelResponse, error)
 }
 
@@ -23,6 +24,21 @@ type serviceClient struct {
 
 func NewServiceClient(conn *wsrpc.Conn) ServiceClient {
 	return &serviceClient{conn}
+}
+
+func (c *serviceClient) CreateTunnel(req *CreateTunnelRequest) (*CreateTunnelResponse, error) {
+	b, err := proto.Marshal(req)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to marshal protobuf message %T", req)
+	}
+	if b, err = c.conn.Invoke("CreateTunnel", b); err != nil {
+		return nil, err
+	}
+	res := new(CreateTunnelResponse)
+	if err = proto.Unmarshal(b, res); err != nil {
+		return nil, errors.Wrapf(err, "failed to unmarshal protobuf message to %T", res)
+	}
+	return res, nil
 }
 
 func (c *serviceClient) WriteToTunnel(req *WriteToTunnelRequest) (*WriteToTunnelResponse, error) {
@@ -46,6 +62,7 @@ var _ ServiceClient = (*serviceClient)(nil)
 // Server API for gateway.Service service
 
 type ServiceServer interface {
+	CreateTunnel(*CreateTunnelRequest) (*CreateTunnelResponse, error)
 	WriteToTunnel(*WriteToTunnelRequest) (*WriteToTunnelResponse, error)
 }
 
@@ -56,6 +73,22 @@ type ServiceDispatcher struct {
 
 func NewServiceDispatcher(conn *wsrpc.Conn, server ServiceServer) *ServiceDispatcher {
 	return &ServiceDispatcher{conn, server}
+}
+
+func dispatchCreateTunnel(server interface{}, arg []byte) ([]byte, error) {
+	req := new(CreateTunnelRequest)
+	if err := proto.Unmarshal(arg, req); err != nil {
+		return nil, errors.Wrapf(err, "failed to unmarshal protobuf message to %T", req)
+	}
+	res, err := server.(ServiceServer).CreateTunnel(req)
+	if err != nil {
+		return nil, err
+	}
+	b, err := proto.Marshal(res)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to marshal protobuf message %T", res)
+	}
+	return b, nil
 }
 
 func dispatchWriteToTunnel(server interface{}, arg []byte) ([]byte, error) {
@@ -76,6 +109,10 @@ func dispatchWriteToTunnel(server interface{}, arg []byte) ([]byte, error) {
 
 var serviceDescription = &wsrpc.ServiceDesc{
 	Methods: []wsrpc.ServiceMethod{
+		{
+			Name:   "CreateTunnel",
+			Method: dispatchCreateTunnel,
+		},
 		{
 			Name:   "WriteToTunnel",
 			Method: dispatchWriteToTunnel,

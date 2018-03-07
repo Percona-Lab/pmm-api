@@ -2,6 +2,16 @@ syntax = "proto3";
 
 package gateway;
 
+message CreateTunnelRequest {
+    string agent_uuid = 1;
+    string dial = 2;
+}
+
+message CreateTunnelResponse {
+    string tunnel_id = 1;
+    string error = 2;
+}
+
 message WriteToTunnelRequest {
     string tunnel_id = 1;
     bytes data = 2;
@@ -12,5 +22,9 @@ message WriteToTunnelResponse {
 }
 
 service Service {
+    // invoked by pmm-managed
+    rpc CreateTunnel (CreateTunnelRequest) returns (CreateTunnelResponse);
+
+    // invoked by agent
     rpc WriteToTunnel (WriteToTunnelRequest) returns (WriteToTunnelResponse);
 }
