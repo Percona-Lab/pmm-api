@@ -1,6 +1,15 @@
 syntax = "proto3";
 
-package gateway;
+package agent;
+
+message CreateTunnelRequest {
+    string dial = 1;
+}
+
+message CreateTunnelResponse {
+    string tunnel_id = 1;
+    string error = 2;
+}
 
 message WriteToTunnelRequest {
     string tunnel_id = 1;
@@ -12,5 +21,6 @@ message WriteToTunnelResponse {
 }
 
 service Service {
+    rpc CreateTunnel (CreateTunnelRequest) returns (CreateTunnelResponse);
     rpc WriteToTunnel (WriteToTunnelRequest) returns (WriteToTunnelResponse);
 }
