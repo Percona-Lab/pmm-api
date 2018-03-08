@@ -31,7 +31,7 @@ func (c *serviceClient) CreateTunnel(req *CreateTunnelRequest) (*CreateTunnelRes
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to marshal protobuf message %T", req)
 	}
-	if b, err = c.conn.Invoke("CreateTunnel", b); err != nil {
+	if b, err = c.conn.Invoke("/gateway.Service/CreateTunnel", b); err != nil {
 		return nil, err
 	}
 	res := new(CreateTunnelResponse)
@@ -46,7 +46,7 @@ func (c *serviceClient) WriteToTunnel(req *WriteToTunnelRequest) (*WriteToTunnel
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to marshal protobuf message %T", req)
 	}
-	if b, err = c.conn.Invoke("WriteToTunnel", b); err != nil {
+	if b, err = c.conn.Invoke("/gateway.Service/WriteToTunnel", b); err != nil {
 		return nil, err
 	}
 	res := new(WriteToTunnelResponse)
@@ -110,11 +110,11 @@ func dispatchWriteToTunnel(server interface{}, arg []byte) ([]byte, error) {
 var serviceDescription = &wsrpc.ServiceDesc{
 	Methods: []wsrpc.ServiceMethod{
 		{
-			Name:   "CreateTunnel",
+			Path:   "/gateway.Service/CreateTunnel",
 			Method: dispatchCreateTunnel,
 		},
 		{
-			Name:   "WriteToTunnel",
+			Path:   "/gateway.Service/WriteToTunnel",
 			Method: dispatchWriteToTunnel,
 		},
 	},
@@ -130,13 +130,13 @@ func (d *ServiceDispatcher) Run() (exitErr error) {
 
 		var found bool
 		for _, method := range serviceDescription.Methods {
-			if method.Name != message.Path {
+			if method.Path != message.Path {
 				continue
 			}
 
 			res, err := method.Method(d.server, message.Arg)
 			if err != nil {
-				exitErr = errors.Wrapf(err, "%s returned error", method.Name)
+				exitErr = errors.Wrapf(err, "%s returned error", method.Path)
 				return
 			}
 

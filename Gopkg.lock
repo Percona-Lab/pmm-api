@@ -2,14 +2,14 @@
 
 
 [[projects]]
-  branch = "master"
   name = "github.com/Percona-Lab/wsrpc"
   packages = [
     ".",
     "cmd/protoc-gen-wsrpc",
     "cmd/protoc-gen-wsrpc/generator"
   ]
-  revision = "a774bebe9eb1fd9605a24b928317f653579c4bb3"
+  revision = "4015f22ad659a53a923fb8690e06b1d97ec0a3a3"
+  version = "v0.2.0"
 
 [[projects]]
   name = "github.com/golang/protobuf"
@@ -55,7 +55,7 @@
     "unix",
     "windows"
   ]
-  revision = "dd2ff4accc098aceecb86b36eaa7829b2a17b1c9"
+  revision = "349b81fb5c64ec1734eb6ee148df25459ea48517"
 
 [solve-meta]
   analyzer-name = "dep"
