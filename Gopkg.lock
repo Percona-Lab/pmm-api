@@ -8,8 +8,8 @@
     "cmd/protoc-gen-wsrpc",
     "cmd/protoc-gen-wsrpc/generator"
   ]
-  revision = "4015f22ad659a53a923fb8690e06b1d97ec0a3a3"
-  version = "v0.2.0"
+  revision = "84d9a0b39fed530ed398a894a0afa7ad3364b882"
+  version = "v0.2.1"
 
 [[projects]]
   name = "github.com/golang/protobuf"
