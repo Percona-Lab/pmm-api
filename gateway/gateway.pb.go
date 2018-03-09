@@ -19,6 +19,11 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
+
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
@@ -123,6 +128,115 @@ func init() {
 	proto.RegisterType((*CreateTunnelResponse)(nil), "gateway.CreateTunnelResponse")
 	proto.RegisterType((*WriteToTunnelRequest)(nil), "gateway.WriteToTunnelRequest")
 	proto.RegisterType((*WriteToTunnelResponse)(nil), "gateway.WriteToTunnelResponse")
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// Client API for Service service
+
+type ServiceClient interface {
+	// invoked by pmm-managed
+	CreateTunnel(ctx context.Context, in *CreateTunnelRequest, opts ...grpc.CallOption) (*CreateTunnelResponse, error)
+	// invoked by agent
+	WriteToTunnel(ctx context.Context, in *WriteToTunnelRequest, opts ...grpc.CallOption) (*WriteToTunnelResponse, error)
+}
+
+type serviceClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewServiceClient(cc *grpc.ClientConn) ServiceClient {
+	return &serviceClient{cc}
+}
+
+func (c *serviceClient) CreateTunnel(ctx context.Context, in *CreateTunnelRequest, opts ...grpc.CallOption) (*CreateTunnelResponse, error) {
+	out := new(CreateTunnelResponse)
+	err := grpc.Invoke(ctx, "/gateway.Service/CreateTunnel", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *serviceClient) WriteToTunnel(ctx context.Context, in *WriteToTunnelRequest, opts ...grpc.CallOption) (*WriteToTunnelResponse, error) {
+	out := new(WriteToTunnelResponse)
+	err := grpc.Invoke(ctx, "/gateway.Service/WriteToTunnel", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// Server API for Service service
+
+type ServiceServer interface {
+	// invoked by pmm-managed
+	CreateTunnel(context.Context, *CreateTunnelRequest) (*CreateTunnelResponse, error)
+	// invoked by agent
+	WriteToTunnel(context.Context, *WriteToTunnelRequest) (*WriteToTunnelResponse, error)
+}
+
+func RegisterServiceServer(s *grpc.Server, srv ServiceServer) {
+	s.RegisterService(&_Service_serviceDesc, srv)
+}
+
+func _Service_CreateTunnel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTunnelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).CreateTunnel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gateway.Service/CreateTunnel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).CreateTunnel(ctx, req.(*CreateTunnelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Service_WriteToTunnel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WriteToTunnelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).WriteToTunnel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gateway.Service/WriteToTunnel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).WriteToTunnel(ctx, req.(*WriteToTunnelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _Service_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "gateway.Service",
+	HandlerType: (*ServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateTunnel",
+			Handler:    _Service_CreateTunnel_Handler,
+		},
+		{
+			MethodName: "WriteToTunnel",
+			Handler:    _Service_WriteToTunnel_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "gateway/gateway.proto",
 }
 
 func init() { proto.RegisterFile("gateway/gateway.proto", fileDescriptor0) }
