@@ -8,10 +8,8 @@ It is generated from these files:
 	agent/agent.proto
 
 It has these top-level messages:
-	CreateTunnelRequest
-	CreateTunnelResponse
-	WriteToTunnelRequest
-	WriteToTunnelResponse
+	TunnelRequest
+	TunnelResponse
 */
 package agent
 
@@ -35,91 +33,57 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type CreateTunnelRequest struct {
+type TunnelRequest struct {
 	Dial string `protobuf:"bytes,1,opt,name=dial" json:"dial,omitempty"`
+	Data []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 }
 
-func (m *CreateTunnelRequest) Reset()                    { *m = CreateTunnelRequest{} }
-func (m *CreateTunnelRequest) String() string            { return proto.CompactTextString(m) }
-func (*CreateTunnelRequest) ProtoMessage()               {}
-func (*CreateTunnelRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (m *TunnelRequest) Reset()                    { *m = TunnelRequest{} }
+func (m *TunnelRequest) String() string            { return proto.CompactTextString(m) }
+func (*TunnelRequest) ProtoMessage()               {}
+func (*TunnelRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
-func (m *CreateTunnelRequest) GetDial() string {
+func (m *TunnelRequest) GetDial() string {
 	if m != nil {
 		return m.Dial
 	}
 	return ""
 }
 
-type CreateTunnelResponse struct {
-	Error    string `protobuf:"bytes,1,opt,name=error" json:"error,omitempty"`
-	TunnelId string `protobuf:"bytes,2,opt,name=tunnel_id,json=tunnelId" json:"tunnel_id,omitempty"`
-}
-
-func (m *CreateTunnelResponse) Reset()                    { *m = CreateTunnelResponse{} }
-func (m *CreateTunnelResponse) String() string            { return proto.CompactTextString(m) }
-func (*CreateTunnelResponse) ProtoMessage()               {}
-func (*CreateTunnelResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
-
-func (m *CreateTunnelResponse) GetError() string {
-	if m != nil {
-		return m.Error
-	}
-	return ""
-}
-
-func (m *CreateTunnelResponse) GetTunnelId() string {
-	if m != nil {
-		return m.TunnelId
-	}
-	return ""
-}
-
-type WriteToTunnelRequest struct {
-	TunnelId string `protobuf:"bytes,1,opt,name=tunnel_id,json=tunnelId" json:"tunnel_id,omitempty"`
-	Data     []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
-}
-
-func (m *WriteToTunnelRequest) Reset()                    { *m = WriteToTunnelRequest{} }
-func (m *WriteToTunnelRequest) String() string            { return proto.CompactTextString(m) }
-func (*WriteToTunnelRequest) ProtoMessage()               {}
-func (*WriteToTunnelRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
-
-func (m *WriteToTunnelRequest) GetTunnelId() string {
-	if m != nil {
-		return m.TunnelId
-	}
-	return ""
-}
-
-func (m *WriteToTunnelRequest) GetData() []byte {
+func (m *TunnelRequest) GetData() []byte {
 	if m != nil {
 		return m.Data
 	}
 	return nil
 }
 
-type WriteToTunnelResponse struct {
+type TunnelResponse struct {
 	Error string `protobuf:"bytes,1,opt,name=error" json:"error,omitempty"`
+	Data  []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 }
 
-func (m *WriteToTunnelResponse) Reset()                    { *m = WriteToTunnelResponse{} }
-func (m *WriteToTunnelResponse) String() string            { return proto.CompactTextString(m) }
-func (*WriteToTunnelResponse) ProtoMessage()               {}
-func (*WriteToTunnelResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (m *TunnelResponse) Reset()                    { *m = TunnelResponse{} }
+func (m *TunnelResponse) String() string            { return proto.CompactTextString(m) }
+func (*TunnelResponse) ProtoMessage()               {}
+func (*TunnelResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
-func (m *WriteToTunnelResponse) GetError() string {
+func (m *TunnelResponse) GetError() string {
 	if m != nil {
 		return m.Error
 	}
 	return ""
 }
 
+func (m *TunnelResponse) GetData() []byte {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
 func init() {
-	proto.RegisterType((*CreateTunnelRequest)(nil), "agent.CreateTunnelRequest")
-	proto.RegisterType((*CreateTunnelResponse)(nil), "agent.CreateTunnelResponse")
-	proto.RegisterType((*WriteToTunnelRequest)(nil), "agent.WriteToTunnelRequest")
-	proto.RegisterType((*WriteToTunnelResponse)(nil), "agent.WriteToTunnelResponse")
+	proto.RegisterType((*TunnelRequest)(nil), "agent.TunnelRequest")
+	proto.RegisterType((*TunnelResponse)(nil), "agent.TunnelResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -133,8 +97,7 @@ const _ = grpc.SupportPackageIsVersion4
 // Client API for Service service
 
 type ServiceClient interface {
-	CreateTunnel(ctx context.Context, in *CreateTunnelRequest, opts ...grpc.CallOption) (*CreateTunnelResponse, error)
-	WriteToTunnel(ctx context.Context, in *WriteToTunnelRequest, opts ...grpc.CallOption) (*WriteToTunnelResponse, error)
+	Tunnel(ctx context.Context, opts ...grpc.CallOption) (Service_TunnelClient, error)
 }
 
 type serviceClient struct {
@@ -145,104 +108,100 @@ func NewServiceClient(cc *grpc.ClientConn) ServiceClient {
 	return &serviceClient{cc}
 }
 
-func (c *serviceClient) CreateTunnel(ctx context.Context, in *CreateTunnelRequest, opts ...grpc.CallOption) (*CreateTunnelResponse, error) {
-	out := new(CreateTunnelResponse)
-	err := grpc.Invoke(ctx, "/agent.Service/CreateTunnel", in, out, c.cc, opts...)
+func (c *serviceClient) Tunnel(ctx context.Context, opts ...grpc.CallOption) (Service_TunnelClient, error) {
+	stream, err := grpc.NewClientStream(ctx, &_Service_serviceDesc.Streams[0], c.cc, "/agent.Service/Tunnel", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &serviceTunnelClient{stream}
+	return x, nil
 }
 
-func (c *serviceClient) WriteToTunnel(ctx context.Context, in *WriteToTunnelRequest, opts ...grpc.CallOption) (*WriteToTunnelResponse, error) {
-	out := new(WriteToTunnelResponse)
-	err := grpc.Invoke(ctx, "/agent.Service/WriteToTunnel", in, out, c.cc, opts...)
-	if err != nil {
+type Service_TunnelClient interface {
+	Send(*TunnelRequest) error
+	Recv() (*TunnelResponse, error)
+	grpc.ClientStream
+}
+
+type serviceTunnelClient struct {
+	grpc.ClientStream
+}
+
+func (x *serviceTunnelClient) Send(m *TunnelRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *serviceTunnelClient) Recv() (*TunnelResponse, error) {
+	m := new(TunnelResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
-	return out, nil
+	return m, nil
 }
 
 // Server API for Service service
 
 type ServiceServer interface {
-	CreateTunnel(context.Context, *CreateTunnelRequest) (*CreateTunnelResponse, error)
-	WriteToTunnel(context.Context, *WriteToTunnelRequest) (*WriteToTunnelResponse, error)
+	Tunnel(Service_TunnelServer) error
 }
 
 func RegisterServiceServer(s *grpc.Server, srv ServiceServer) {
 	s.RegisterService(&_Service_serviceDesc, srv)
 }
 
-func _Service_CreateTunnel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateTunnelRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ServiceServer).CreateTunnel(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/agent.Service/CreateTunnel",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).CreateTunnel(ctx, req.(*CreateTunnelRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+func _Service_Tunnel_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(ServiceServer).Tunnel(&serviceTunnelServer{stream})
 }
 
-func _Service_WriteToTunnel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(WriteToTunnelRequest)
-	if err := dec(in); err != nil {
+type Service_TunnelServer interface {
+	Send(*TunnelResponse) error
+	Recv() (*TunnelRequest, error)
+	grpc.ServerStream
+}
+
+type serviceTunnelServer struct {
+	grpc.ServerStream
+}
+
+func (x *serviceTunnelServer) Send(m *TunnelResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *serviceTunnelServer) Recv() (*TunnelRequest, error) {
+	m := new(TunnelRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
-	if interceptor == nil {
-		return srv.(ServiceServer).WriteToTunnel(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/agent.Service/WriteToTunnel",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).WriteToTunnel(ctx, req.(*WriteToTunnelRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	return m, nil
 }
 
 var _Service_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "agent.Service",
 	HandlerType: (*ServiceServer)(nil),
-	Methods: []grpc.MethodDesc{
+	Methods:     []grpc.MethodDesc{},
+	Streams: []grpc.StreamDesc{
 		{
-			MethodName: "CreateTunnel",
-			Handler:    _Service_CreateTunnel_Handler,
-		},
-		{
-			MethodName: "WriteToTunnel",
-			Handler:    _Service_WriteToTunnel_Handler,
+			StreamName:    "Tunnel",
+			Handler:       _Service_Tunnel_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
 	Metadata: "agent/agent.proto",
 }
 
 func init() { proto.RegisterFile("agent/agent.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 220 bytes of a gzipped FileDescriptorProto
+	// 158 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4c, 0x4c, 0x4f, 0xcd,
-	0x2b, 0xd1, 0x07, 0x93, 0x7a, 0x05, 0x45, 0xf9, 0x25, 0xf9, 0x42, 0xac, 0x60, 0x8e, 0x92, 0x26,
-	0x97, 0xb0, 0x73, 0x51, 0x6a, 0x62, 0x49, 0x6a, 0x48, 0x69, 0x5e, 0x5e, 0x6a, 0x4e, 0x50, 0x6a,
-	0x61, 0x69, 0x6a, 0x71, 0x89, 0x90, 0x10, 0x17, 0x4b, 0x4a, 0x66, 0x62, 0x8e, 0x04, 0xa3, 0x02,
-	0xa3, 0x06, 0x67, 0x10, 0x98, 0xad, 0xe4, 0xc9, 0x25, 0x82, 0xaa, 0xb4, 0xb8, 0x20, 0x3f, 0xaf,
-	0x38, 0x55, 0x48, 0x84, 0x8b, 0x35, 0xb5, 0xa8, 0x28, 0xbf, 0x08, 0xaa, 0x18, 0xc2, 0x11, 0x92,
-	0xe6, 0xe2, 0x2c, 0x01, 0xab, 0x8b, 0xcf, 0x4c, 0x91, 0x60, 0x02, 0xcb, 0x70, 0x40, 0x04, 0x3c,
-	0x53, 0x94, 0xdc, 0xb9, 0x44, 0xc2, 0x8b, 0x32, 0x4b, 0x52, 0x43, 0xf2, 0x51, 0xad, 0x45, 0xd1,
-	0xc4, 0x88, 0xaa, 0x09, 0xec, 0xa6, 0xc4, 0x92, 0x44, 0xb0, 0x61, 0x3c, 0x41, 0x60, 0xb6, 0x92,
-	0x2e, 0x97, 0x28, 0x9a, 0x41, 0xf8, 0x1c, 0x65, 0x34, 0x8f, 0x91, 0x8b, 0x3d, 0x38, 0xb5, 0xa8,
-	0x2c, 0x33, 0x39, 0x55, 0xc8, 0x9d, 0x8b, 0x07, 0xd9, 0x3b, 0x42, 0x52, 0x7a, 0x90, 0xe0, 0xc1,
-	0x12, 0x1c, 0x52, 0xd2, 0x58, 0xe5, 0xa0, 0x56, 0x79, 0x71, 0xf1, 0xa2, 0xb8, 0x41, 0x08, 0xa6,
-	0x1a, 0x9b, 0x17, 0xa5, 0x64, 0xb0, 0x4b, 0x42, 0xcc, 0x4a, 0x62, 0x03, 0x47, 0x8e, 0x31, 0x20,
-	0x00, 0x00, 0xff, 0xff, 0x6b, 0xc7, 0x44, 0xd9, 0xb1, 0x01, 0x00, 0x00,
+	0x2b, 0xd1, 0x07, 0x93, 0x7a, 0x05, 0x45, 0xf9, 0x25, 0xf9, 0x42, 0xac, 0x60, 0x8e, 0x92, 0x39,
+	0x17, 0x6f, 0x48, 0x69, 0x5e, 0x5e, 0x6a, 0x4e, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x89, 0x90,
+	0x10, 0x17, 0x4b, 0x4a, 0x66, 0x62, 0x8e, 0x04, 0xa3, 0x02, 0xa3, 0x06, 0x67, 0x10, 0x98, 0x0d,
+	0x16, 0x4b, 0x2c, 0x49, 0x94, 0x60, 0x52, 0x60, 0xd4, 0xe0, 0x09, 0x02, 0xb3, 0x95, 0xac, 0xb8,
+	0xf8, 0x60, 0x1a, 0x8b, 0x0b, 0xf2, 0xf3, 0x8a, 0x53, 0x85, 0x44, 0xb8, 0x58, 0x53, 0x8b, 0x8a,
+	0xf2, 0x8b, 0xa0, 0x5a, 0x21, 0x1c, 0x6c, 0x7a, 0x8d, 0x5c, 0xb8, 0xd8, 0x83, 0x53, 0x8b, 0xca,
+	0x32, 0x93, 0x53, 0x85, 0x2c, 0xb9, 0xd8, 0x20, 0xc6, 0x08, 0x89, 0xe8, 0x41, 0x9c, 0x87, 0xe2,
+	0x1c, 0x29, 0x51, 0x34, 0x51, 0x88, 0x5d, 0x1a, 0x8c, 0x06, 0x8c, 0x49, 0x6c, 0x60, 0x8f, 0x18,
+	0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0x36, 0x4f, 0x60, 0x84, 0xdd, 0x00, 0x00, 0x00,
 }
