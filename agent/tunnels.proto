@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package agent;
+
+message TunnelsDialRequest {
+    string dial = 1;
+}
+
+message TunnelsDialResponse {
+    string error = 1;
+}
+
+message TunnelsData {
+    string error = 1;
+    bytes data = 2;
+}
+
+message TunnelsEnvelopeFromAgent {
+    oneof payload {
+        TunnelsDialResponse dial_response = 1;
+        TunnelsData data = 2;
+    }
+}
+
+message TunnelsEnvelopeFromGateway {
+    oneof payload {
+        TunnelsDialRequest dial_request = 1;
+        TunnelsData data = 2;
+    }
+}
+
+service Tunnels {
+    rpc Make (stream TunnelsEnvelopeFromAgent) returns (stream TunnelsEnvelopeFromGateway);
+}

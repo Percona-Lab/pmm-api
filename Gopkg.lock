@@ -30,7 +30,7 @@
     "lex/httplex",
     "trace"
   ]
-  revision = "d0aafc73d5cdc42264b0af071c261abac580695e"
+  revision = "892bf7b0c6e2f93b51166bf3882e50277fa5afc6"
 
 [[projects]]
   name = "golang.org/x/text"

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package managed;
+
+message TunnelsCreateRequest {
+    string agent_uuid = 1;
+    string dial = 2;
+}
+
+message TunnelsCreateResponse {
+    string error = 1;
+    string listen = 2;
+}
+
+message TunnelsDeleteRequest {
+    string listen = 1;
+}
+
+message TunnelsDeleteResponse {
+    string error = 1;
+}
+
+service Tunnels {
+    rpc Create (TunnelsCreateRequest) returns (TunnelsCreateResponse);
+    rpc Delete (TunnelsDeleteRequest) returns (TunnelsDeleteResponse);
+}

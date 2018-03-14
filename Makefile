@@ -6,7 +6,7 @@ gen:
 	rm -f agent/*.go
 	protoc agent/*.proto --go_out=plugins=grpc:.
 
-	rm -f gateway/*.go
-	protoc gateway/*.proto --go_out=plugins=grpc:.
+	rm -f managed/*.go
+	protoc managed/*.proto --go_out=plugins=grpc:.
 
 	go install -v ./...
