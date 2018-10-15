@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package agent;
+
 import "google/protobuf/timestamp.proto";
 
 message RegisterRequest {
