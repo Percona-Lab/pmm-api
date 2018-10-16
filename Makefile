@@ -10,6 +10,6 @@ gen:
 					./vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
 					./vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
 					./vendor/github.com/go-swagger/go-swagger/cmd/swagger
-	find ./proto -name '*.pb.go' -delete
-	find ./proto -name '*.pb.gw.go' -delete
+	find . -name '*.pb.go' -not -path './vendor/*' -delete
+	find . -name '*.pb.ge.go' -not -path './vendor/*' -delete
 	./prototool all
