@@ -9,6 +9,6 @@ required = [
 [prune]
   go-tests = true
 
-  # to keep google/api/annotations.proto
+  # to keep google/api/annotations.proto and google/protobuf/timestamp.proto
   # non-go = true
   # unused-packages = true

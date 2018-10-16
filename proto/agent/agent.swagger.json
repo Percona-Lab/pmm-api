@@ -1,0 +1,86 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/agent/agent.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "agentConnectRequest": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "agentConnectResponse": {
+      "type": "object"
+    },
+    "agentPingRequest": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "agentPingResponse": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "agentRegisterResponse": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "agentServerMessage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "connect": {
+          "$ref": "#/definitions/agentConnectResponse",
+          "title": "responses from server"
+        },
+        "ping": {
+          "$ref": "#/definitions/agentPingRequest",
+          "title": "requests from server"
+        },
+        "state": {
+          "$ref": "#/definitions/agentSetStateRequest"
+        }
+      }
+    },
+    "agentSetStateRequest": {
+      "type": "object"
+    },
+    "agentSetStateResponse": {
+      "type": "object"
+    }
+  }
+}
