@@ -13,45 +13,35 @@ enum NodeType {
   REMOTE_RDS = 9;
 }
 
-message Node {
-  uint64 id = 1;
-  NodeType type = 2;
-  string name = 3;
-  reserved 4 to 7;
-}
+// message Node {
+//   uint64 id = 1;
+//   NodeType type = 2;
+//   string name = 3;
+//   reserved 4 to 7;
+// }
 
 message BareMetalNode {
   uint64 id = 1;
-  NodeType type = 2;
-  string name = 3;
-  reserved 4 to 7;
+  string name = 2;
 }
 
 message VirtualMachineNode {
   uint64 id = 1;
-  NodeType type = 2;
-  string name = 3;
-  reserved 4 to 7;
+  string name = 2;
 }
 
 message ContainerNode {
   uint64 id = 1;
-  NodeType type = 2;
-  string name = 3;
-  reserved 4 to 7;
+  string name = 2;
 }
 
 message RemoteNode {
   uint64 id = 1;
-  NodeType type = 2;
-  string name = 3;
-  reserved 4 to 7;
+  string name = 2;
 }
 
 message RemoteRDSNode {
   uint64 id = 1;
-  NodeType type = 2;
-  string name = 3;
-  reserved 4 to 7;
-  string region = 8;
+  string name = 2;
+  string region = 3;
 }

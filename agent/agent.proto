@@ -3,8 +3,13 @@ syntax = "proto3";
 package agent;
 
 import "google/protobuf/timestamp.proto";
+import "inventory/agents.proto";
 
-message RegisterRequest {}
+message RegisterRequest {
+  // FIXME We need node information there to create a new node or map new agent to the existing node.
+  //       This is hard problem.
+
+}
 
 message RegisterResponse {
   string uuid = 1;
@@ -17,15 +22,15 @@ message ConnectRequest {
 
 message ConnectResponse {}
 
-message PingRequest {
-  google.protobuf.Timestamp time = 1;
-}
+message PingRequest {}
 
 message PingResponse {
-  google.protobuf.Timestamp time = 1;
+  google.protobuf.Timestamp current_time = 1;
 }
 
-message SetStateRequest {}
+message SetStateRequest {
+  repeated inventory.Agent agents = 1;
+}
 
 message SetStateResponse {}
 

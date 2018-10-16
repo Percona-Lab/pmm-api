@@ -31,18 +31,12 @@
       "type": "object"
     },
     "agentPingRequest": {
-      "type": "object",
-      "properties": {
-        "time": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
+      "type": "object"
     },
     "agentPingResponse": {
       "type": "object",
       "properties": {
-        "time": {
+        "current_time": {
           "type": "string",
           "format": "date-time"
         }
@@ -77,10 +71,43 @@
       }
     },
     "agentSetStateRequest": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryAgent"
+          }
+        }
+      }
     },
     "agentSetStateResponse": {
       "type": "object"
+    },
+    "inventoryAgent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "$ref": "#/definitions/inventoryAgentType"
+        },
+        "runs_on_node_id": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "inventoryAgentType": {
+      "type": "string",
+      "enum": [
+        "AGENT_TYPE_INVALID",
+        "MYSQLD_EXPORTER",
+        "RDS_EXPORTER"
+      ],
+      "default": "AGENT_TYPE_INVALID"
     }
   }
 }
