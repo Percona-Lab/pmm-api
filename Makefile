@@ -10,7 +10,19 @@ gen:
 					./vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
 					./vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
 					./vendor/github.com/go-swagger/go-swagger/cmd/swagger
+
 	find . -name '*.pb.go' -not -path './vendor/*' -delete
 	find . -name '*.pb.gw.go' -not -path './vendor/*' -delete
 	find . -name '*.swagger.json' -not -path './vendor/*' -delete
+
 	./prototool all
+
+	# no public API for pmm-agent
+	rm -f agent/*.swagger.json
+
+	swagger mixin inventory/inventory.json inventory/*.swagger.json --output=inventory.swagger.json
+	swagger validate inventory.swagger.json
+	rm -f inventory/*.swagger.json
+
+	swagger generate client --spec=inventory.swagger.json --target=swagger
+	go install -v ./...
