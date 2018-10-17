@@ -24,7 +24,11 @@ message MySQLdExporter {
   uint32 listen_port = 5;
 }
 
-message AddMySQLdExporterRequest {}
+message AddMySQLdExporterRequest {
+  uint32 runs_on_node_id = 2;
+  string username = 3;
+  string password = 4;
+}
 
 message AddMySQLdExporterResponse {
   MySQLdExporter agent = 1;

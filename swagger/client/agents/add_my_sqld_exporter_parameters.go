@@ -62,7 +62,7 @@ for the add my sqld exporter operation typically these are written to a http.Req
 type AddMySqldExporterParams struct {
 
 	/*Body*/
-	Body models.InventoryAddMySqldExporterRequest
+	Body *models.InventoryAddMySqldExporterRequest
 
 	timeout    time.Duration
 	Context    context.Context
@@ -103,13 +103,13 @@ func (o *AddMySqldExporterParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the add my sqld exporter params
-func (o *AddMySqldExporterParams) WithBody(body models.InventoryAddMySqldExporterRequest) *AddMySqldExporterParams {
+func (o *AddMySqldExporterParams) WithBody(body *models.InventoryAddMySqldExporterRequest) *AddMySqldExporterParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the add my sqld exporter params
-func (o *AddMySqldExporterParams) SetBody(body models.InventoryAddMySqldExporterRequest) {
+func (o *AddMySqldExporterParams) SetBody(body *models.InventoryAddMySqldExporterRequest) {
 	o.Body = body
 }
 

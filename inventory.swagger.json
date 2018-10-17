@@ -89,7 +89,19 @@
       }
     },
     "inventoryAddMySQLdExporterRequest": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        },
+        "runs_on_node_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
     },
     "inventoryAddMySQLdExporterResponse": {
       "type": "object",
