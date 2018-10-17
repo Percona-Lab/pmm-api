@@ -10,27 +10,21 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryBareMetalNode inventory bare metal node
-// swagger:model inventoryBareMetalNode
-type InventoryBareMetalNode struct {
-
-	// hostname
-	Hostname string `json:"hostname,omitempty"`
+// InventoryRemoveMySqldExporterRequest inventory remove my sqld exporter request
+// swagger:model inventoryRemoveMySQLdExporterRequest
+type InventoryRemoveMySqldExporterRequest struct {
 
 	// id
 	ID int64 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
 }
 
-// Validate validates this inventory bare metal node
-func (m *InventoryBareMetalNode) Validate(formats strfmt.Registry) error {
+// Validate validates this inventory remove my sqld exporter request
+func (m *InventoryRemoveMySqldExporterRequest) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *InventoryBareMetalNode) MarshalBinary() ([]byte, error) {
+func (m *InventoryRemoveMySqldExporterRequest) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -38,8 +32,8 @@ func (m *InventoryBareMetalNode) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InventoryBareMetalNode) UnmarshalBinary(b []byte) error {
-	var res InventoryBareMetalNode
+func (m *InventoryRemoveMySqldExporterRequest) UnmarshalBinary(b []byte) error {
+	var res InventoryRemoveMySqldExporterRequest
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -8,6 +8,11 @@ import fmt "fmt"
 import math "math"
 import _ "google.golang.org/genproto/googleapis/api/annotations"
 
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
+
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
@@ -19,108 +24,350 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type AgentType int32
-
-const (
-	AgentType_AGENT_TYPE_INVALID AgentType = 0
-	AgentType_MYSQLD_EXPORTER    AgentType = 1
-	AgentType_RDS_EXPORTER       AgentType = 2
-)
-
-var AgentType_name = map[int32]string{
-	0: "AGENT_TYPE_INVALID",
-	1: "MYSQLD_EXPORTER",
-	2: "RDS_EXPORTER",
-}
-var AgentType_value = map[string]int32{
-	"AGENT_TYPE_INVALID": 0,
-	"MYSQLD_EXPORTER":    1,
-	"RDS_EXPORTER":       2,
+type MySQLdExporter struct {
+	Id                   uint32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	RunsOnNodeId         uint32   `protobuf:"varint,2,opt,name=runs_on_node_id,json=runsOnNodeId,proto3" json:"runs_on_node_id,omitempty"`
+	Username             string   `protobuf:"bytes,3,opt,name=username,proto3" json:"username,omitempty"`
+	Password             string   `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
+	ListenPort           uint32   `protobuf:"varint,5,opt,name=listen_port,json=listenPort,proto3" json:"listen_port,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (x AgentType) String() string {
-	return proto.EnumName(AgentType_name, int32(x))
+func (m *MySQLdExporter) Reset()         { *m = MySQLdExporter{} }
+func (m *MySQLdExporter) String() string { return proto.CompactTextString(m) }
+func (*MySQLdExporter) ProtoMessage()    {}
+func (*MySQLdExporter) Descriptor() ([]byte, []int) {
+	return fileDescriptor_agents_e4761961b9cb1ca8, []int{0}
 }
-func (AgentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_agents_a29a649bcd4ba39d, []int{0}
+func (m *MySQLdExporter) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MySQLdExporter.Unmarshal(m, b)
 }
-
-type Agent struct {
-	Id                   int32     `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type                 AgentType `protobuf:"varint,2,opt,name=type,proto3,enum=inventory.AgentType" json:"type,omitempty"`
-	RunsOnNodeId         int32     `protobuf:"varint,3,opt,name=runs_on_node_id,json=runsOnNodeId,proto3" json:"runs_on_node_id,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
-	XXX_unrecognized     []byte    `json:"-"`
-	XXX_sizecache        int32     `json:"-"`
+func (m *MySQLdExporter) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MySQLdExporter.Marshal(b, m, deterministic)
 }
-
-func (m *Agent) Reset()         { *m = Agent{} }
-func (m *Agent) String() string { return proto.CompactTextString(m) }
-func (*Agent) ProtoMessage()    {}
-func (*Agent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agents_a29a649bcd4ba39d, []int{0}
+func (dst *MySQLdExporter) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MySQLdExporter.Merge(dst, src)
 }
-func (m *Agent) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Agent.Unmarshal(m, b)
+func (m *MySQLdExporter) XXX_Size() int {
+	return xxx_messageInfo_MySQLdExporter.Size(m)
 }
-func (m *Agent) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Agent.Marshal(b, m, deterministic)
-}
-func (dst *Agent) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Agent.Merge(dst, src)
-}
-func (m *Agent) XXX_Size() int {
-	return xxx_messageInfo_Agent.Size(m)
-}
-func (m *Agent) XXX_DiscardUnknown() {
-	xxx_messageInfo_Agent.DiscardUnknown(m)
+func (m *MySQLdExporter) XXX_DiscardUnknown() {
+	xxx_messageInfo_MySQLdExporter.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Agent proto.InternalMessageInfo
+var xxx_messageInfo_MySQLdExporter proto.InternalMessageInfo
 
-func (m *Agent) GetId() int32 {
+func (m *MySQLdExporter) GetId() uint32 {
 	if m != nil {
 		return m.Id
 	}
 	return 0
 }
 
-func (m *Agent) GetType() AgentType {
-	if m != nil {
-		return m.Type
-	}
-	return AgentType_AGENT_TYPE_INVALID
-}
-
-func (m *Agent) GetRunsOnNodeId() int32 {
+func (m *MySQLdExporter) GetRunsOnNodeId() uint32 {
 	if m != nil {
 		return m.RunsOnNodeId
 	}
 	return 0
 }
 
-func init() {
-	proto.RegisterType((*Agent)(nil), "inventory.Agent")
-	proto.RegisterEnum("inventory.AgentType", AgentType_name, AgentType_value)
+func (m *MySQLdExporter) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
 }
 
-func init() { proto.RegisterFile("inventory/agents.proto", fileDescriptor_agents_a29a649bcd4ba39d) }
+func (m *MySQLdExporter) GetPassword() string {
+	if m != nil {
+		return m.Password
+	}
+	return ""
+}
 
-var fileDescriptor_agents_a29a649bcd4ba39d = []byte{
-	// 226 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x44, 0x8e, 0x51, 0x4b, 0xc3, 0x30,
-	0x14, 0x46, 0x6d, 0x75, 0xc2, 0x2e, 0x63, 0x2b, 0x57, 0x19, 0x45, 0x7c, 0x18, 0x82, 0x50, 0x7c,
-	0x68, 0x41, 0x7f, 0x41, 0xa1, 0x45, 0x2a, 0xb3, 0x9b, 0x59, 0x11, 0xf7, 0x14, 0x2a, 0x09, 0x35,
-	0x20, 0xf7, 0x86, 0x2e, 0x0a, 0xfd, 0xf7, 0xb2, 0x20, 0xdd, 0xeb, 0xe1, 0x7c, 0x87, 0x0f, 0x96,
-	0x86, 0x7e, 0x35, 0x39, 0xee, 0x87, 0xac, 0xed, 0x34, 0xb9, 0x43, 0x6a, 0x7b, 0x76, 0x8c, 0xd3,
-	0x91, 0xdf, 0xdc, 0x76, 0xcc, 0xdd, 0xb7, 0xce, 0x5a, 0x6b, 0xb2, 0x96, 0x88, 0x5d, 0xeb, 0x0c,
-	0xd3, 0xbf, 0x78, 0xf7, 0x05, 0x93, 0xfc, 0x38, 0xc4, 0x39, 0x84, 0x46, 0xc5, 0xc1, 0x2a, 0x48,
-	0x26, 0x22, 0x34, 0x0a, 0x13, 0xb8, 0x70, 0x83, 0xd5, 0x71, 0xb8, 0x0a, 0x92, 0xf9, 0xe3, 0x75,
-	0x3a, 0x06, 0x53, 0xef, 0x37, 0x83, 0xd5, 0xc2, 0x1b, 0x78, 0x0f, 0x8b, 0xfe, 0x87, 0x0e, 0x92,
-	0x49, 0x12, 0x2b, 0x2d, 0x8d, 0x8a, 0xcf, 0x7d, 0x66, 0x76, 0xc4, 0x1b, 0xaa, 0x59, 0xe9, 0x4a,
-	0x3d, 0xbc, 0xc0, 0x74, 0x5c, 0xe2, 0x12, 0x30, 0x7f, 0x2e, 0xeb, 0x46, 0x36, 0xfb, 0x6d, 0x29,
-	0xab, 0xfa, 0x3d, 0x5f, 0x57, 0x45, 0x74, 0x86, 0x57, 0xb0, 0x78, 0xdd, 0xef, 0xde, 0xd6, 0x85,
-	0x2c, 0x3f, 0xb6, 0x1b, 0xd1, 0x94, 0x22, 0x0a, 0x30, 0x82, 0x99, 0x28, 0x76, 0x27, 0x12, 0x7e,
-	0x5e, 0xfa, 0xf3, 0x4f, 0x7f, 0x01, 0x00, 0x00, 0xff, 0xff, 0xa2, 0x1d, 0x36, 0xf2, 0xff, 0x00,
-	0x00, 0x00,
+func (m *MySQLdExporter) GetListenPort() uint32 {
+	if m != nil {
+		return m.ListenPort
+	}
+	return 0
+}
+
+type AddMySQLdExporterRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AddMySQLdExporterRequest) Reset()         { *m = AddMySQLdExporterRequest{} }
+func (m *AddMySQLdExporterRequest) String() string { return proto.CompactTextString(m) }
+func (*AddMySQLdExporterRequest) ProtoMessage()    {}
+func (*AddMySQLdExporterRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_agents_e4761961b9cb1ca8, []int{1}
+}
+func (m *AddMySQLdExporterRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AddMySQLdExporterRequest.Unmarshal(m, b)
+}
+func (m *AddMySQLdExporterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AddMySQLdExporterRequest.Marshal(b, m, deterministic)
+}
+func (dst *AddMySQLdExporterRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AddMySQLdExporterRequest.Merge(dst, src)
+}
+func (m *AddMySQLdExporterRequest) XXX_Size() int {
+	return xxx_messageInfo_AddMySQLdExporterRequest.Size(m)
+}
+func (m *AddMySQLdExporterRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AddMySQLdExporterRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AddMySQLdExporterRequest proto.InternalMessageInfo
+
+type AddMySQLdExporterResponse struct {
+	Agent                *MySQLdExporter `protobuf:"bytes,1,opt,name=agent,proto3" json:"agent,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *AddMySQLdExporterResponse) Reset()         { *m = AddMySQLdExporterResponse{} }
+func (m *AddMySQLdExporterResponse) String() string { return proto.CompactTextString(m) }
+func (*AddMySQLdExporterResponse) ProtoMessage()    {}
+func (*AddMySQLdExporterResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_agents_e4761961b9cb1ca8, []int{2}
+}
+func (m *AddMySQLdExporterResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AddMySQLdExporterResponse.Unmarshal(m, b)
+}
+func (m *AddMySQLdExporterResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AddMySQLdExporterResponse.Marshal(b, m, deterministic)
+}
+func (dst *AddMySQLdExporterResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AddMySQLdExporterResponse.Merge(dst, src)
+}
+func (m *AddMySQLdExporterResponse) XXX_Size() int {
+	return xxx_messageInfo_AddMySQLdExporterResponse.Size(m)
+}
+func (m *AddMySQLdExporterResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AddMySQLdExporterResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AddMySQLdExporterResponse proto.InternalMessageInfo
+
+func (m *AddMySQLdExporterResponse) GetAgent() *MySQLdExporter {
+	if m != nil {
+		return m.Agent
+	}
+	return nil
+}
+
+type RemoveMySQLdExporterRequest struct {
+	Id                   uint32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RemoveMySQLdExporterRequest) Reset()         { *m = RemoveMySQLdExporterRequest{} }
+func (m *RemoveMySQLdExporterRequest) String() string { return proto.CompactTextString(m) }
+func (*RemoveMySQLdExporterRequest) ProtoMessage()    {}
+func (*RemoveMySQLdExporterRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_agents_e4761961b9cb1ca8, []int{3}
+}
+func (m *RemoveMySQLdExporterRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RemoveMySQLdExporterRequest.Unmarshal(m, b)
+}
+func (m *RemoveMySQLdExporterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RemoveMySQLdExporterRequest.Marshal(b, m, deterministic)
+}
+func (dst *RemoveMySQLdExporterRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemoveMySQLdExporterRequest.Merge(dst, src)
+}
+func (m *RemoveMySQLdExporterRequest) XXX_Size() int {
+	return xxx_messageInfo_RemoveMySQLdExporterRequest.Size(m)
+}
+func (m *RemoveMySQLdExporterRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RemoveMySQLdExporterRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RemoveMySQLdExporterRequest proto.InternalMessageInfo
+
+func (m *RemoveMySQLdExporterRequest) GetId() uint32 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type RemoveMySQLdExporterResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RemoveMySQLdExporterResponse) Reset()         { *m = RemoveMySQLdExporterResponse{} }
+func (m *RemoveMySQLdExporterResponse) String() string { return proto.CompactTextString(m) }
+func (*RemoveMySQLdExporterResponse) ProtoMessage()    {}
+func (*RemoveMySQLdExporterResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_agents_e4761961b9cb1ca8, []int{4}
+}
+func (m *RemoveMySQLdExporterResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RemoveMySQLdExporterResponse.Unmarshal(m, b)
+}
+func (m *RemoveMySQLdExporterResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RemoveMySQLdExporterResponse.Marshal(b, m, deterministic)
+}
+func (dst *RemoveMySQLdExporterResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemoveMySQLdExporterResponse.Merge(dst, src)
+}
+func (m *RemoveMySQLdExporterResponse) XXX_Size() int {
+	return xxx_messageInfo_RemoveMySQLdExporterResponse.Size(m)
+}
+func (m *RemoveMySQLdExporterResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_RemoveMySQLdExporterResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RemoveMySQLdExporterResponse proto.InternalMessageInfo
+
+func init() {
+	proto.RegisterType((*MySQLdExporter)(nil), "inventory.MySQLdExporter")
+	proto.RegisterType((*AddMySQLdExporterRequest)(nil), "inventory.AddMySQLdExporterRequest")
+	proto.RegisterType((*AddMySQLdExporterResponse)(nil), "inventory.AddMySQLdExporterResponse")
+	proto.RegisterType((*RemoveMySQLdExporterRequest)(nil), "inventory.RemoveMySQLdExporterRequest")
+	proto.RegisterType((*RemoveMySQLdExporterResponse)(nil), "inventory.RemoveMySQLdExporterResponse")
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// AgentsClient is the client API for Agents service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type AgentsClient interface {
+	AddMySQLdExporter(ctx context.Context, in *AddMySQLdExporterRequest, opts ...grpc.CallOption) (*AddMySQLdExporterResponse, error)
+	RemoveMySQLdExporter(ctx context.Context, in *RemoveMySQLdExporterRequest, opts ...grpc.CallOption) (*RemoveMySQLdExporterResponse, error)
+}
+
+type agentsClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewAgentsClient(cc *grpc.ClientConn) AgentsClient {
+	return &agentsClient{cc}
+}
+
+func (c *agentsClient) AddMySQLdExporter(ctx context.Context, in *AddMySQLdExporterRequest, opts ...grpc.CallOption) (*AddMySQLdExporterResponse, error) {
+	out := new(AddMySQLdExporterResponse)
+	err := c.cc.Invoke(ctx, "/inventory.Agents/AddMySQLdExporter", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *agentsClient) RemoveMySQLdExporter(ctx context.Context, in *RemoveMySQLdExporterRequest, opts ...grpc.CallOption) (*RemoveMySQLdExporterResponse, error) {
+	out := new(RemoveMySQLdExporterResponse)
+	err := c.cc.Invoke(ctx, "/inventory.Agents/RemoveMySQLdExporter", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// AgentsServer is the server API for Agents service.
+type AgentsServer interface {
+	AddMySQLdExporter(context.Context, *AddMySQLdExporterRequest) (*AddMySQLdExporterResponse, error)
+	RemoveMySQLdExporter(context.Context, *RemoveMySQLdExporterRequest) (*RemoveMySQLdExporterResponse, error)
+}
+
+func RegisterAgentsServer(s *grpc.Server, srv AgentsServer) {
+	s.RegisterService(&_Agents_serviceDesc, srv)
+}
+
+func _Agents_AddMySQLdExporter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddMySQLdExporterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AgentsServer).AddMySQLdExporter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/inventory.Agents/AddMySQLdExporter",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AgentsServer).AddMySQLdExporter(ctx, req.(*AddMySQLdExporterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Agents_RemoveMySQLdExporter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveMySQLdExporterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AgentsServer).RemoveMySQLdExporter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/inventory.Agents/RemoveMySQLdExporter",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AgentsServer).RemoveMySQLdExporter(ctx, req.(*RemoveMySQLdExporterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _Agents_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "inventory.Agents",
+	HandlerType: (*AgentsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "AddMySQLdExporter",
+			Handler:    _Agents_AddMySQLdExporter_Handler,
+		},
+		{
+			MethodName: "RemoveMySQLdExporter",
+			Handler:    _Agents_RemoveMySQLdExporter_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "inventory/agents.proto",
+}
+
+func init() { proto.RegisterFile("inventory/agents.proto", fileDescriptor_agents_e4761961b9cb1ca8) }
+
+var fileDescriptor_agents_e4761961b9cb1ca8 = []byte{
+	// 367 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xcd, 0x4e, 0x22, 0x41,
+	0x10, 0x4e, 0xcf, 0x2e, 0x64, 0x29, 0x76, 0xd9, 0x6c, 0x67, 0xb3, 0x19, 0x66, 0x89, 0x92, 0x56,
+	0x11, 0x31, 0xce, 0x28, 0x7a, 0xe2, 0xc6, 0xc1, 0x83, 0x09, 0xfe, 0x8d, 0x0f, 0x30, 0x19, 0xd3,
+	0x1d, 0x32, 0x09, 0x74, 0x8d, 0xdd, 0x0d, 0xca, 0xd5, 0x37, 0x30, 0x9e, 0x4d, 0x7c, 0x10, 0xdf,
+	0xc2, 0x57, 0xf0, 0x41, 0x0c, 0x33, 0x88, 0x08, 0x23, 0x1e, 0xab, 0xbe, 0xaf, 0xfa, 0xfb, 0xea,
+	0xeb, 0x82, 0x7f, 0x91, 0x1c, 0x0a, 0x69, 0x50, 0x8d, 0xbc, 0xb0, 0x2b, 0xa4, 0xd1, 0x6e, 0xac,
+	0xd0, 0x20, 0x2d, 0x4c, 0xfb, 0x4e, 0xa5, 0x8b, 0xd8, 0xed, 0x09, 0x2f, 0x8c, 0x23, 0x2f, 0x94,
+	0x12, 0x4d, 0x68, 0x22, 0x94, 0x13, 0x22, 0x7b, 0x24, 0x50, 0x3a, 0x1e, 0x5d, 0x9c, 0x77, 0xf8,
+	0xe1, 0x4d, 0x8c, 0xca, 0x08, 0x45, 0x4b, 0x60, 0x45, 0xdc, 0x26, 0x55, 0x52, 0xff, 0xe5, 0x5b,
+	0x11, 0xa7, 0x1b, 0xf0, 0x5b, 0x0d, 0xa4, 0x0e, 0x50, 0x06, 0x12, 0xb9, 0x08, 0x22, 0x6e, 0x5b,
+	0x09, 0xf8, 0x73, 0xdc, 0x3e, 0x95, 0x27, 0xc8, 0xc5, 0x11, 0xa7, 0x0e, 0xfc, 0x18, 0x68, 0xa1,
+	0x64, 0xd8, 0x17, 0xf6, 0xb7, 0x2a, 0xa9, 0x17, 0xfc, 0x69, 0x3d, 0xc6, 0xe2, 0x50, 0xeb, 0x6b,
+	0x54, 0xdc, 0xfe, 0x9e, 0x62, 0x6f, 0x35, 0x5d, 0x85, 0x62, 0x2f, 0xd2, 0x46, 0xc8, 0x60, 0xac,
+	0x6f, 0xe7, 0x92, 0xa7, 0x21, 0x6d, 0x9d, 0xa1, 0x32, 0xcc, 0x01, 0xbb, 0xcd, 0xf9, 0x47, 0x93,
+	0xbe, 0xb8, 0x1a, 0x08, 0x6d, 0x58, 0x07, 0xca, 0x19, 0x98, 0x8e, 0x51, 0x6a, 0x41, 0x3d, 0xc8,
+	0x25, 0xa1, 0x24, 0xbb, 0x14, 0x9b, 0x65, 0x77, 0x1a, 0x8a, 0x3b, 0x37, 0x91, 0xf2, 0xd8, 0x0e,
+	0xfc, 0xf7, 0x45, 0x1f, 0x87, 0x22, 0x53, 0x6c, 0x3e, 0x18, 0xb6, 0x02, 0x95, 0x6c, 0x7a, 0xaa,
+	0xdf, 0x7c, 0xb2, 0x20, 0xdf, 0x4e, 0x7e, 0x85, 0xde, 0x11, 0xf8, 0xb3, 0x60, 0x94, 0xae, 0xcd,
+	0x38, 0xfa, 0x6c, 0x45, 0x67, 0x7d, 0x39, 0x29, 0xd5, 0x62, 0x7b, 0xb7, 0xcf, 0x2f, 0xf7, 0xd6,
+	0x36, 0xab, 0x79, 0xc3, 0x5d, 0xef, 0xfd, 0x28, 0x52, 0x79, 0x6f, 0x61, 0xae, 0x45, 0x1a, 0xf4,
+	0x81, 0xc0, 0xdf, 0x2c, 0xff, 0xb4, 0x36, 0xa3, 0xb8, 0x24, 0x0f, 0x67, 0xf3, 0x4b, 0xde, 0xc4,
+	0xdc, 0x41, 0x62, 0xce, 0x65, 0x5b, 0x99, 0xe6, 0xb2, 0x46, 0x5b, 0xa4, 0x71, 0x99, 0x4f, 0x2e,
+	0x74, 0xff, 0x35, 0x00, 0x00, 0xff, 0xff, 0x41, 0x19, 0x47, 0xa6, 0xe4, 0x02, 0x00, 0x00,
 }

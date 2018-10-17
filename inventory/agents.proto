@@ -4,14 +4,49 @@ package inventory;
 
 import "google/api/annotations.proto";
 
-enum AgentType {
-  AGENT_TYPE_INVALID = 0;
-  MYSQLD_EXPORTER = 1;
-  RDS_EXPORTER = 2;
+// enum AgentType {
+//   AGENT_TYPE_INVALID = 0;
+//   MYSQLD_EXPORTER = 1;
+//   RDS_EXPORTER = 2;
+// }
+
+// message Agent {
+//   uint32 id = 1;
+//   AgentType type = 2;
+//   uint32 runs_on_node_id = 3;
+// }
+
+message MySQLdExporter {
+  uint32 id = 1;
+  uint32 runs_on_node_id = 2;
+  string username = 3;
+  string password = 4;
+  uint32 listen_port = 5;
 }
 
-message Agent {
-  int32 id = 1;
-  AgentType type = 2;
-  int32 runs_on_node_id = 3;
+message AddMySQLdExporterRequest {}
+
+message AddMySQLdExporterResponse {
+  MySQLdExporter agent = 1;
+}
+
+message RemoveMySQLdExporterRequest {
+  uint32 id = 1;
+}
+
+message RemoveMySQLdExporterResponse {}
+
+service Agents {
+  rpc AddMySQLdExporter(AddMySQLdExporterRequest) returns (AddMySQLdExporterResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Agents/AddMySQLdExporter"
+      body: "*"
+    };
+  }
+  rpc RemoveMySQLdExporter(RemoveMySQLdExporterRequest) returns (RemoveMySQLdExporterResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Agents/RemoveMySQLdExporter"
+      body: "*"
+    };
+  }
 }

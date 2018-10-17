@@ -15,19 +15,19 @@
     "version": "version 0"
   },
   "paths": {
-    "/v0/test": {
+    "/v0/inventory/Agents/AddMySQLdExporter": {
       "post": {
         "tags": [
-          "Inventory"
+          "Agents"
         ],
-        "operationId": "Test",
+        "operationId": "AddMySQLdExporter",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/inventoryTestRequest"
+              "$ref": "#/definitions/inventoryAddMySQLdExporterRequest"
             }
           }
         ],
@@ -35,7 +35,85 @@
           "200": {
             "description": "(empty)",
             "schema": {
-              "$ref": "#/definitions/inventoryTestResponse"
+              "$ref": "#/definitions/inventoryAddMySQLdExporterResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Agents/RemoveMySQLdExporter": {
+      "post": {
+        "tags": [
+          "Agents"
+        ],
+        "operationId": "RemoveMySQLdExporter",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryRemoveMySQLdExporterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryRemoveMySQLdExporterResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Nodes/AddBareMetal": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "operationId": "AddBareMetal",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryAddBareMetalNodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryAddBareMetalNodeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Nodes/RemoveBareMetal": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "operationId": "RemoveBareMetal",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryRemoveBareMetalNodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryRemoveBareMetalNodeResponse"
             }
           }
         }
@@ -43,54 +121,97 @@
     }
   },
   "definitions": {
+    "inventoryAddBareMetalNodeRequest": {
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "inventoryAddBareMetalNodeResponse": {
+      "type": "object",
+      "properties": {
+        "node": {
+          "$ref": "#/definitions/inventoryBareMetalNode"
+        }
+      }
+    },
+    "inventoryAddMySQLdExporterRequest": {
+      "type": "object"
+    },
+    "inventoryAddMySQLdExporterResponse": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/inventoryMySQLdExporter"
+        }
+      }
+    },
     "inventoryBareMetalNode": {
       "type": "object",
       "properties": {
+        "hostname": {
+          "type": "string"
+        },
         "id": {
-          "type": "string",
-          "format": "uint64"
+          "type": "integer",
+          "format": "int64"
         },
         "name": {
           "type": "string"
         }
       }
     },
-    "inventoryRemoteRDSNode": {
+    "inventoryMySQLdExporter": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
-          "format": "uint64"
+          "type": "integer",
+          "format": "int64"
         },
-        "name": {
+        "listen_port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "password": {
           "type": "string"
         },
-        "region": {
+        "runs_on_node_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
           "type": "string"
         }
       }
     },
-    "inventoryTestRequest": {
+    "inventoryRemoveBareMetalNodeRequest": {
       "type": "object",
       "properties": {
-        "test": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/inventoryBareMetalNode"
-          }
+        "id": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
-    "inventoryTestResponse": {
+    "inventoryRemoveBareMetalNodeResponse": {
+      "type": "object"
+    },
+    "inventoryRemoveMySQLdExporterRequest": {
       "type": "object",
       "properties": {
-        "test": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/inventoryRemoteRDSNode"
-          }
+        "id": {
+          "type": "integer",
+          "format": "int64"
         }
       }
+    },
+    "inventoryRemoveMySQLdExporterResponse": {
+      "type": "object"
     }
   }
 }
