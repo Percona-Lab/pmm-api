@@ -14,11 +14,11 @@ message AddMySQLServiceResponse {
   MySQLService service = 1;
 }
 
-message RemoveMySQLServiceRequest {
-  uint32 id = 1;
-}
+// message RemoveMySQLServiceRequest {
+//   uint32 id = 1;
+// }
 
-message RemoveMySQLServiceResponse {}
+// message RemoveMySQLServiceResponse {}
 
 service Services {
   // rpc AddMySQL(AddMySQLServiceRequest) returns (AddMySQLServiceResponse) {

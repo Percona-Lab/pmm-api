@@ -41,32 +41,6 @@
         }
       }
     },
-    "/v0/inventory/Agents/RemoveMySQLdExporter": {
-      "post": {
-        "tags": [
-          "Agents"
-        ],
-        "operationId": "RemoveMySQLdExporter",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/inventoryRemoveMySQLdExporterRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/inventoryRemoveMySQLdExporterResponse"
-            }
-          }
-        }
-      }
-    },
     "/v0/inventory/Nodes/AddBareMetal": {
       "post": {
         "tags": [
@@ -88,32 +62,6 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/inventoryAddBareMetalNodeResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v0/inventory/Nodes/RemoveBareMetal": {
-      "post": {
-        "tags": [
-          "Nodes"
-        ],
-        "operationId": "RemoveBareMetal",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/inventoryRemoveBareMetalNodeRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/inventoryRemoveBareMetalNodeResponse"
             }
           }
         }
@@ -188,30 +136,6 @@
           "type": "string"
         }
       }
-    },
-    "inventoryRemoveBareMetalNodeRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "inventoryRemoveBareMetalNodeResponse": {
-      "type": "object"
-    },
-    "inventoryRemoveMySQLdExporterRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "inventoryRemoveMySQLdExporterResponse": {
-      "type": "object"
     }
   }
 }

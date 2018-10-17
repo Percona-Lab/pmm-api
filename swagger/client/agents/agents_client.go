@@ -51,34 +51,6 @@ func (a *Client) AddMySqldExporter(params *AddMySqldExporterParams) (*AddMySqldE
 
 }
 
-/*
-RemoveMySqldExporter remove my sqld exporter API
-*/
-func (a *Client) RemoveMySqldExporter(params *RemoveMySqldExporterParams) (*RemoveMySqldExporterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewRemoveMySqldExporterParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "RemoveMySQLdExporter",
-		Method:             "POST",
-		PathPattern:        "/v0/inventory/Agents/RemoveMySQLdExporter",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http", "https"},
-		Params:             params,
-		Reader:             &RemoveMySqldExporterReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*RemoveMySqldExporterOK), nil
-
-}
-
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport

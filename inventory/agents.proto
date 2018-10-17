@@ -30,11 +30,11 @@ message AddMySQLdExporterResponse {
   MySQLdExporter agent = 1;
 }
 
-message RemoveMySQLdExporterRequest {
-  uint32 id = 1;
-}
+// message RemoveMySQLdExporterRequest {
+//   uint32 id = 1;
+// }
 
-message RemoveMySQLdExporterResponse {}
+// message RemoveMySQLdExporterResponse {}
 
 service Agents {
   rpc AddMySQLdExporter(AddMySQLdExporterRequest) returns (AddMySQLdExporterResponse) {
@@ -43,10 +43,11 @@ service Agents {
       body: "*"
     };
   }
-  rpc RemoveMySQLdExporter(RemoveMySQLdExporterRequest) returns (RemoveMySQLdExporterResponse) {
-    option (google.api.http) = {
-      post: "/v0/inventory/Agents/RemoveMySQLdExporter"
-      body: "*"
-    };
-  }
+  // rpc RemoveMySQLdExporter(RemoveMySQLdExporterRequest) returns (RemoveMySQLdExporterResponse) {
+  //   option (google.api.http) = {
+  //     post: "/v0/inventory/Agents/RemoveMySQLdExporter"
+  //     body: "*"
+  //   };
+  // }
+
 }

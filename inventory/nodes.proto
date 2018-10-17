@@ -56,11 +56,11 @@ message AddBareMetalNodeResponse {
   BareMetalNode node = 1;
 }
 
-message RemoveBareMetalNodeRequest {
-  uint32 id = 1;
-}
+// message RemoveBareMetalNodeRequest {
+//   uint32 id = 1;
+// }
 
-message RemoveBareMetalNodeResponse {}
+// message RemoveBareMetalNodeResponse {}
 
 service Nodes {
   rpc AddBareMetal(AddBareMetalNodeRequest) returns (AddBareMetalNodeResponse) {
@@ -69,10 +69,11 @@ service Nodes {
       body: "*"
     };
   }
-  rpc RemoveBareMetal(RemoveBareMetalNodeRequest) returns (RemoveBareMetalNodeResponse) {
-    option (google.api.http) = {
-      post: "/v0/inventory/Nodes/RemoveBareMetal"
-      body: "*"
-    };
-  }
+  // rpc RemoveBareMetal(RemoveBareMetalNodeRequest) returns (RemoveBareMetalNodeResponse) {
+  //   option (google.api.http) = {
+  //     post: "/v0/inventory/Nodes/RemoveBareMetal"
+  //     body: "*"
+  //   };
+  // }
+
 }

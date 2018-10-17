@@ -51,34 +51,6 @@ func (a *Client) AddBareMetal(params *AddBareMetalParams) (*AddBareMetalOK, erro
 
 }
 
-/*
-RemoveBareMetal remove bare metal API
-*/
-func (a *Client) RemoveBareMetal(params *RemoveBareMetalParams) (*RemoveBareMetalOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewRemoveBareMetalParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "RemoveBareMetal",
-		Method:             "POST",
-		PathPattern:        "/v0/inventory/Nodes/RemoveBareMetal",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http", "https"},
-		Params:             params,
-		Reader:             &RemoveBareMetalReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*RemoveBareMetalOK), nil
-
-}
-
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport
