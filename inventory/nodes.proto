@@ -21,8 +21,11 @@ import "google/api/annotations.proto";
 // }
 
 message BareMetalNode {
+  // Unique node identifier.
   uint32 id = 1;
+  // Unique node name.
   string name = 2;
+  // Hostname. Is not unique.
   string hostname = 3;
 }
 
@@ -48,7 +51,9 @@ message BareMetalNode {
 // }
 
 message AddBareMetalNodeRequest {
+  // Unique node name.
   string name = 1;
+  // Hostname. Is not unique.
   string hostname = 2;
 }
 
@@ -63,6 +68,7 @@ message AddBareMetalNodeResponse {
 // message RemoveBareMetalNodeResponse {}
 
 service Nodes {
+  // Add Bare Metal node.
   rpc AddBareMetal(AddBareMetalNodeRequest) returns (AddBareMetalNodeResponse) {
     option (google.api.http) = {
       post: "/v0/inventory/Nodes/AddBareMetal"

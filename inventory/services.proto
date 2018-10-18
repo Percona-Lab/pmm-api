@@ -5,7 +5,10 @@ package inventory;
 import "google/api/annotations.proto";
 
 message MySQLService {
+  // Unique service identifier.
   uint32 id = 1;
+  // Unique service name.
+  string name = 2;
 }
 
 message AddMySQLServiceRequest {}

@@ -20,6 +20,7 @@
         "tags": [
           "Agents"
         ],
+        "summary": "Add mysqld_exporter agent.",
         "operationId": "AddMySQLdExporter",
         "parameters": [
           {
@@ -46,6 +47,7 @@
         "tags": [
           "Nodes"
         ],
+        "summary": "Add Bare Metal node.",
         "operationId": "AddBareMetal",
         "parameters": [
           {
@@ -73,9 +75,11 @@
       "type": "object",
       "properties": {
         "hostname": {
+          "description": "Hostname. Is not unique.",
           "type": "string"
         },
         "name": {
+          "description": "Unique node name.",
           "type": "string"
         }
       }
@@ -92,13 +96,16 @@
       "type": "object",
       "properties": {
         "password": {
+          "description": "MySQL password for extracting metrics.",
           "type": "string"
         },
         "runs_on_node_id": {
+          "description": "Node identifier where agent should run.",
           "type": "integer",
           "format": "int64"
         },
         "username": {
+          "description": "MySQL username for extracting metrics.",
           "type": "string"
         }
       }
@@ -115,13 +122,16 @@
       "type": "object",
       "properties": {
         "hostname": {
+          "description": "Hostname. Is not unique.",
           "type": "string"
         },
         "id": {
+          "description": "Unique node identifier.",
           "type": "integer",
           "format": "int64"
         },
         "name": {
+          "description": "Unique node name.",
           "type": "string"
         }
       }
@@ -130,21 +140,26 @@
       "type": "object",
       "properties": {
         "id": {
+          "description": "Unique agent identifier.",
           "type": "integer",
           "format": "int64"
         },
         "listen_port": {
+          "description": "HTTP listen port for exposing metrics.",
           "type": "integer",
           "format": "int64"
         },
         "password": {
+          "description": "MySQL password for extracting metrics.",
           "type": "string"
         },
         "runs_on_node_id": {
+          "description": "Node identifier where agent runs.",
           "type": "integer",
           "format": "int64"
         },
         "username": {
+          "description": "MySQL username for extracting metrics.",
           "type": "string"
         }
       }

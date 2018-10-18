@@ -14,19 +14,19 @@ import (
 // swagger:model inventoryMySQLdExporter
 type InventoryMySqldExporter struct {
 
-	// id
+	// Unique agent identifier.
 	ID int64 `json:"id,omitempty"`
 
-	// listen port
+	// HTTP listen port for exposing metrics.
 	ListenPort int64 `json:"listen_port,omitempty"`
 
-	// password
+	// MySQL password for extracting metrics.
 	Password string `json:"password,omitempty"`
 
-	// runs on node id
+	// Node identifier where agent runs.
 	RunsOnNodeID int64 `json:"runs_on_node_id,omitempty"`
 
-	// username
+	// MySQL username for extracting metrics.
 	Username string `json:"username,omitempty"`
 }
 

@@ -14,13 +14,13 @@ import (
 // swagger:model inventoryAddMySQLdExporterRequest
 type InventoryAddMySqldExporterRequest struct {
 
-	// password
+	// MySQL password for extracting metrics.
 	Password string `json:"password,omitempty"`
 
-	// runs on node id
+	// Node identifier where agent should run.
 	RunsOnNodeID int64 `json:"runs_on_node_id,omitempty"`
 
-	// username
+	// MySQL username for extracting metrics.
 	Username string `json:"username,omitempty"`
 }
 

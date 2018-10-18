@@ -17,17 +17,25 @@ import "google/api/annotations.proto";
 // }
 
 message MySQLdExporter {
+  // Unique agent identifier.
   uint32 id = 1;
+  // Node identifier where agent runs.
   uint32 runs_on_node_id = 2;
+  // MySQL username for extracting metrics.
   string username = 3;
+  // MySQL password for extracting metrics.
   string password = 4;
+  // HTTP listen port for exposing metrics.
   uint32 listen_port = 5;
 }
 
 message AddMySQLdExporterRequest {
-  uint32 runs_on_node_id = 2;
-  string username = 3;
-  string password = 4;
+  // Node identifier where agent should run.
+  uint32 runs_on_node_id = 1;
+  // MySQL username for extracting metrics.
+  string username = 2;
+  // MySQL password for extracting metrics.
+  string password = 3;
 }
 
 message AddMySQLdExporterResponse {
@@ -41,6 +49,7 @@ message AddMySQLdExporterResponse {
 // message RemoveMySQLdExporterResponse {}
 
 service Agents {
+  // Add mysqld_exporter agent.
   rpc AddMySQLdExporter(AddMySQLdExporterRequest) returns (AddMySQLdExporterResponse) {
     option (google.api.http) = {
       post: "/v0/inventory/Agents/AddMySQLdExporter"

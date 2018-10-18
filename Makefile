@@ -30,3 +30,6 @@ gen: clean
 	mkdir http
 	swagger generate client --spec=inventory.swagger.json --target=http
 	go install -v ./...
+
+serve:
+	go run swagger/serve.go -dir=swagger

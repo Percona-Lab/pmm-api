@@ -25,8 +25,11 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type BareMetalNode struct {
-	Id                   uint32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Unique node identifier.
+	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Unique node name.
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Hostname. Is not unique.
 	Hostname             string   `protobuf:"bytes,3,opt,name=hostname,proto3" json:"hostname,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -37,7 +40,7 @@ func (m *BareMetalNode) Reset()         { *m = BareMetalNode{} }
 func (m *BareMetalNode) String() string { return proto.CompactTextString(m) }
 func (*BareMetalNode) ProtoMessage()    {}
 func (*BareMetalNode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_aa90aa3b539d6b29, []int{0}
+	return fileDescriptor_nodes_dbb3174ed4d9d994, []int{0}
 }
 func (m *BareMetalNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BareMetalNode.Unmarshal(m, b)
@@ -79,7 +82,9 @@ func (m *BareMetalNode) GetHostname() string {
 }
 
 type AddBareMetalNodeRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Unique node name.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Hostname. Is not unique.
 	Hostname             string   `protobuf:"bytes,2,opt,name=hostname,proto3" json:"hostname,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -90,7 +95,7 @@ func (m *AddBareMetalNodeRequest) Reset()         { *m = AddBareMetalNodeRequest
 func (m *AddBareMetalNodeRequest) String() string { return proto.CompactTextString(m) }
 func (*AddBareMetalNodeRequest) ProtoMessage()    {}
 func (*AddBareMetalNodeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_aa90aa3b539d6b29, []int{1}
+	return fileDescriptor_nodes_dbb3174ed4d9d994, []int{1}
 }
 func (m *AddBareMetalNodeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddBareMetalNodeRequest.Unmarshal(m, b)
@@ -135,7 +140,7 @@ func (m *AddBareMetalNodeResponse) Reset()         { *m = AddBareMetalNodeRespon
 func (m *AddBareMetalNodeResponse) String() string { return proto.CompactTextString(m) }
 func (*AddBareMetalNodeResponse) ProtoMessage()    {}
 func (*AddBareMetalNodeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_aa90aa3b539d6b29, []int{2}
+	return fileDescriptor_nodes_dbb3174ed4d9d994, []int{2}
 }
 func (m *AddBareMetalNodeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddBareMetalNodeResponse.Unmarshal(m, b)
@@ -180,6 +185,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type NodesClient interface {
+	// Add Bare Metal node.
 	AddBareMetal(ctx context.Context, in *AddBareMetalNodeRequest, opts ...grpc.CallOption) (*AddBareMetalNodeResponse, error)
 }
 
@@ -202,6 +208,7 @@ func (c *nodesClient) AddBareMetal(ctx context.Context, in *AddBareMetalNodeRequ
 
 // NodesServer is the server API for Nodes service.
 type NodesServer interface {
+	// Add Bare Metal node.
 	AddBareMetal(context.Context, *AddBareMetalNodeRequest) (*AddBareMetalNodeResponse, error)
 }
 
@@ -240,9 +247,9 @@ var _Nodes_serviceDesc = grpc.ServiceDesc{
 	Metadata: "inventory/nodes.proto",
 }
 
-func init() { proto.RegisterFile("inventory/nodes.proto", fileDescriptor_nodes_aa90aa3b539d6b29) }
+func init() { proto.RegisterFile("inventory/nodes.proto", fileDescriptor_nodes_dbb3174ed4d9d994) }
 
-var fileDescriptor_nodes_aa90aa3b539d6b29 = []byte{
+var fileDescriptor_nodes_dbb3174ed4d9d994 = []byte{
 	// 255 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xcd, 0xcc, 0x2b, 0x4b,
 	0xcd, 0x2b, 0xc9, 0x2f, 0xaa, 0xd4, 0xcf, 0xcb, 0x4f, 0x49, 0x2d, 0xd6, 0x2b, 0x28, 0xca, 0x2f,

@@ -14,10 +14,10 @@ import (
 // swagger:model inventoryAddBareMetalNodeRequest
 type InventoryAddBareMetalNodeRequest struct {
 
-	// hostname
+	// Hostname. Is not unique.
 	Hostname string `json:"hostname,omitempty"`
 
-	// name
+	// Unique node name.
 	Name string `json:"name,omitempty"`
 }
 
