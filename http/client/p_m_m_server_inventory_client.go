@@ -6,8 +6,8 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/Percona-Lab/pmm-api/swagger/client/agents"
-	"github.com/Percona-Lab/pmm-api/swagger/client/nodes"
+	"github.com/Percona-Lab/pmm-api/http/client/agents"
+	"github.com/Percona-Lab/pmm-api/http/client/nodes"
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
 	strfmt "github.com/go-openapi/strfmt"

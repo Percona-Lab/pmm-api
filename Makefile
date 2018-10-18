@@ -10,7 +10,7 @@ clean:
 	find . -name '*.pb.gw.go' -not -path './vendor/*' -delete
 	find . -name '*.swagger.json' -not -path './vendor/*' -delete
 
-	rm -fr swagger
+	rm -fr http
 
 gen: clean
 	go install -v ./vendor/github.com/golang/protobuf/protoc-gen-go \
@@ -27,6 +27,6 @@ gen: clean
 	swagger validate inventory.swagger.json
 	rm -f inventory/*.swagger.json
 
-	mkdir swagger
-	swagger generate client --spec=inventory.swagger.json --target=swagger
+	mkdir http
+	swagger generate client --spec=inventory.swagger.json --target=http
 	go install -v ./...

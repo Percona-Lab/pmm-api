@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"time"
 
-	models "github.com/Percona-Lab/pmm-api/swagger/models"
+	models "github.com/Percona-Lab/pmm-api/http/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
