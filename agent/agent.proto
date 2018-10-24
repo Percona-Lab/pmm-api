@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package agent;
 
+import "google/protobuf/any.proto";
 import "google/protobuf/timestamp.proto";
 import "inventory/agents.proto";
 
@@ -23,6 +24,12 @@ message ConnectRequest {
 
 message ConnectResponse {}
 
+message QANDataRequest {
+  google.protobuf.Any data = 1; // agent.QANData
+}
+
+message QANDataResponse {}
+
 message PingRequest {}
 
 message PingResponse {
@@ -40,6 +47,7 @@ message AgentMessage {
   oneof payload {
     // requests from agent
     ConnectRequest connect = 2;
+    QANDataRequest qan_data = 3;
     // responses from agent
     PingResponse ping = 8;
     SetStateResponse state = 9;
@@ -51,9 +59,10 @@ message ServerMessage {
   oneof payload {
     // responses from server
     ConnectResponse connect = 2;
+    QANDataResponse qan_data = 3;
     // requests from server
-    PingRequest ping = 3;
-    SetStateRequest state = 4;
+    PingRequest ping = 8;
+    SetStateRequest state = 9;
   }
 }
 

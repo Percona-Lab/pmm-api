@@ -7,6 +7,7 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 import inventory "github.com/Percona-Lab/pmm-api/inventory"
+import any "github.com/golang/protobuf/ptypes/any"
 import timestamp "github.com/golang/protobuf/ptypes/timestamp"
 
 import (
@@ -36,7 +37,7 @@ func (m *RegisterRequest) Reset()         { *m = RegisterRequest{} }
 func (m *RegisterRequest) String() string { return proto.CompactTextString(m) }
 func (*RegisterRequest) ProtoMessage()    {}
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{0}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{0}
 }
 func (m *RegisterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegisterRequest.Unmarshal(m, b)
@@ -74,7 +75,7 @@ func (m *RegisterResponse) Reset()         { *m = RegisterResponse{} }
 func (m *RegisterResponse) String() string { return proto.CompactTextString(m) }
 func (*RegisterResponse) ProtoMessage()    {}
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{1}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{1}
 }
 func (m *RegisterResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegisterResponse.Unmarshal(m, b)
@@ -113,7 +114,7 @@ func (m *ConnectRequest) Reset()         { *m = ConnectRequest{} }
 func (m *ConnectRequest) String() string { return proto.CompactTextString(m) }
 func (*ConnectRequest) ProtoMessage()    {}
 func (*ConnectRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{2}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{2}
 }
 func (m *ConnectRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConnectRequest.Unmarshal(m, b)
@@ -157,7 +158,7 @@ func (m *ConnectResponse) Reset()         { *m = ConnectResponse{} }
 func (m *ConnectResponse) String() string { return proto.CompactTextString(m) }
 func (*ConnectResponse) ProtoMessage()    {}
 func (*ConnectResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{3}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{3}
 }
 func (m *ConnectResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConnectResponse.Unmarshal(m, b)
@@ -177,6 +178,74 @@ func (m *ConnectResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ConnectResponse proto.InternalMessageInfo
 
+type QANDataRequest struct {
+	Data                 *any.Any `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *QANDataRequest) Reset()         { *m = QANDataRequest{} }
+func (m *QANDataRequest) String() string { return proto.CompactTextString(m) }
+func (*QANDataRequest) ProtoMessage()    {}
+func (*QANDataRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{4}
+}
+func (m *QANDataRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_QANDataRequest.Unmarshal(m, b)
+}
+func (m *QANDataRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_QANDataRequest.Marshal(b, m, deterministic)
+}
+func (dst *QANDataRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QANDataRequest.Merge(dst, src)
+}
+func (m *QANDataRequest) XXX_Size() int {
+	return xxx_messageInfo_QANDataRequest.Size(m)
+}
+func (m *QANDataRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QANDataRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QANDataRequest proto.InternalMessageInfo
+
+func (m *QANDataRequest) GetData() *any.Any {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type QANDataResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *QANDataResponse) Reset()         { *m = QANDataResponse{} }
+func (m *QANDataResponse) String() string { return proto.CompactTextString(m) }
+func (*QANDataResponse) ProtoMessage()    {}
+func (*QANDataResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{5}
+}
+func (m *QANDataResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_QANDataResponse.Unmarshal(m, b)
+}
+func (m *QANDataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_QANDataResponse.Marshal(b, m, deterministic)
+}
+func (dst *QANDataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QANDataResponse.Merge(dst, src)
+}
+func (m *QANDataResponse) XXX_Size() int {
+	return xxx_messageInfo_QANDataResponse.Size(m)
+}
+func (m *QANDataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QANDataResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QANDataResponse proto.InternalMessageInfo
+
 type PingRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -187,7 +256,7 @@ func (m *PingRequest) Reset()         { *m = PingRequest{} }
 func (m *PingRequest) String() string { return proto.CompactTextString(m) }
 func (*PingRequest) ProtoMessage()    {}
 func (*PingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{4}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{6}
 }
 func (m *PingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PingRequest.Unmarshal(m, b)
@@ -218,7 +287,7 @@ func (m *PingResponse) Reset()         { *m = PingResponse{} }
 func (m *PingResponse) String() string { return proto.CompactTextString(m) }
 func (*PingResponse) ProtoMessage()    {}
 func (*PingResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{5}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{7}
 }
 func (m *PingResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PingResponse.Unmarshal(m, b)
@@ -256,7 +325,7 @@ func (m *SetStateRequest) Reset()         { *m = SetStateRequest{} }
 func (m *SetStateRequest) String() string { return proto.CompactTextString(m) }
 func (*SetStateRequest) ProtoMessage()    {}
 func (*SetStateRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{6}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{8}
 }
 func (m *SetStateRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetStateRequest.Unmarshal(m, b)
@@ -293,7 +362,7 @@ func (m *SetStateResponse) Reset()         { *m = SetStateResponse{} }
 func (m *SetStateResponse) String() string { return proto.CompactTextString(m) }
 func (*SetStateResponse) ProtoMessage()    {}
 func (*SetStateResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{7}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{9}
 }
 func (m *SetStateResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetStateResponse.Unmarshal(m, b)
@@ -317,6 +386,7 @@ type AgentMessage struct {
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Types that are valid to be assigned to Payload:
 	//	*AgentMessage_Connect
+	//	*AgentMessage_QanData
 	//	*AgentMessage_Ping
 	//	*AgentMessage_State
 	Payload              isAgentMessage_Payload `protobuf_oneof:"payload"`
@@ -329,7 +399,7 @@ func (m *AgentMessage) Reset()         { *m = AgentMessage{} }
 func (m *AgentMessage) String() string { return proto.CompactTextString(m) }
 func (*AgentMessage) ProtoMessage()    {}
 func (*AgentMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{8}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{10}
 }
 func (m *AgentMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AgentMessage.Unmarshal(m, b)
@@ -364,6 +434,10 @@ type AgentMessage_Connect struct {
 	Connect *ConnectRequest `protobuf:"bytes,2,opt,name=connect,proto3,oneof"`
 }
 
+type AgentMessage_QanData struct {
+	QanData *QANDataRequest `protobuf:"bytes,3,opt,name=qan_data,json=qanData,proto3,oneof"`
+}
+
 type AgentMessage_Ping struct {
 	Ping *PingResponse `protobuf:"bytes,8,opt,name=ping,proto3,oneof"`
 }
@@ -373,6 +447,8 @@ type AgentMessage_State struct {
 }
 
 func (*AgentMessage_Connect) isAgentMessage_Payload() {}
+
+func (*AgentMessage_QanData) isAgentMessage_Payload() {}
 
 func (*AgentMessage_Ping) isAgentMessage_Payload() {}
 
@@ -388,6 +464,13 @@ func (m *AgentMessage) GetPayload() isAgentMessage_Payload {
 func (m *AgentMessage) GetConnect() *ConnectRequest {
 	if x, ok := m.GetPayload().(*AgentMessage_Connect); ok {
 		return x.Connect
+	}
+	return nil
+}
+
+func (m *AgentMessage) GetQanData() *QANDataRequest {
+	if x, ok := m.GetPayload().(*AgentMessage_QanData); ok {
+		return x.QanData
 	}
 	return nil
 }
@@ -410,6 +493,7 @@ func (m *AgentMessage) GetState() *SetStateResponse {
 func (*AgentMessage) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
 	return _AgentMessage_OneofMarshaler, _AgentMessage_OneofUnmarshaler, _AgentMessage_OneofSizer, []interface{}{
 		(*AgentMessage_Connect)(nil),
+		(*AgentMessage_QanData)(nil),
 		(*AgentMessage_Ping)(nil),
 		(*AgentMessage_State)(nil),
 	}
@@ -422,6 +506,11 @@ func _AgentMessage_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
 	case *AgentMessage_Connect:
 		b.EncodeVarint(2<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.Connect); err != nil {
+			return err
+		}
+	case *AgentMessage_QanData:
+		b.EncodeVarint(3<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.QanData); err != nil {
 			return err
 		}
 	case *AgentMessage_Ping:
@@ -451,6 +540,14 @@ func _AgentMessage_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.B
 		msg := new(ConnectRequest)
 		err := b.DecodeMessage(msg)
 		m.Payload = &AgentMessage_Connect{msg}
+		return true, err
+	case 3: // payload.qan_data
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(QANDataRequest)
+		err := b.DecodeMessage(msg)
+		m.Payload = &AgentMessage_QanData{msg}
 		return true, err
 	case 8: // payload.ping
 		if wire != proto.WireBytes {
@@ -482,6 +579,11 @@ func _AgentMessage_OneofSizer(msg proto.Message) (n int) {
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
+	case *AgentMessage_QanData:
+		s := proto.Size(x.QanData)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
 	case *AgentMessage_Ping:
 		s := proto.Size(x.Ping)
 		n += 1 // tag and wire
@@ -503,6 +605,7 @@ type ServerMessage struct {
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Types that are valid to be assigned to Payload:
 	//	*ServerMessage_Connect
+	//	*ServerMessage_QanData
 	//	*ServerMessage_Ping
 	//	*ServerMessage_State
 	Payload              isServerMessage_Payload `protobuf_oneof:"payload"`
@@ -515,7 +618,7 @@ func (m *ServerMessage) Reset()         { *m = ServerMessage{} }
 func (m *ServerMessage) String() string { return proto.CompactTextString(m) }
 func (*ServerMessage) ProtoMessage()    {}
 func (*ServerMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agent_58121d4a90f851a1, []int{9}
+	return fileDescriptor_agent_0e7f94d7aa4b9b6a, []int{11}
 }
 func (m *ServerMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServerMessage.Unmarshal(m, b)
@@ -550,15 +653,21 @@ type ServerMessage_Connect struct {
 	Connect *ConnectResponse `protobuf:"bytes,2,opt,name=connect,proto3,oneof"`
 }
 
+type ServerMessage_QanData struct {
+	QanData *QANDataResponse `protobuf:"bytes,3,opt,name=qan_data,json=qanData,proto3,oneof"`
+}
+
 type ServerMessage_Ping struct {
-	Ping *PingRequest `protobuf:"bytes,3,opt,name=ping,proto3,oneof"`
+	Ping *PingRequest `protobuf:"bytes,8,opt,name=ping,proto3,oneof"`
 }
 
 type ServerMessage_State struct {
-	State *SetStateRequest `protobuf:"bytes,4,opt,name=state,proto3,oneof"`
+	State *SetStateRequest `protobuf:"bytes,9,opt,name=state,proto3,oneof"`
 }
 
 func (*ServerMessage_Connect) isServerMessage_Payload() {}
+
+func (*ServerMessage_QanData) isServerMessage_Payload() {}
 
 func (*ServerMessage_Ping) isServerMessage_Payload() {}
 
@@ -574,6 +683,13 @@ func (m *ServerMessage) GetPayload() isServerMessage_Payload {
 func (m *ServerMessage) GetConnect() *ConnectResponse {
 	if x, ok := m.GetPayload().(*ServerMessage_Connect); ok {
 		return x.Connect
+	}
+	return nil
+}
+
+func (m *ServerMessage) GetQanData() *QANDataResponse {
+	if x, ok := m.GetPayload().(*ServerMessage_QanData); ok {
+		return x.QanData
 	}
 	return nil
 }
@@ -596,6 +712,7 @@ func (m *ServerMessage) GetState() *SetStateRequest {
 func (*ServerMessage) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
 	return _ServerMessage_OneofMarshaler, _ServerMessage_OneofUnmarshaler, _ServerMessage_OneofSizer, []interface{}{
 		(*ServerMessage_Connect)(nil),
+		(*ServerMessage_QanData)(nil),
 		(*ServerMessage_Ping)(nil),
 		(*ServerMessage_State)(nil),
 	}
@@ -610,13 +727,18 @@ func _ServerMessage_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
 		if err := b.EncodeMessage(x.Connect); err != nil {
 			return err
 		}
-	case *ServerMessage_Ping:
+	case *ServerMessage_QanData:
 		b.EncodeVarint(3<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.QanData); err != nil {
+			return err
+		}
+	case *ServerMessage_Ping:
+		b.EncodeVarint(8<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.Ping); err != nil {
 			return err
 		}
 	case *ServerMessage_State:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
+		b.EncodeVarint(9<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.State); err != nil {
 			return err
 		}
@@ -638,7 +760,15 @@ func _ServerMessage_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.
 		err := b.DecodeMessage(msg)
 		m.Payload = &ServerMessage_Connect{msg}
 		return true, err
-	case 3: // payload.ping
+	case 3: // payload.qan_data
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(QANDataResponse)
+		err := b.DecodeMessage(msg)
+		m.Payload = &ServerMessage_QanData{msg}
+		return true, err
+	case 8: // payload.ping
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -646,7 +776,7 @@ func _ServerMessage_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.
 		err := b.DecodeMessage(msg)
 		m.Payload = &ServerMessage_Ping{msg}
 		return true, err
-	case 4: // payload.state
+	case 9: // payload.state
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -665,6 +795,11 @@ func _ServerMessage_OneofSizer(msg proto.Message) (n int) {
 	switch x := m.Payload.(type) {
 	case *ServerMessage_Connect:
 		s := proto.Size(x.Connect)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *ServerMessage_QanData:
+		s := proto.Size(x.QanData)
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
@@ -690,6 +825,8 @@ func init() {
 	proto.RegisterType((*RegisterResponse)(nil), "agent.RegisterResponse")
 	proto.RegisterType((*ConnectRequest)(nil), "agent.ConnectRequest")
 	proto.RegisterType((*ConnectResponse)(nil), "agent.ConnectResponse")
+	proto.RegisterType((*QANDataRequest)(nil), "agent.QANDataRequest")
+	proto.RegisterType((*QANDataResponse)(nil), "agent.QANDataResponse")
 	proto.RegisterType((*PingRequest)(nil), "agent.PingRequest")
 	proto.RegisterType((*PingResponse)(nil), "agent.PingResponse")
 	proto.RegisterType((*SetStateRequest)(nil), "agent.SetStateRequest")
@@ -840,38 +977,42 @@ var _Agent_serviceDesc = grpc.ServiceDesc{
 	Metadata: "agent/agent.proto",
 }
 
-func init() { proto.RegisterFile("agent/agent.proto", fileDescriptor_agent_58121d4a90f851a1) }
+func init() { proto.RegisterFile("agent/agent.proto", fileDescriptor_agent_0e7f94d7aa4b9b6a) }
 
-var fileDescriptor_agent_58121d4a90f851a1 = []byte{
-	// 478 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x93, 0xdf, 0x8f, 0xd2, 0x40,
-	0x10, 0xc7, 0x29, 0x07, 0x02, 0x03, 0x1c, 0xdc, 0xaa, 0x77, 0xb5, 0x2f, 0x5e, 0xfa, 0x60, 0xf0,
-	0xc1, 0xa2, 0xf5, 0xc5, 0xc4, 0x68, 0xe2, 0xaf, 0x84, 0x07, 0x49, 0x74, 0x31, 0xf1, 0xf1, 0xd2,
-	0xa3, 0x63, 0x6d, 0x02, 0xbb, 0xbd, 0xdd, 0x2d, 0x91, 0x17, 0xff, 0x2e, 0xff, 0x3c, 0xd3, 0xfd,
-	0xd1, 0x83, 0x7a, 0xbe, 0x10, 0x66, 0xf2, 0x9d, 0xd9, 0xcf, 0x7c, 0x67, 0x0a, 0x67, 0x49, 0x86,
-	0x4c, 0xcd, 0xf5, 0x6f, 0x54, 0x08, 0xae, 0x38, 0xe9, 0xea, 0x20, 0x78, 0x9c, 0x71, 0x9e, 0x6d,
-	0x70, 0xae, 0x93, 0xd7, 0xe5, 0x8f, 0xb9, 0xca, 0xb7, 0x28, 0x55, 0xb2, 0x2d, 0x8c, 0x2e, 0x38,
-	0xcf, 0xd9, 0x0e, 0x99, 0xe2, 0x62, 0x6f, 0xca, 0xa5, 0xc9, 0x87, 0xcf, 0x60, 0x42, 0x31, 0xcb,
-	0xa5, 0x42, 0x41, 0xf1, 0xa6, 0x44, 0xa9, 0x48, 0x00, 0xfd, 0x9f, 0x5c, 0x2a, 0x96, 0x6c, 0xd1,
-	0xf7, 0x2e, 0xbd, 0xd9, 0x80, 0xd6, 0x71, 0xf8, 0x04, 0xa6, 0xb7, 0x72, 0x59, 0x70, 0x26, 0x91,
-	0x10, 0xe8, 0x94, 0x65, 0x9e, 0x5a, 0xad, 0xfe, 0x1f, 0xbe, 0x85, 0xd3, 0x0f, 0x9c, 0x31, 0x5c,
-	0x2b, 0xd7, 0xf5, 0x0e, 0x15, 0xf1, 0xa1, 0xb7, 0x43, 0x21, 0x73, 0xce, 0xfc, 0xb6, 0x4e, 0xbb,
-	0x30, 0x3c, 0x83, 0x49, 0x5d, 0x6f, 0x9e, 0x09, 0xc7, 0x30, 0xfc, 0x92, 0xb3, 0xcc, 0xf6, 0x0b,
-	0x97, 0x30, 0x32, 0xa1, 0xa5, 0x78, 0x03, 0xa3, 0x75, 0x29, 0x04, 0x32, 0x75, 0x55, 0xcd, 0xae,
-	0xdf, 0x19, 0xc6, 0x41, 0x64, 0x8c, 0x89, 0x9c, 0x31, 0xd1, 0x37, 0x67, 0x0c, 0x1d, 0x5a, 0x7d,
-	0x95, 0x09, 0xbf, 0xc3, 0x64, 0x85, 0x6a, 0xa5, 0x12, 0x85, 0x8e, 0xf8, 0x23, 0x4c, 0xb7, 0x7b,
-	0x79, 0xb3, 0x49, 0xaf, 0xf0, 0x57, 0xc1, 0x85, 0x42, 0x21, 0x7d, 0xef, 0xf2, 0x64, 0x36, 0x8c,
-	0x1f, 0x45, 0xb5, 0x9b, 0xd1, 0x72, 0xbf, 0xfa, 0xfa, 0x39, 0xfd, 0x64, 0x15, 0x74, 0x62, 0x4a,
-	0x5c, 0x2c, 0x43, 0x02, 0xd3, 0xdb, 0xc6, 0x76, 0x94, 0x3f, 0x1e, 0x8c, 0xde, 0x55, 0x5b, 0x58,
-	0xa2, 0x94, 0x49, 0x86, 0xe4, 0x14, 0xda, 0xd6, 0x9a, 0x31, 0x6d, 0xe7, 0x29, 0x79, 0x01, 0xbd,
-	0xb5, 0x19, 0x5f, 0x1b, 0x33, 0x8c, 0x1f, 0x46, 0x66, 0xe9, 0xc7, 0xa6, 0x2e, 0x5a, 0xd4, 0xe9,
-	0xc8, 0x53, 0xe8, 0x14, 0x39, 0xcb, 0xfc, 0xbe, 0xd6, 0xdf, 0xb7, 0xfa, 0x43, 0x8b, 0x16, 0x2d,
-	0xaa, 0x25, 0x64, 0x0e, 0x5d, 0x59, 0xf1, 0xf8, 0x03, 0xad, 0xbd, 0xb0, 0xda, 0x26, 0xe6, 0xa2,
-	0x45, 0x8d, 0xee, 0xfd, 0x00, 0x7a, 0x45, 0xb2, 0xdf, 0xf0, 0x24, 0xad, 0xd0, 0xc7, 0x2b, 0x14,
-	0x3b, 0x14, 0xff, 0x63, 0x8f, 0x9b, 0xec, 0xe7, 0x4d, 0xf6, 0xba, 0x7d, 0x0d, 0x3f, 0xb3, 0xf0,
-	0x27, 0xba, 0x80, 0x1c, 0xc1, 0xbb, 0x49, 0x0d, 0x7b, 0xe4, 0xd8, 0x3b, 0x47, 0xbd, 0x1b, 0xbb,
-	0xbb, 0x0b, 0x3d, 0xfe, 0x0d, 0x5d, 0x6d, 0x3a, 0x79, 0x0d, 0x7d, 0x77, 0xc4, 0xc4, 0x35, 0x68,
-	0x7c, 0x04, 0xc1, 0xc5, 0x3f, 0x79, 0x7b, 0x67, 0xaf, 0xa0, 0x67, 0x07, 0x21, 0xce, 0xe4, 0xc3,
-	0x55, 0x06, 0x0f, 0x6a, 0xa2, 0x03, 0x93, 0x66, 0xde, 0x73, 0xef, 0xfa, 0x9e, 0xbe, 0xc1, 0x97,
-	0x7f, 0x03, 0x00, 0x00, 0xff, 0xff, 0xda, 0x6d, 0xd9, 0x81, 0xc6, 0x03, 0x00, 0x00,
+var fileDescriptor_agent_0e7f94d7aa4b9b6a = []byte{
+	// 544 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x93, 0x5d, 0x8f, 0xd2, 0x4e,
+	0x14, 0xc6, 0xb7, 0x2c, 0xfc, 0x81, 0xc3, 0xeb, 0xce, 0x7f, 0x65, 0xbb, 0xbd, 0x71, 0xd3, 0x0b,
+	0x83, 0x17, 0x16, 0xed, 0xde, 0x18, 0x8d, 0x26, 0xe8, 0x9a, 0x70, 0x21, 0xc6, 0x2d, 0x26, 0x5e,
+	0x92, 0x59, 0x3a, 0xd6, 0x26, 0x30, 0x53, 0x3a, 0x03, 0xb1, 0x37, 0x7e, 0x62, 0xfd, 0x0e, 0xa6,
+	0xf3, 0x52, 0x68, 0xd1, 0x1b, 0xc2, 0x39, 0x7d, 0xce, 0x33, 0xfd, 0x3d, 0x67, 0x0a, 0x17, 0x38,
+	0x22, 0x54, 0x4c, 0xe4, 0xaf, 0x97, 0xa4, 0x4c, 0x30, 0xd4, 0x90, 0x85, 0x73, 0x1d, 0x31, 0x16,
+	0xad, 0xc9, 0x44, 0x36, 0x1f, 0x76, 0xdf, 0x26, 0x98, 0x66, 0x4a, 0xe1, 0x3c, 0xae, 0x3e, 0x12,
+	0xf1, 0x86, 0x70, 0x81, 0x37, 0x89, 0x16, 0x8c, 0x62, 0xba, 0x27, 0x54, 0xb0, 0x34, 0x53, 0xce,
+	0x5c, 0xf5, 0xdd, 0x67, 0x30, 0x08, 0x48, 0x14, 0x73, 0x41, 0xd2, 0x80, 0x6c, 0x77, 0x84, 0x0b,
+	0xe4, 0x40, 0xeb, 0x3b, 0xe3, 0x82, 0xe2, 0x0d, 0xb1, 0xad, 0x1b, 0x6b, 0xdc, 0x0e, 0x8a, 0xda,
+	0x7d, 0x02, 0xc3, 0x83, 0x9c, 0x27, 0x8c, 0x72, 0x82, 0x10, 0xd4, 0x77, 0xbb, 0x38, 0xd4, 0x5a,
+	0xf9, 0xdf, 0x7d, 0x0b, 0xfd, 0xf7, 0x8c, 0x52, 0xb2, 0x12, 0xc6, 0xf5, 0x2f, 0x2a, 0x64, 0x43,
+	0x73, 0x4f, 0x52, 0x1e, 0x33, 0x6a, 0xd7, 0x64, 0xdb, 0x94, 0xee, 0x05, 0x0c, 0x8a, 0x79, 0x75,
+	0x8c, 0xfb, 0x0a, 0xfa, 0xf7, 0xd3, 0x4f, 0x77, 0x58, 0x60, 0x63, 0x39, 0x86, 0x7a, 0x88, 0x05,
+	0x96, 0x96, 0x1d, 0xff, 0xd2, 0x53, 0x19, 0x78, 0x26, 0x03, 0x6f, 0x4a, 0xb3, 0x40, 0x2a, 0x72,
+	0xbb, 0x62, 0x56, 0xdb, 0xf5, 0xa0, 0xf3, 0x39, 0xa6, 0x91, 0xf6, 0x72, 0xe7, 0xd0, 0x55, 0xa5,
+	0x86, 0x7a, 0x03, 0xdd, 0xd5, 0x2e, 0x4d, 0x09, 0x15, 0xcb, 0x3c, 0x4a, 0x7d, 0x86, 0x73, 0x72,
+	0xc6, 0x17, 0x93, 0x73, 0xd0, 0xd1, 0xfa, 0xbc, 0xe3, 0x7e, 0x85, 0xc1, 0x82, 0x88, 0x85, 0xc0,
+	0x82, 0x98, 0xb7, 0xbd, 0x83, 0xe1, 0x26, 0xe3, 0xdb, 0x75, 0xb8, 0x24, 0x3f, 0x12, 0x96, 0x0a,
+	0x92, 0x72, 0xdb, 0xba, 0x39, 0x1f, 0x77, 0xfc, 0x6b, 0xaf, 0x58, 0x8e, 0x37, 0xcf, 0x16, 0xf7,
+	0x1f, 0xc3, 0x0f, 0x5a, 0x11, 0x0c, 0xd4, 0x88, 0xa9, 0xb9, 0x8b, 0x60, 0x78, 0x30, 0xd6, 0x28,
+	0xbf, 0x2c, 0xe8, 0x4e, 0xf3, 0xa5, 0xce, 0x09, 0xe7, 0x38, 0x22, 0xa8, 0x0f, 0x35, 0x9d, 0x74,
+	0x2f, 0xa8, 0xc5, 0x21, 0x7a, 0x01, 0xcd, 0x95, 0x4a, 0x53, 0xe6, 0xdc, 0xf1, 0x1f, 0x79, 0xea,
+	0x7a, 0x95, 0x77, 0x34, 0x3b, 0x0b, 0x8c, 0x0e, 0xf9, 0xd0, 0xda, 0x62, 0xba, 0x94, 0xf9, 0x9e,
+	0x97, 0x66, 0xca, 0x4b, 0xc8, 0x67, 0xb6, 0x98, 0xe6, 0x1d, 0xf4, 0x14, 0xea, 0x49, 0x4c, 0x23,
+	0xbb, 0x25, 0xf5, 0xff, 0x6b, 0xfd, 0x71, 0xac, 0xb3, 0xb3, 0x40, 0x4a, 0xd0, 0x04, 0x1a, 0x3c,
+	0x67, 0xb0, 0xdb, 0x52, 0x7b, 0xa5, 0xb5, 0x55, 0xb4, 0xd9, 0x59, 0xa0, 0x74, 0xef, 0xda, 0xd0,
+	0x4c, 0x70, 0xb6, 0x66, 0x38, 0x74, 0x7f, 0x5b, 0xd0, 0x5b, 0x90, 0x74, 0x4f, 0xd2, 0x7f, 0xf1,
+	0xfa, 0x55, 0xde, 0x51, 0x95, 0xb7, 0xb0, 0x2f, 0x80, 0x6f, 0x4f, 0x80, 0x47, 0x55, 0xe0, 0xc3,
+	0x90, 0x21, 0x1e, 0x97, 0x88, 0x51, 0x89, 0xd8, 0xc4, 0xa3, 0x80, 0xbd, 0x32, 0xf0, 0xe8, 0x04,
+	0xd8, 0xc8, 0x4f, 0x78, 0xfd, 0x9f, 0xd0, 0x90, 0xdb, 0x45, 0xaf, 0xa1, 0x65, 0x3e, 0x3e, 0x64,
+	0x0c, 0x2a, 0x1f, 0xaf, 0x73, 0x75, 0xd2, 0xd7, 0x17, 0xfa, 0x25, 0x34, 0x35, 0x3d, 0x32, 0x9b,
+	0x39, 0xbe, 0x33, 0xce, 0x65, 0xf1, 0x46, 0x47, 0xc9, 0x8e, 0xad, 0xe7, 0xd6, 0xc3, 0x7f, 0xf2,
+	0xb2, 0xdf, 0xfe, 0x09, 0x00, 0x00, 0xff, 0xff, 0xc9, 0x8b, 0xd8, 0x90, 0x99, 0x04, 0x00, 0x00,
 }
