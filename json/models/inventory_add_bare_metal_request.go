@@ -10,9 +10,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryAddBareMetalNodeRequest inventory add bare metal node request
-// swagger:model inventoryAddBareMetalNodeRequest
-type InventoryAddBareMetalNodeRequest struct {
+// InventoryAddBareMetalRequest inventory add bare metal request
+// swagger:model inventoryAddBareMetalRequest
+type InventoryAddBareMetalRequest struct {
 
 	// Hostname. Is not unique.
 	Hostname string `json:"hostname,omitempty"`
@@ -21,13 +21,13 @@ type InventoryAddBareMetalNodeRequest struct {
 	Name string `json:"name,omitempty"`
 }
 
-// Validate validates this inventory add bare metal node request
-func (m *InventoryAddBareMetalNodeRequest) Validate(formats strfmt.Registry) error {
+// Validate validates this inventory add bare metal request
+func (m *InventoryAddBareMetalRequest) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *InventoryAddBareMetalNodeRequest) MarshalBinary() ([]byte, error) {
+func (m *InventoryAddBareMetalRequest) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -35,8 +35,8 @@ func (m *InventoryAddBareMetalNodeRequest) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InventoryAddBareMetalNodeRequest) UnmarshalBinary(b []byte) error {
-	var res InventoryAddBareMetalNodeRequest
+func (m *InventoryAddBareMetalRequest) UnmarshalBinary(b []byte) error {
+	var res InventoryAddBareMetalRequest
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

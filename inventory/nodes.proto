@@ -50,14 +50,14 @@ message BareMetalNode {
 //   string region = 3;
 // }
 
-message AddBareMetalNodeRequest {
+message AddBareMetalRequest {
   // Unique node name.
   string name = 1;
   // Hostname. Is not unique.
   string hostname = 2;
 }
 
-message AddBareMetalNodeResponse {
+message AddBareMetalResponse {
   BareMetalNode node = 1;
 }
 
@@ -67,9 +67,10 @@ message AddBareMetalNodeResponse {
 
 // message RemoveBareMetalNodeResponse {}
 
+// Nodes service provides public methods for managing nodes.
 service Nodes {
-  // Add Bare Metal node.
-  rpc AddBareMetal(AddBareMetalNodeRequest) returns (AddBareMetalNodeResponse) {
+  // AddBareMetal adds bare metal node.
+  rpc AddBareMetal(AddBareMetalRequest) returns (AddBareMetalResponse) {
     option (google.api.http) = {
       post: "/v0/inventory/Nodes/AddBareMetal"
       body: "*"

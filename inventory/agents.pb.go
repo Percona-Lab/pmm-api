@@ -44,7 +44,7 @@ func (m *MySQLdExporter) Reset()         { *m = MySQLdExporter{} }
 func (m *MySQLdExporter) String() string { return proto.CompactTextString(m) }
 func (*MySQLdExporter) ProtoMessage()    {}
 func (*MySQLdExporter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agents_af741dd464ceedaa, []int{0}
+	return fileDescriptor_agents_397ee813246e3f01, []int{0}
 }
 func (m *MySQLdExporter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MySQLdExporter.Unmarshal(m, b)
@@ -115,7 +115,7 @@ func (m *AddMySQLdExporterRequest) Reset()         { *m = AddMySQLdExporterReque
 func (m *AddMySQLdExporterRequest) String() string { return proto.CompactTextString(m) }
 func (*AddMySQLdExporterRequest) ProtoMessage()    {}
 func (*AddMySQLdExporterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agents_af741dd464ceedaa, []int{1}
+	return fileDescriptor_agents_397ee813246e3f01, []int{1}
 }
 func (m *AddMySQLdExporterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddMySQLdExporterRequest.Unmarshal(m, b)
@@ -167,7 +167,7 @@ func (m *AddMySQLdExporterResponse) Reset()         { *m = AddMySQLdExporterResp
 func (m *AddMySQLdExporterResponse) String() string { return proto.CompactTextString(m) }
 func (*AddMySQLdExporterResponse) ProtoMessage()    {}
 func (*AddMySQLdExporterResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_agents_af741dd464ceedaa, []int{2}
+	return fileDescriptor_agents_397ee813246e3f01, []int{2}
 }
 func (m *AddMySQLdExporterResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddMySQLdExporterResponse.Unmarshal(m, b)
@@ -212,7 +212,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AgentsClient interface {
-	// Add mysqld_exporter agent.
+	// AddMySQLdExporter adds mysqld_exporter agent.
 	AddMySQLdExporter(ctx context.Context, in *AddMySQLdExporterRequest, opts ...grpc.CallOption) (*AddMySQLdExporterResponse, error)
 }
 
@@ -235,7 +235,7 @@ func (c *agentsClient) AddMySQLdExporter(ctx context.Context, in *AddMySQLdExpor
 
 // AgentsServer is the server API for Agents service.
 type AgentsServer interface {
-	// Add mysqld_exporter agent.
+	// AddMySQLdExporter adds mysqld_exporter agent.
 	AddMySQLdExporter(context.Context, *AddMySQLdExporterRequest) (*AddMySQLdExporterResponse, error)
 }
 
@@ -274,9 +274,9 @@ var _Agents_serviceDesc = grpc.ServiceDesc{
 	Metadata: "inventory/agents.proto",
 }
 
-func init() { proto.RegisterFile("inventory/agents.proto", fileDescriptor_agents_af741dd464ceedaa) }
+func init() { proto.RegisterFile("inventory/agents.proto", fileDescriptor_agents_397ee813246e3f01) }
 
-var fileDescriptor_agents_af741dd464ceedaa = []byte{
+var fileDescriptor_agents_397ee813246e3f01 = []byte{
 	// 323 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xcb, 0x4e, 0x32, 0x31,
 	0x14, 0xc7, 0xd3, 0xe1, 0x83, 0x7c, 0x14, 0xc5, 0xd8, 0x85, 0x19, 0x88, 0x89, 0x64, 0xbc, 0x84,

@@ -62,7 +62,7 @@ for the add bare metal operation typically these are written to a http.Request
 type AddBareMetalParams struct {
 
 	/*Body*/
-	Body *models.InventoryAddBareMetalNodeRequest
+	Body *models.InventoryAddBareMetalRequest
 
 	timeout    time.Duration
 	Context    context.Context
@@ -103,13 +103,13 @@ func (o *AddBareMetalParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the add bare metal params
-func (o *AddBareMetalParams) WithBody(body *models.InventoryAddBareMetalNodeRequest) *AddBareMetalParams {
+func (o *AddBareMetalParams) WithBody(body *models.InventoryAddBareMetalRequest) *AddBareMetalParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the add bare metal params
-func (o *AddBareMetalParams) SetBody(body *models.InventoryAddBareMetalNodeRequest) {
+func (o *AddBareMetalParams) SetBody(body *models.InventoryAddBareMetalRequest) {
 	o.Body = body
 }
 

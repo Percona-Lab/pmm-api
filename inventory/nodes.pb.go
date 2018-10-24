@@ -40,7 +40,7 @@ func (m *BareMetalNode) Reset()         { *m = BareMetalNode{} }
 func (m *BareMetalNode) String() string { return proto.CompactTextString(m) }
 func (*BareMetalNode) ProtoMessage()    {}
 func (*BareMetalNode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_dbb3174ed4d9d994, []int{0}
+	return fileDescriptor_nodes_051876f903e46eef, []int{0}
 }
 func (m *BareMetalNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BareMetalNode.Unmarshal(m, b)
@@ -81,7 +81,7 @@ func (m *BareMetalNode) GetHostname() string {
 	return ""
 }
 
-type AddBareMetalNodeRequest struct {
+type AddBareMetalRequest struct {
 	// Unique node name.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Hostname. Is not unique.
@@ -91,76 +91,76 @@ type AddBareMetalNodeRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *AddBareMetalNodeRequest) Reset()         { *m = AddBareMetalNodeRequest{} }
-func (m *AddBareMetalNodeRequest) String() string { return proto.CompactTextString(m) }
-func (*AddBareMetalNodeRequest) ProtoMessage()    {}
-func (*AddBareMetalNodeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_dbb3174ed4d9d994, []int{1}
+func (m *AddBareMetalRequest) Reset()         { *m = AddBareMetalRequest{} }
+func (m *AddBareMetalRequest) String() string { return proto.CompactTextString(m) }
+func (*AddBareMetalRequest) ProtoMessage()    {}
+func (*AddBareMetalRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_nodes_051876f903e46eef, []int{1}
 }
-func (m *AddBareMetalNodeRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AddBareMetalNodeRequest.Unmarshal(m, b)
+func (m *AddBareMetalRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AddBareMetalRequest.Unmarshal(m, b)
 }
-func (m *AddBareMetalNodeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AddBareMetalNodeRequest.Marshal(b, m, deterministic)
+func (m *AddBareMetalRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AddBareMetalRequest.Marshal(b, m, deterministic)
 }
-func (dst *AddBareMetalNodeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AddBareMetalNodeRequest.Merge(dst, src)
+func (dst *AddBareMetalRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AddBareMetalRequest.Merge(dst, src)
 }
-func (m *AddBareMetalNodeRequest) XXX_Size() int {
-	return xxx_messageInfo_AddBareMetalNodeRequest.Size(m)
+func (m *AddBareMetalRequest) XXX_Size() int {
+	return xxx_messageInfo_AddBareMetalRequest.Size(m)
 }
-func (m *AddBareMetalNodeRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_AddBareMetalNodeRequest.DiscardUnknown(m)
+func (m *AddBareMetalRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AddBareMetalRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_AddBareMetalNodeRequest proto.InternalMessageInfo
+var xxx_messageInfo_AddBareMetalRequest proto.InternalMessageInfo
 
-func (m *AddBareMetalNodeRequest) GetName() string {
+func (m *AddBareMetalRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *AddBareMetalNodeRequest) GetHostname() string {
+func (m *AddBareMetalRequest) GetHostname() string {
 	if m != nil {
 		return m.Hostname
 	}
 	return ""
 }
 
-type AddBareMetalNodeResponse struct {
+type AddBareMetalResponse struct {
 	Node                 *BareMetalNode `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *AddBareMetalNodeResponse) Reset()         { *m = AddBareMetalNodeResponse{} }
-func (m *AddBareMetalNodeResponse) String() string { return proto.CompactTextString(m) }
-func (*AddBareMetalNodeResponse) ProtoMessage()    {}
-func (*AddBareMetalNodeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_dbb3174ed4d9d994, []int{2}
+func (m *AddBareMetalResponse) Reset()         { *m = AddBareMetalResponse{} }
+func (m *AddBareMetalResponse) String() string { return proto.CompactTextString(m) }
+func (*AddBareMetalResponse) ProtoMessage()    {}
+func (*AddBareMetalResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_nodes_051876f903e46eef, []int{2}
 }
-func (m *AddBareMetalNodeResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AddBareMetalNodeResponse.Unmarshal(m, b)
+func (m *AddBareMetalResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AddBareMetalResponse.Unmarshal(m, b)
 }
-func (m *AddBareMetalNodeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AddBareMetalNodeResponse.Marshal(b, m, deterministic)
+func (m *AddBareMetalResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AddBareMetalResponse.Marshal(b, m, deterministic)
 }
-func (dst *AddBareMetalNodeResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AddBareMetalNodeResponse.Merge(dst, src)
+func (dst *AddBareMetalResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AddBareMetalResponse.Merge(dst, src)
 }
-func (m *AddBareMetalNodeResponse) XXX_Size() int {
-	return xxx_messageInfo_AddBareMetalNodeResponse.Size(m)
+func (m *AddBareMetalResponse) XXX_Size() int {
+	return xxx_messageInfo_AddBareMetalResponse.Size(m)
 }
-func (m *AddBareMetalNodeResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_AddBareMetalNodeResponse.DiscardUnknown(m)
+func (m *AddBareMetalResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AddBareMetalResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_AddBareMetalNodeResponse proto.InternalMessageInfo
+var xxx_messageInfo_AddBareMetalResponse proto.InternalMessageInfo
 
-func (m *AddBareMetalNodeResponse) GetNode() *BareMetalNode {
+func (m *AddBareMetalResponse) GetNode() *BareMetalNode {
 	if m != nil {
 		return m.Node
 	}
@@ -169,8 +169,8 @@ func (m *AddBareMetalNodeResponse) GetNode() *BareMetalNode {
 
 func init() {
 	proto.RegisterType((*BareMetalNode)(nil), "inventory.BareMetalNode")
-	proto.RegisterType((*AddBareMetalNodeRequest)(nil), "inventory.AddBareMetalNodeRequest")
-	proto.RegisterType((*AddBareMetalNodeResponse)(nil), "inventory.AddBareMetalNodeResponse")
+	proto.RegisterType((*AddBareMetalRequest)(nil), "inventory.AddBareMetalRequest")
+	proto.RegisterType((*AddBareMetalResponse)(nil), "inventory.AddBareMetalResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -185,8 +185,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type NodesClient interface {
-	// Add Bare Metal node.
-	AddBareMetal(ctx context.Context, in *AddBareMetalNodeRequest, opts ...grpc.CallOption) (*AddBareMetalNodeResponse, error)
+	// AddBareMetal adds bare metal node.
+	AddBareMetal(ctx context.Context, in *AddBareMetalRequest, opts ...grpc.CallOption) (*AddBareMetalResponse, error)
 }
 
 type nodesClient struct {
@@ -197,8 +197,8 @@ func NewNodesClient(cc *grpc.ClientConn) NodesClient {
 	return &nodesClient{cc}
 }
 
-func (c *nodesClient) AddBareMetal(ctx context.Context, in *AddBareMetalNodeRequest, opts ...grpc.CallOption) (*AddBareMetalNodeResponse, error) {
-	out := new(AddBareMetalNodeResponse)
+func (c *nodesClient) AddBareMetal(ctx context.Context, in *AddBareMetalRequest, opts ...grpc.CallOption) (*AddBareMetalResponse, error) {
+	out := new(AddBareMetalResponse)
 	err := c.cc.Invoke(ctx, "/inventory.Nodes/AddBareMetal", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -208,8 +208,8 @@ func (c *nodesClient) AddBareMetal(ctx context.Context, in *AddBareMetalNodeRequ
 
 // NodesServer is the server API for Nodes service.
 type NodesServer interface {
-	// Add Bare Metal node.
-	AddBareMetal(context.Context, *AddBareMetalNodeRequest) (*AddBareMetalNodeResponse, error)
+	// AddBareMetal adds bare metal node.
+	AddBareMetal(context.Context, *AddBareMetalRequest) (*AddBareMetalResponse, error)
 }
 
 func RegisterNodesServer(s *grpc.Server, srv NodesServer) {
@@ -217,7 +217,7 @@ func RegisterNodesServer(s *grpc.Server, srv NodesServer) {
 }
 
 func _Nodes_AddBareMetal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddBareMetalNodeRequest)
+	in := new(AddBareMetalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -229,7 +229,7 @@ func _Nodes_AddBareMetal_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/inventory.Nodes/AddBareMetal",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NodesServer).AddBareMetal(ctx, req.(*AddBareMetalNodeRequest))
+		return srv.(NodesServer).AddBareMetal(ctx, req.(*AddBareMetalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -247,9 +247,9 @@ var _Nodes_serviceDesc = grpc.ServiceDesc{
 	Metadata: "inventory/nodes.proto",
 }
 
-func init() { proto.RegisterFile("inventory/nodes.proto", fileDescriptor_nodes_dbb3174ed4d9d994) }
+func init() { proto.RegisterFile("inventory/nodes.proto", fileDescriptor_nodes_051876f903e46eef) }
 
-var fileDescriptor_nodes_dbb3174ed4d9d994 = []byte{
+var fileDescriptor_nodes_051876f903e46eef = []byte{
 	// 255 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xcd, 0xcc, 0x2b, 0x4b,
 	0xcd, 0x2b, 0xc9, 0x2f, 0xaa, 0xd4, 0xcf, 0xcb, 0x4f, 0x49, 0x2d, 0xd6, 0x2b, 0x28, 0xca, 0x2f,
@@ -259,12 +259,12 @@ var fileDescriptor_nodes_dbb3174ed4d9d994 = []byte{
 	0xf1, 0x71, 0x31, 0x65, 0xa6, 0x48, 0x30, 0x2a, 0x30, 0x6a, 0xf0, 0x06, 0x31, 0x65, 0xa6, 0x08,
 	0x09, 0x71, 0xb1, 0xe4, 0x25, 0xe6, 0xa6, 0x4a, 0x30, 0x29, 0x30, 0x6a, 0x70, 0x06, 0x81, 0xd9,
 	0x42, 0x52, 0x5c, 0x1c, 0x19, 0xf9, 0xc5, 0x25, 0x60, 0x71, 0x66, 0xb0, 0x38, 0x9c, 0xaf, 0xe4,
-	0xc9, 0x25, 0xee, 0x98, 0x92, 0x82, 0x62, 0x66, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x09, 0xdc,
-	0x28, 0x46, 0x1c, 0x46, 0x31, 0xa1, 0x19, 0xe5, 0xc1, 0x25, 0x81, 0x69, 0x54, 0x71, 0x41, 0x7e,
-	0x5e, 0x71, 0xaa, 0x90, 0x0e, 0x17, 0x0b, 0xc8, 0xbf, 0x60, 0xb3, 0xb8, 0x8d, 0x24, 0xf4, 0xe0,
-	0xfe, 0xd5, 0x43, 0x55, 0x0f, 0x56, 0x65, 0xd4, 0xc7, 0xc8, 0xc5, 0x0a, 0xe2, 0x16, 0x0b, 0xb5,
-	0x30, 0x72, 0xf1, 0x20, 0x1b, 0x2a, 0xa4, 0x84, 0xa4, 0x15, 0x87, 0xc3, 0xa5, 0x94, 0xf1, 0xaa,
-	0x81, 0xb8, 0x48, 0x49, 0xbb, 0xe9, 0xf2, 0x93, 0xc9, 0x4c, 0xaa, 0x4a, 0x0a, 0xfa, 0x65, 0x06,
-	0xfa, 0x88, 0x58, 0x01, 0x5b, 0xab, 0x8f, 0xac, 0xcb, 0x8a, 0x51, 0x2b, 0x89, 0x0d, 0x1c, 0xfa,
-	0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x62, 0xc4, 0xc7, 0x45, 0xbf, 0x01, 0x00, 0x00,
+	0xca, 0x25, 0xec, 0x98, 0x92, 0x02, 0x37, 0x33, 0x28, 0xb5, 0xb0, 0x34, 0xb5, 0xb8, 0x04, 0x6e,
+	0x0c, 0x23, 0x0e, 0x63, 0x98, 0xd0, 0x8c, 0x71, 0xe1, 0x12, 0x41, 0x35, 0xa6, 0xb8, 0x20, 0x3f,
+	0xaf, 0x38, 0x55, 0x48, 0x87, 0x8b, 0x05, 0xe4, 0x4f, 0xb0, 0x39, 0xdc, 0x46, 0x12, 0x7a, 0x70,
+	0x7f, 0xea, 0xa1, 0x78, 0x23, 0x08, 0xac, 0xca, 0xa8, 0x95, 0x91, 0x8b, 0x15, 0xc4, 0x2d, 0x16,
+	0xaa, 0xe1, 0xe2, 0x41, 0x36, 0x4f, 0x48, 0x0e, 0x49, 0x27, 0x16, 0xf7, 0x4a, 0xc9, 0xe3, 0x94,
+	0x87, 0x38, 0x44, 0x49, 0xbb, 0xe9, 0xf2, 0x93, 0xc9, 0x4c, 0xaa, 0x4a, 0x0a, 0xfa, 0x65, 0x06,
+	0xfa, 0x88, 0x48, 0x00, 0xdb, 0xa6, 0x8f, 0xac, 0xc3, 0x8a, 0x51, 0x2b, 0x89, 0x0d, 0x1c, 0xd8,
+	0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0xb6, 0x14, 0xd6, 0x12, 0xae, 0x01, 0x00, 0x00,
 }

@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_Nodes_AddBareMetal_0(ctx context.Context, marshaler runtime.Marshaler, client NodesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AddBareMetalNodeRequest
+	var protoReq AddBareMetalRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {

@@ -41,8 +41,8 @@ message AgentMessage {
     // requests from agent
     ConnectRequest connect = 2;
     // responses from agent
-    PingResponse ping = 3;
-    SetStateResponse state = 4;
+    PingResponse ping = 8;
+    SetStateResponse state = 9;
   }
 }
 
@@ -57,7 +57,10 @@ message ServerMessage {
   }
 }
 
+// Agent service provides private methods for pmm-agent <-> pmm-managed interactions.
 service Agent {
+  // Register adds pmm-agent to pmm-managed database and returns agent's UUID.
   rpc Register(RegisterRequest) returns (RegisterResponse);
+  // Connect establishes two-way communication channel between pmm-agent and pmm-managed.
   rpc Connect(stream AgentMessage) returns (stream ServerMessage);
 }

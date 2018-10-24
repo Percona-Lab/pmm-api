@@ -23,6 +23,7 @@ message AddMySQLServiceResponse {
 
 // message RemoveMySQLServiceResponse {}
 
+// Services service provides public methods for managing services.
 service Services {
   // rpc AddMySQL(AddMySQLServiceRequest) returns (AddMySQLServiceResponse) {
   //   option (google.api.http) = {

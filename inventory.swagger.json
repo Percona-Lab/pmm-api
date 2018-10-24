@@ -20,7 +20,7 @@
         "tags": [
           "Agents"
         ],
-        "summary": "Add mysqld_exporter agent.",
+        "summary": "AddMySQLdExporter adds mysqld_exporter agent.",
         "operationId": "AddMySQLdExporter",
         "parameters": [
           {
@@ -47,7 +47,7 @@
         "tags": [
           "Nodes"
         ],
-        "summary": "Add Bare Metal node.",
+        "summary": "AddBareMetal adds bare metal node.",
         "operationId": "AddBareMetal",
         "parameters": [
           {
@@ -55,7 +55,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/inventoryAddBareMetalNodeRequest"
+              "$ref": "#/definitions/inventoryAddBareMetalRequest"
             }
           }
         ],
@@ -63,7 +63,7 @@
           "200": {
             "description": "(empty)",
             "schema": {
-              "$ref": "#/definitions/inventoryAddBareMetalNodeResponse"
+              "$ref": "#/definitions/inventoryAddBareMetalResponse"
             }
           }
         }
@@ -71,7 +71,7 @@
     }
   },
   "definitions": {
-    "inventoryAddBareMetalNodeRequest": {
+    "inventoryAddBareMetalRequest": {
       "type": "object",
       "properties": {
         "hostname": {
@@ -84,7 +84,7 @@
         }
       }
     },
-    "inventoryAddBareMetalNodeResponse": {
+    "inventoryAddBareMetalResponse": {
       "type": "object",
       "properties": {
         "node": {

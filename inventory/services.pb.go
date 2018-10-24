@@ -38,7 +38,7 @@ func (m *MySQLService) Reset()         { *m = MySQLService{} }
 func (m *MySQLService) String() string { return proto.CompactTextString(m) }
 func (*MySQLService) ProtoMessage()    {}
 func (*MySQLService) Descriptor() ([]byte, []int) {
-	return fileDescriptor_services_73dccc0aaa302009, []int{0}
+	return fileDescriptor_services_ceb438cfad8e5d43, []int{0}
 }
 func (m *MySQLService) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MySQLService.Unmarshal(m, b)
@@ -82,7 +82,7 @@ func (m *AddMySQLServiceRequest) Reset()         { *m = AddMySQLServiceRequest{}
 func (m *AddMySQLServiceRequest) String() string { return proto.CompactTextString(m) }
 func (*AddMySQLServiceRequest) ProtoMessage()    {}
 func (*AddMySQLServiceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_services_73dccc0aaa302009, []int{1}
+	return fileDescriptor_services_ceb438cfad8e5d43, []int{1}
 }
 func (m *AddMySQLServiceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddMySQLServiceRequest.Unmarshal(m, b)
@@ -113,7 +113,7 @@ func (m *AddMySQLServiceResponse) Reset()         { *m = AddMySQLServiceResponse
 func (m *AddMySQLServiceResponse) String() string { return proto.CompactTextString(m) }
 func (*AddMySQLServiceResponse) ProtoMessage()    {}
 func (*AddMySQLServiceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_services_73dccc0aaa302009, []int{2}
+	return fileDescriptor_services_ceb438cfad8e5d43, []int{2}
 }
 func (m *AddMySQLServiceResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddMySQLServiceResponse.Unmarshal(m, b)
@@ -184,9 +184,9 @@ var _Services_serviceDesc = grpc.ServiceDesc{
 	Metadata:    "inventory/services.proto",
 }
 
-func init() { proto.RegisterFile("inventory/services.proto", fileDescriptor_services_73dccc0aaa302009) }
+func init() { proto.RegisterFile("inventory/services.proto", fileDescriptor_services_ceb438cfad8e5d43) }
 
-var fileDescriptor_services_73dccc0aaa302009 = []byte{
+var fileDescriptor_services_ceb438cfad8e5d43 = []byte{
 	// 184 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0xc8, 0xcc, 0x2b, 0x4b,
 	0xcd, 0x2b, 0xc9, 0x2f, 0xaa, 0xd4, 0x2f, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x2d, 0xd6, 0x2b,

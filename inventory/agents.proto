@@ -48,8 +48,9 @@ message AddMySQLdExporterResponse {
 
 // message RemoveMySQLdExporterResponse {}
 
+// Agents service provides public methods for managing agents.
 service Agents {
-  // Add mysqld_exporter agent.
+  // AddMySQLdExporter adds mysqld_exporter agent.
   rpc AddMySQLdExporter(AddMySQLdExporterRequest) returns (AddMySQLdExporterResponse) {
     option (google.api.http) = {
       post: "/v0/inventory/Agents/AddMySQLdExporter"

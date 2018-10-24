@@ -11,16 +11,16 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryAddBareMetalNodeResponse inventory add bare metal node response
-// swagger:model inventoryAddBareMetalNodeResponse
-type InventoryAddBareMetalNodeResponse struct {
+// InventoryAddBareMetalResponse inventory add bare metal response
+// swagger:model inventoryAddBareMetalResponse
+type InventoryAddBareMetalResponse struct {
 
 	// node
 	Node *InventoryBareMetalNode `json:"node,omitempty"`
 }
 
-// Validate validates this inventory add bare metal node response
-func (m *InventoryAddBareMetalNodeResponse) Validate(formats strfmt.Registry) error {
+// Validate validates this inventory add bare metal response
+func (m *InventoryAddBareMetalResponse) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateNode(formats); err != nil {
@@ -33,7 +33,7 @@ func (m *InventoryAddBareMetalNodeResponse) Validate(formats strfmt.Registry) er
 	return nil
 }
 
-func (m *InventoryAddBareMetalNodeResponse) validateNode(formats strfmt.Registry) error {
+func (m *InventoryAddBareMetalResponse) validateNode(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Node) { // not required
 		return nil
@@ -52,7 +52,7 @@ func (m *InventoryAddBareMetalNodeResponse) validateNode(formats strfmt.Registry
 }
 
 // MarshalBinary interface implementation
-func (m *InventoryAddBareMetalNodeResponse) MarshalBinary() ([]byte, error) {
+func (m *InventoryAddBareMetalResponse) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -60,8 +60,8 @@ func (m *InventoryAddBareMetalNodeResponse) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InventoryAddBareMetalNodeResponse) UnmarshalBinary(b []byte) error {
-	var res InventoryAddBareMetalNodeResponse
+func (m *InventoryAddBareMetalResponse) UnmarshalBinary(b []byte) error {
+	var res InventoryAddBareMetalResponse
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

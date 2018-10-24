@@ -24,7 +24,7 @@ type Client struct {
 }
 
 /*
-AddBareMetal adds bare metal node
+AddBareMetal adds bare metal adds bare metal node
 */
 func (a *Client) AddBareMetal(params *AddBareMetalParams) (*AddBareMetalOK, error) {
 	// TODO: Validate the params before sending

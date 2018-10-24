@@ -24,7 +24,7 @@ type Client struct {
 }
 
 /*
-AddMySqldExporter adds mysqld exporter agent
+AddMySqldExporter adds my sqld exporter adds mysqld exporter agent
 */
 func (a *Client) AddMySqldExporter(params *AddMySqldExporterParams) (*AddMySqldExporterOK, error) {
 	// TODO: Validate the params before sending
