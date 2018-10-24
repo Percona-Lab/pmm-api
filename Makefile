@@ -28,8 +28,8 @@ gen: clean   ## Generate files.
 	swagger validate inventory.swagger.json
 	rm -f inventory/*.swagger.json
 
-	mkdir http
-	swagger generate client --spec=inventory.swagger.json --target=http
+	mkdir json
+	swagger generate client --spec=inventory.swagger.json --target=json
 	go install -v ./...
 
 clean:       ## Remove generated files.
@@ -37,7 +37,7 @@ clean:       ## Remove generated files.
 	find . -name '*.pb.gw.go' -not -path './vendor/*' -delete
 	find . -name '*.swagger.json' -not -path './vendor/*' -delete
 
-	rm -fr http
+	rm -fr json
 
 serve:       ## Serve API documentation with nginx.
 	# https://pmm-api.test:8443/
