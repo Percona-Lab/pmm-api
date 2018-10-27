@@ -4,11 +4,12 @@ package inventory;
 
 import "google/api/annotations.proto";
 
-// enum AgentType {
-//   AGENT_TYPE_INVALID = 0;
-//   MYSQLD_EXPORTER = 1;
-//   RDS_EXPORTER = 2;
-// }
+// AgentType represents agent type.
+enum AgentType {
+  AGENT_TYPE_INVALID = 0;
+  MYSQLD_EXPORTER = 1;
+  RDS_EXPORTER = 2;
+}
 
 // message Agent {
 //   uint32 id = 1;
