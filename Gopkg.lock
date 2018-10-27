@@ -84,7 +84,7 @@
   packages = ["."]
   pruneopts = "T"
   revision = "ef5f0afec364d3b9396b7b77b43dbe26bf1f8004"
-  version = "v0.17.0"
+  version = "v0.17.2"
 
 [[projects]]
   digest = "1:3f17ebd557845adeb347c9e398394e96ebc18e0ec94cc04972be87851a4679e0"
@@ -92,7 +92,7 @@
   packages = ["."]
   pruneopts = "T"
   revision = "8483a886a90412cd6858df4ea3483dce9c8e35a3"
-  version = "v0.17.0"
+  version = "v0.17.2"
 
 [[projects]]
   branch = "master"
@@ -132,11 +132,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:0441bc9a93c94b69ee4ec123b1f5a57b75b1b38c7d5e28236f122c4fd7f91bc1"
+  digest = "1:9d9d53f7fc98a0a9e1879fa7fead9b7b964cb1a9afd9f74a3e1c0686b47e1af4"
   name = "github.com/go-openapi/strfmt"
   packages = ["."]
   pruneopts = "T"
-  revision = "35fe47352985e13cc75f13120d70d26fd764ed51"
+  revision = "edab9990ffc9b4a428f3306ecf4d18a069ca3317"
 
 [[projects]]
   branch = "master"
@@ -155,7 +155,7 @@
   revision = "d2eab7d93009e9215fc85b2faa2c2f2a98c2af48"
 
 [[projects]]
-  digest = "1:0c6adccc896ad5545d844d8d9448f224b845e195784172e6345d5f5a07ddf7bf"
+  digest = "1:b8960e81a25d4a33a7ee5f1cfe5ebf0412e21d1904eeea6832d00d2f0425e8db"
   name = "github.com/go-swagger/go-swagger"
   packages = [
     "cmd/swagger",
@@ -166,8 +166,8 @@
     "scan",
   ]
   pruneopts = "T"
-  revision = "bd526d67cc1c49acad8e7643a399ea62d3342c12"
-  version = "v0.17.0"
+  revision = "800a3052f0305ab54980f961bd4f1e8b3e5599fe"
+  version = "v0.17.2"
 
 [[projects]]
   digest = "1:1ba1d79f2810270045c328ae5d674321db34e3aae468eb4233883b473c5c0467"
@@ -318,12 +318,12 @@
   version = "v1.1.2"
 
 [[projects]]
-  digest = "1:516e71bed754268937f57d4ecb190e01958452336fa73dbac880894164e91c1f"
+  digest = "1:08d65904057412fc0270fc4812a1c90c594186819243160dc779a402d4b6d0bc"
   name = "github.com/spf13/cast"
   packages = ["."]
   pruneopts = "T"
-  revision = "8965335b8c7107321228e3e3702cab9832751bac"
-  version = "v1.2.0"
+  revision = "8c9545af88b134710ab1cd196795e7f2388358d7"
+  version = "v1.3.0"
 
 [[projects]]
   digest = "1:68ea4e23713989dc20b1bded5d9da2c5f9be14ff9885beef481848edd18c26cb"
@@ -359,7 +359,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:7af83e18e72aae0cc57d28c8c441654695491af7c58df20ac3af43b500f651a8"
+  digest = "1:0c04b2a25e05e53a014eb3329cd9e3759bee811e333cf6db2ec1819d6c2dad31"
   name = "golang.org/x/net"
   packages = [
     "context",
@@ -371,15 +371,15 @@
     "trace",
   ]
   pruneopts = "T"
-  revision = "49bb7cea24b1df9410e1712aa6433dae904ff66a"
+  revision = "9b4f9f5ad5197c79fd623a3638e70d8b26cef344"
 
 [[projects]]
   branch = "master"
-  digest = "1:bfd82e5d371481eff9c9653181f398061479c35bc3be2a5bd5f017c9c8b5c894"
+  digest = "1:8e6c1fddbee6ef8cfd1e4c368874d974f085b5424fae5c1a00ec5e23c71e7c40"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "T"
-  revision = "fa43e7bc11baaae89f3f902b2b4d832b68234844"
+  revision = "95b1ffbd15a57cc5abb3f04402b9e8ec0016a52c"
 
 [[projects]]
   digest = "1:6164911cb5e94e8d8d5131d646613ff82c14f5a8ce869de2f6d80d9889df8c5a"
@@ -407,7 +407,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:92b47778177dfdefbab4339db28f710d5d53fe6c23d0a66f946117e6de1947e1"
+  digest = "1:62468f8d9abb738a892313231b2809db45a5b52681fa6084b1cd3dde15fc7cc8"
   name = "golang.org/x/tools"
   packages = [
     "go/ast/astutil",
@@ -419,7 +419,7 @@
     "internal/gopathwalk",
   ]
   pruneopts = "T"
-  revision = "5d4988d199e2aeefda3528f599e06410c43caa29"
+  revision = "f60e5f99f0816fc2d9ecb338008ea420248d2943"
 
 [[projects]]
   digest = "1:3970150423e3f47a6d354b2868f7db632b665463755194aac1a30c4fb341be57"
@@ -432,7 +432,7 @@
   revision = "383e8b2c3b9e36c4076b235b32537292176bae20"
 
 [[projects]]
-  digest = "1:1cbd746dcb73e28898e1539bf866044a9e5b96c965112772c111bffbb4037255"
+  digest = "1:ef437b2116089e1355b910bcbfb66c90d5164c6623f37deb5b94a6973a1ddf16"
   name = "google.golang.org/grpc"
   packages = [
     ".",
@@ -463,8 +463,8 @@
     "tap",
   ]
   pruneopts = "T"
-  revision = "8dea3dc473e90c8179e519d91302d0597c0ca1d1"
-  version = "v1.15.0"
+  revision = "2e463a05d100327ca47ac218281906921038fd95"
+  version = "v1.16.0"
 
 [[projects]]
   branch = "v2"
@@ -486,6 +486,7 @@
     "github.com/go-swagger/go-swagger/cmd/swagger",
     "github.com/golang/protobuf/proto",
     "github.com/golang/protobuf/protoc-gen-go",
+    "github.com/golang/protobuf/ptypes/any",
     "github.com/golang/protobuf/ptypes/timestamp",
     "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway",
     "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger",

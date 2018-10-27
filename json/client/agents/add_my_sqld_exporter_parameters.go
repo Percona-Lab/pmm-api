@@ -9,12 +9,15 @@ import (
 	"net/http"
 	"time"
 
-	models "github.com/Percona-Lab/pmm-api/json/models"
+	"golang.org/x/net/context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+
 	strfmt "github.com/go-openapi/strfmt"
-	"golang.org/x/net/context"
+
+	models "github.com/Percona-Lab/pmm-api/json/models"
 )
 
 // NewAddMySqldExporterParams creates a new AddMySqldExporterParams object

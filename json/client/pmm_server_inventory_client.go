@@ -6,14 +6,16 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/Percona-Lab/pmm-api/json/client/agents"
-	"github.com/Percona-Lab/pmm-api/json/client/nodes"
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
+
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/Percona-Lab/pmm-api/json/client/agents"
+	"github.com/Percona-Lab/pmm-api/json/client/nodes"
 )
 
-// Default p m m server inventory HTTP client.
+// Default PMM server inventory HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -28,12 +30,12 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"http", "https"}
 
-// NewHTTPClient creates a new p m m server inventory HTTP client.
+// NewHTTPClient creates a new PMM server inventory HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *PMMServerInventory {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new p m m server inventory HTTP client,
+// NewHTTPClientWithConfig creates a new PMM server inventory HTTP client,
 // using a customizable transport config.
 func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *PMMServerInventory {
 	// ensure nullable parameters have default
@@ -46,7 +48,7 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *PMM
 	return New(transport, formats)
 }
 
-// New creates a new p m m server inventory client
+// New creates a new PMM server inventory client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *PMMServerInventory {
 	// ensure nullable parameters have default
 	if formats == nil {
@@ -102,7 +104,7 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// PMMServerInventory is a client for p m m server inventory
+// PMMServerInventory is a client for PMM server inventory
 type PMMServerInventory struct {
 	Agents *agents.Client
 

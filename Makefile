@@ -29,7 +29,8 @@ gen: clean   ## Generate files.
 	rm -f inventory/*.swagger.json
 
 	mkdir json
-	swagger generate client --spec=inventory.swagger.json --target=json
+	swagger generate client --spec=inventory.swagger.json --target=json \
+		--additional-initialism=pmm
 	go install -v ./...
 
 clean:       ## Remove generated files.

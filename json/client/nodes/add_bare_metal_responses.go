@@ -9,9 +9,11 @@ import (
 	"fmt"
 	"io"
 
-	models "github.com/Percona-Lab/pmm-api/json/models"
 	"github.com/go-openapi/runtime"
+
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/Percona-Lab/pmm-api/json/models"
 )
 
 // AddBareMetalReader is a Reader for the AddBareMetal structure.
