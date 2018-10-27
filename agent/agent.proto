@@ -56,7 +56,7 @@ message SetStateRequest {
 message SetStateResponse {
   message AgentProcess {
     uint32 agent_id = 1;
-    string listen_port = 2;
+    uint32 listen_port = 2;
   }
   repeated AgentProcess agent_processes = 1;
 }
