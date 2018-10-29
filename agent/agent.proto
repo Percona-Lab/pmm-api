@@ -42,7 +42,9 @@ message PingResponse {
   google.protobuf.Timestamp current_time = 1;
 }
 
+// SetStateRequest is a ServerMessage asking pmm-agent to run agents according to desired state.
 message SetStateRequest {
+  // AgentProcess describes desired configuration of a single agent.
   message AgentProcess {
     uint32 agent_id = 1;
     inventory.AgentType type = 2;
@@ -53,10 +55,13 @@ message SetStateRequest {
   repeated AgentProcess agent_processes = 1;
 }
 
+// SetStateResponse is an AgentMessage describing agent statuses.
 message SetStateResponse {
+  // AgentProcess describes status of a single agent.
   message AgentProcess {
     uint32 agent_id = 1;
-    uint32 listen_port = 2;
+    inventory.AgentProcessStatus status = 2;
+    uint32 listen_port = 3;
   }
   repeated AgentProcess agent_processes = 1;
 }

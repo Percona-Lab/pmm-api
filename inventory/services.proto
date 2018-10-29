@@ -4,6 +4,7 @@ package inventory;
 
 import "google/api/annotations.proto";
 
+// MySQLService represents MySQL service configuration.
 message MySQLService {
   // Unique service identifier.
   uint32 id = 1;
@@ -11,11 +12,11 @@ message MySQLService {
   string name = 2;
 }
 
-message AddMySQLServiceRequest {}
+// message AddMySQLServiceRequest {}
 
-message AddMySQLServiceResponse {
-  MySQLService service = 1;
-}
+// message AddMySQLServiceResponse {
+//   MySQLService service = 1;
+// }
 
 // message RemoveMySQLServiceRequest {
 //   uint32 id = 1;

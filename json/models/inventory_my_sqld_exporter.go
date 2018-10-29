@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryMySqldExporter inventory my sqld exporter
+// InventoryMySqldExporter MySQLdExporter represents mysqld_exporter configuration.
 // swagger:model inventoryMySQLdExporter
 type InventoryMySqldExporter struct {
 

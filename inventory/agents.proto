@@ -11,12 +11,21 @@ enum AgentType {
   RDS_EXPORTER = 2;
 }
 
+// AgentProcessStatus represents agent process state.
+enum AgentProcessStatus {
+  AGENT_PROCESS_STATUS_INVALID = 0;
+  RUNNING = 1;
+  // TODO adopt http://supervisord.org/subprocess.html#process-states ?
+
+}
+
 // message Agent {
 //   uint32 id = 1;
 //   AgentType type = 2;
 //   uint32 runs_on_node_id = 3;
 // }
 
+// MySQLdExporter represents mysqld_exporter configuration.
 message MySQLdExporter {
   // Unique agent identifier.
   uint32 id = 1;

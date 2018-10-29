@@ -20,6 +20,7 @@ import "google/api/annotations.proto";
 //   reserved 4 to 7;
 // }
 
+// BareMetalNode represents bare metal node configuration.
 message BareMetalNode {
   // Unique node identifier.
   uint32 id = 1;

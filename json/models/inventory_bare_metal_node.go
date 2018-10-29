@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryBareMetalNode inventory bare metal node
+// InventoryBareMetalNode BareMetalNode represents bare metal node configuration.
 // swagger:model inventoryBareMetalNode
 type InventoryBareMetalNode struct {
 

@@ -119,6 +119,7 @@
       }
     },
     "inventoryBareMetalNode": {
+      "description": "BareMetalNode represents bare metal node configuration.",
       "type": "object",
       "properties": {
         "hostname": {
@@ -137,6 +138,7 @@
       }
     },
     "inventoryMySQLdExporter": {
+      "description": "MySQLdExporter represents mysqld_exporter configuration.",
       "type": "object",
       "properties": {
         "id": {

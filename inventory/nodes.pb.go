@@ -24,6 +24,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
+// BareMetalNode represents bare metal node configuration.
 type BareMetalNode struct {
 	// Unique node identifier.
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -40,7 +41,7 @@ func (m *BareMetalNode) Reset()         { *m = BareMetalNode{} }
 func (m *BareMetalNode) String() string { return proto.CompactTextString(m) }
 func (*BareMetalNode) ProtoMessage()    {}
 func (*BareMetalNode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_051876f903e46eef, []int{0}
+	return fileDescriptor_nodes_13ecd006e6d73425, []int{0}
 }
 func (m *BareMetalNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BareMetalNode.Unmarshal(m, b)
@@ -95,7 +96,7 @@ func (m *AddBareMetalRequest) Reset()         { *m = AddBareMetalRequest{} }
 func (m *AddBareMetalRequest) String() string { return proto.CompactTextString(m) }
 func (*AddBareMetalRequest) ProtoMessage()    {}
 func (*AddBareMetalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_051876f903e46eef, []int{1}
+	return fileDescriptor_nodes_13ecd006e6d73425, []int{1}
 }
 func (m *AddBareMetalRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddBareMetalRequest.Unmarshal(m, b)
@@ -140,7 +141,7 @@ func (m *AddBareMetalResponse) Reset()         { *m = AddBareMetalResponse{} }
 func (m *AddBareMetalResponse) String() string { return proto.CompactTextString(m) }
 func (*AddBareMetalResponse) ProtoMessage()    {}
 func (*AddBareMetalResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_051876f903e46eef, []int{2}
+	return fileDescriptor_nodes_13ecd006e6d73425, []int{2}
 }
 func (m *AddBareMetalResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddBareMetalResponse.Unmarshal(m, b)
@@ -247,9 +248,9 @@ var _Nodes_serviceDesc = grpc.ServiceDesc{
 	Metadata: "inventory/nodes.proto",
 }
 
-func init() { proto.RegisterFile("inventory/nodes.proto", fileDescriptor_nodes_051876f903e46eef) }
+func init() { proto.RegisterFile("inventory/nodes.proto", fileDescriptor_nodes_13ecd006e6d73425) }
 
-var fileDescriptor_nodes_051876f903e46eef = []byte{
+var fileDescriptor_nodes_13ecd006e6d73425 = []byte{
 	// 255 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xcd, 0xcc, 0x2b, 0x4b,
 	0xcd, 0x2b, 0xc9, 0x2f, 0xaa, 0xd4, 0xcf, 0xcb, 0x4f, 0x49, 0x2d, 0xd6, 0x2b, 0x28, 0xca, 0x2f,

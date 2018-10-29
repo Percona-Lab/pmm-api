@@ -24,6 +24,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
+// MySQLService represents MySQL service configuration.
 type MySQLService struct {
 	// Unique service identifier.
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -38,7 +39,7 @@ func (m *MySQLService) Reset()         { *m = MySQLService{} }
 func (m *MySQLService) String() string { return proto.CompactTextString(m) }
 func (*MySQLService) ProtoMessage()    {}
 func (*MySQLService) Descriptor() ([]byte, []int) {
-	return fileDescriptor_services_ceb438cfad8e5d43, []int{0}
+	return fileDescriptor_services_455e0e238a260d18, []int{0}
 }
 func (m *MySQLService) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MySQLService.Unmarshal(m, b)
@@ -72,78 +73,8 @@ func (m *MySQLService) GetName() string {
 	return ""
 }
 
-type AddMySQLServiceRequest struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *AddMySQLServiceRequest) Reset()         { *m = AddMySQLServiceRequest{} }
-func (m *AddMySQLServiceRequest) String() string { return proto.CompactTextString(m) }
-func (*AddMySQLServiceRequest) ProtoMessage()    {}
-func (*AddMySQLServiceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_services_ceb438cfad8e5d43, []int{1}
-}
-func (m *AddMySQLServiceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AddMySQLServiceRequest.Unmarshal(m, b)
-}
-func (m *AddMySQLServiceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AddMySQLServiceRequest.Marshal(b, m, deterministic)
-}
-func (dst *AddMySQLServiceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AddMySQLServiceRequest.Merge(dst, src)
-}
-func (m *AddMySQLServiceRequest) XXX_Size() int {
-	return xxx_messageInfo_AddMySQLServiceRequest.Size(m)
-}
-func (m *AddMySQLServiceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_AddMySQLServiceRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_AddMySQLServiceRequest proto.InternalMessageInfo
-
-type AddMySQLServiceResponse struct {
-	Service              *MySQLService `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *AddMySQLServiceResponse) Reset()         { *m = AddMySQLServiceResponse{} }
-func (m *AddMySQLServiceResponse) String() string { return proto.CompactTextString(m) }
-func (*AddMySQLServiceResponse) ProtoMessage()    {}
-func (*AddMySQLServiceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_services_ceb438cfad8e5d43, []int{2}
-}
-func (m *AddMySQLServiceResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AddMySQLServiceResponse.Unmarshal(m, b)
-}
-func (m *AddMySQLServiceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AddMySQLServiceResponse.Marshal(b, m, deterministic)
-}
-func (dst *AddMySQLServiceResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AddMySQLServiceResponse.Merge(dst, src)
-}
-func (m *AddMySQLServiceResponse) XXX_Size() int {
-	return xxx_messageInfo_AddMySQLServiceResponse.Size(m)
-}
-func (m *AddMySQLServiceResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_AddMySQLServiceResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_AddMySQLServiceResponse proto.InternalMessageInfo
-
-func (m *AddMySQLServiceResponse) GetService() *MySQLService {
-	if m != nil {
-		return m.Service
-	}
-	return nil
-}
-
 func init() {
 	proto.RegisterType((*MySQLService)(nil), "inventory.MySQLService")
-	proto.RegisterType((*AddMySQLServiceRequest)(nil), "inventory.AddMySQLServiceRequest")
-	proto.RegisterType((*AddMySQLServiceResponse)(nil), "inventory.AddMySQLServiceResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -184,20 +115,17 @@ var _Services_serviceDesc = grpc.ServiceDesc{
 	Metadata:    "inventory/services.proto",
 }
 
-func init() { proto.RegisterFile("inventory/services.proto", fileDescriptor_services_ceb438cfad8e5d43) }
+func init() { proto.RegisterFile("inventory/services.proto", fileDescriptor_services_455e0e238a260d18) }
 
-var fileDescriptor_services_ceb438cfad8e5d43 = []byte{
-	// 184 bytes of a gzipped FileDescriptorProto
+var fileDescriptor_services_455e0e238a260d18 = []byte{
+	// 136 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0xc8, 0xcc, 0x2b, 0x4b,
 	0xcd, 0x2b, 0xc9, 0x2f, 0xaa, 0xd4, 0x2f, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x2d, 0xd6, 0x2b,
 	0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x84, 0xcb, 0x48, 0xc9, 0xa4, 0xe7, 0xe7, 0xa7, 0xe7, 0xa4,
 	0xea, 0x27, 0x16, 0x64, 0xea, 0x27, 0xe6, 0xe5, 0xe5, 0x97, 0x24, 0x96, 0x64, 0xe6, 0xe7, 0x41,
 	0x15, 0x2a, 0x19, 0x71, 0xf1, 0xf8, 0x56, 0x06, 0x07, 0xfa, 0x04, 0x43, 0xf4, 0x0b, 0xf1, 0x71,
 	0x31, 0x65, 0xa6, 0x48, 0x30, 0x2a, 0x30, 0x6a, 0xf0, 0x06, 0x31, 0x65, 0xa6, 0x08, 0x09, 0x71,
-	0xb1, 0xe4, 0x25, 0xe6, 0xa6, 0x4a, 0x30, 0x29, 0x30, 0x6a, 0x70, 0x06, 0x81, 0xd9, 0x4a, 0x12,
-	0x5c, 0x62, 0x8e, 0x29, 0x29, 0xc8, 0xda, 0x82, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b, 0x94, 0x7c,
-	0xb8, 0xc4, 0x31, 0x64, 0x8a, 0x0b, 0xf2, 0xf3, 0x8a, 0x53, 0x85, 0x0c, 0xb9, 0xd8, 0xa1, 0x6e,
-	0x04, 0x9b, 0xce, 0x6d, 0x24, 0xae, 0x07, 0x77, 0xa3, 0x1e, 0x8a, 0x0e, 0x98, 0x3a, 0x23, 0x2e,
-	0x2e, 0x0e, 0xa8, 0x58, 0x71, 0x12, 0x1b, 0xd8, 0xb9, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff,
-	0xf6, 0x0f, 0xe4, 0xfe, 0xf3, 0x00, 0x00, 0x00,
+	0xb1, 0xe4, 0x25, 0xe6, 0xa6, 0x4a, 0x30, 0x29, 0x30, 0x6a, 0x70, 0x06, 0x81, 0xd9, 0x46, 0x5c,
+	0x5c, 0x1c, 0x50, 0xe5, 0xc5, 0x49, 0x6c, 0x60, 0x63, 0x8c, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff,
+	0x19, 0x80, 0x7a, 0x49, 0x8b, 0x00, 0x00, 0x00,
 }
