@@ -11,12 +11,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryBareMetalNode BareMetalNode represents bare metal Node.
-// swagger:model inventoryBareMetalNode
-type InventoryBareMetalNode struct {
-
-	// Hostname. Is not unique.
-	Hostname string `json:"hostname,omitempty"`
+// InventoryContainerNode ContainerNode represents a container (Docker) Node.
+// swagger:model inventoryContainerNode
+type InventoryContainerNode struct {
 
 	// Unique node identifier.
 	ID int64 `json:"id,omitempty"`
@@ -25,13 +22,13 @@ type InventoryBareMetalNode struct {
 	Name string `json:"name,omitempty"`
 }
 
-// Validate validates this inventory bare metal node
-func (m *InventoryBareMetalNode) Validate(formats strfmt.Registry) error {
+// Validate validates this inventory container node
+func (m *InventoryContainerNode) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *InventoryBareMetalNode) MarshalBinary() ([]byte, error) {
+func (m *InventoryContainerNode) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -39,8 +36,8 @@ func (m *InventoryBareMetalNode) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InventoryBareMetalNode) UnmarshalBinary(b []byte) error {
-	var res InventoryBareMetalNode
+func (m *InventoryContainerNode) UnmarshalBinary(b []byte) error {
+	var res InventoryContainerNode
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

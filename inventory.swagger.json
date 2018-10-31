@@ -47,7 +47,7 @@
         "tags": [
           "Nodes"
         ],
-        "summary": "AddBareMetal adds bare metal node.",
+        "summary": "AddBareMetal adds bare metal Node.",
         "operationId": "AddBareMetal",
         "parameters": [
           {
@@ -64,6 +64,60 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/inventoryAddBareMetalResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Nodes/Get": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "Get returns a single Node by ID.",
+        "operationId": "Get",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryNodesGetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryNodesGetResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Nodes/List": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "List returns a list of all Nodes.",
+        "operationId": "List",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryNodesListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryNodesListResponse"
             }
           }
         }
@@ -119,13 +173,28 @@
       }
     },
     "inventoryBareMetalNode": {
-      "description": "BareMetalNode represents bare metal node configuration.",
+      "description": "BareMetalNode represents bare metal Node.",
       "type": "object",
       "properties": {
         "hostname": {
           "description": "Hostname. Is not unique.",
           "type": "string"
         },
+        "id": {
+          "description": "Unique node identifier.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Unique node name.",
+          "type": "string"
+        }
+      }
+    },
+    "inventoryContainerNode": {
+      "description": "ContainerNode represents a container (Docker) Node.",
+      "type": "object",
+      "properties": {
         "id": {
           "description": "Unique node identifier.",
           "type": "integer",
@@ -163,6 +232,88 @@
         "username": {
           "description": "MySQL username for extracting metrics.",
           "type": "string"
+        }
+      }
+    },
+    "inventoryNode": {
+      "description": "Node represents a thing where Services and Agents are running.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique node identifier.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Unique node name.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Node type.",
+          "$ref": "#/definitions/inventoryNodeType"
+        }
+      }
+    },
+    "inventoryNodeType": {
+      "description": "NodeType represents Node type.",
+      "type": "string",
+      "default": "NODE_TYPE_INVALID",
+      "enum": [
+        "NODE_TYPE_INVALID",
+        "BARE_METAL",
+        "VIRTUAL_MACHINE",
+        "CONTAINER",
+        "REMOTE",
+        "REMOTE_RDS"
+      ]
+    },
+    "inventoryNodesGetRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique node identifier.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "inventoryNodesGetResponse": {
+      "type": "object",
+      "properties": {
+        "bare_metal": {
+          "$ref": "#/definitions/inventoryBareMetalNode"
+        },
+        "container": {
+          "$ref": "#/definitions/inventoryContainerNode"
+        },
+        "node": {
+          "$ref": "#/definitions/inventoryNode"
+        }
+      }
+    },
+    "inventoryNodesListRequest": {
+      "type": "object"
+    },
+    "inventoryNodesListResponse": {
+      "type": "object",
+      "properties": {
+        "bare_metal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryBareMetalNode"
+          }
+        },
+        "container": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryContainerNode"
+          }
+        },
+        "node": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryNode"
+          }
         }
       }
     }

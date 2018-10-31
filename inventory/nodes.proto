@@ -4,23 +4,27 @@ package inventory;
 
 import "google/api/annotations.proto";
 
-// enum NodeType {
-//   NODE_TYPE_INVALID = 0;
-//   BARE_METAL = 1;
-//   VIRTUAL_MACHINE = 2;
-//   CONTAINER = 3;
-//   REMOTE = 8;
-//   REMOTE_RDS = 9;
-// }
+// NodeType represents Node type.
+enum NodeType {
+  NODE_TYPE_INVALID = 0;
+  BARE_METAL = 1;
+  VIRTUAL_MACHINE = 2;
+  CONTAINER = 3;
+  REMOTE = 8;
+  REMOTE_RDS = 9;
+}
 
-// message Node {
-//   uint32 id = 1;
-//   NodeType type = 2;
-//   string name = 3;
-//   reserved 4 to 7;
-// }
+// Node represents a thing where Services and Agents are running.
+message Node {
+  // Unique node identifier.
+  uint32 id = 1;
+  // Node type.
+  NodeType type = 2;
+  // Unique node name.
+  string name = 3;
+}
 
-// BareMetalNode represents bare metal node configuration.
+// BareMetalNode represents bare metal Node.
 message BareMetalNode {
   // Unique node identifier.
   uint32 id = 1;
@@ -30,26 +34,34 @@ message BareMetalNode {
   string hostname = 3;
 }
 
-// message VirtualMachineNode {
-//   uint32 id = 1;
-//   string name = 2;
-// }
+// ContainerNode represents a container (Docker) Node.
+message ContainerNode {
+  // Unique node identifier.
+  uint32 id = 1;
+  // Unique node name.
+  string name = 2;
+}
 
-// message ContainerNode {
-//   uint32 id = 1;
-//   string name = 2;
-// }
+message NodesListRequest {}
 
-// message RemoteNode {
-//   uint32 id = 1;
-//   string name = 2;
-// }
+message NodesListResponse {
+  repeated Node node = 1;
+  repeated BareMetalNode bare_metal = 2;
+  repeated ContainerNode container = 3;
+}
 
-// message RemoteRDSNode {
-//   uint32 id = 1;
-//   string name = 2;
-//   string region = 3;
-// }
+message NodesGetRequest {
+  // Unique node identifier.
+  uint32 id = 1;
+}
+
+message NodesGetResponse {
+  oneof only_one {
+    Node node = 1;
+    BareMetalNode bare_metal = 2;
+    ContainerNode container = 3;
+  }
+}
 
 message AddBareMetalRequest {
   // Unique node name.
@@ -68,9 +80,23 @@ message AddBareMetalResponse {
 
 // message RemoveBareMetalNodeResponse {}
 
-// Nodes service provides public methods for managing nodes.
+// Nodes service provides public methods for managing Nodes.
 service Nodes {
-  // AddBareMetal adds bare metal node.
+  // List returns a list of all Nodes.
+  rpc List(NodesListRequest) returns (NodesListResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Nodes/List"
+      body: "*"
+    };
+  }
+  // Get returns a single Node by ID.
+  rpc Get(NodesGetRequest) returns (NodesGetResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Nodes/Get"
+      body: "*"
+    };
+  }
+  // AddBareMetal adds bare metal Node.
   rpc AddBareMetal(AddBareMetalRequest) returns (AddBareMetalResponse) {
     option (google.api.http) = {
       post: "/v0/inventory/Nodes/AddBareMetal"

@@ -52,6 +52,62 @@ func (a *Client) AddBareMetal(params *AddBareMetalParams) (*AddBareMetalOK, erro
 
 }
 
+/*
+Get gets returns a single node by ID
+*/
+func (a *Client) Get(params *GetParams) (*GetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "Get",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Nodes/Get",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &GetReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetOK), nil
+
+}
+
+/*
+List lists returns a list of all nodes
+*/
+func (a *Client) List(params *ListParams) (*ListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "List",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Nodes/List",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &ListReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ListOK), nil
+
+}
+
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport
