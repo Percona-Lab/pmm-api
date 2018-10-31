@@ -12,9 +12,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryNodesGetResponse inventory nodes get response
-// swagger:model inventoryNodesGetResponse
-type InventoryNodesGetResponse struct {
+// InventoryAddNodeResponse inventory add node response
+// swagger:model inventoryAddNodeResponse
+type InventoryAddNodeResponse struct {
 
 	// bare metal
 	BareMetal *InventoryBareMetalNode `json:"bare_metal,omitempty"`
@@ -22,12 +22,12 @@ type InventoryNodesGetResponse struct {
 	// container
 	Container *InventoryContainerNode `json:"container,omitempty"`
 
-	// node
-	Node *InventoryNode `json:"node,omitempty"`
+	// virtual machine
+	VirtualMachine *InventoryVirtualMachineNode `json:"virtual_machine,omitempty"`
 }
 
-// Validate validates this inventory nodes get response
-func (m *InventoryNodesGetResponse) Validate(formats strfmt.Registry) error {
+// Validate validates this inventory add node response
+func (m *InventoryAddNodeResponse) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateBareMetal(formats); err != nil {
@@ -38,7 +38,7 @@ func (m *InventoryNodesGetResponse) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateNode(formats); err != nil {
+	if err := m.validateVirtualMachine(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -48,7 +48,7 @@ func (m *InventoryNodesGetResponse) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *InventoryNodesGetResponse) validateBareMetal(formats strfmt.Registry) error {
+func (m *InventoryAddNodeResponse) validateBareMetal(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.BareMetal) { // not required
 		return nil
@@ -66,7 +66,7 @@ func (m *InventoryNodesGetResponse) validateBareMetal(formats strfmt.Registry) e
 	return nil
 }
 
-func (m *InventoryNodesGetResponse) validateContainer(formats strfmt.Registry) error {
+func (m *InventoryAddNodeResponse) validateContainer(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Container) { // not required
 		return nil
@@ -84,16 +84,16 @@ func (m *InventoryNodesGetResponse) validateContainer(formats strfmt.Registry) e
 	return nil
 }
 
-func (m *InventoryNodesGetResponse) validateNode(formats strfmt.Registry) error {
+func (m *InventoryAddNodeResponse) validateVirtualMachine(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Node) { // not required
+	if swag.IsZero(m.VirtualMachine) { // not required
 		return nil
 	}
 
-	if m.Node != nil {
-		if err := m.Node.Validate(formats); err != nil {
+	if m.VirtualMachine != nil {
+		if err := m.VirtualMachine.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("node")
+				return ve.ValidateName("virtual_machine")
 			}
 			return err
 		}
@@ -103,7 +103,7 @@ func (m *InventoryNodesGetResponse) validateNode(formats strfmt.Registry) error 
 }
 
 // MarshalBinary interface implementation
-func (m *InventoryNodesGetResponse) MarshalBinary() ([]byte, error) {
+func (m *InventoryAddNodeResponse) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -111,8 +111,8 @@ func (m *InventoryNodesGetResponse) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InventoryNodesGetResponse) UnmarshalBinary(b []byte) error {
-	var res InventoryNodesGetResponse
+func (m *InventoryAddNodeResponse) UnmarshalBinary(b []byte) error {
+	var res InventoryAddNodeResponse
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

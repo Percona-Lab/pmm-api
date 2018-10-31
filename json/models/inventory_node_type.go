@@ -35,8 +35,8 @@ const (
 	// InventoryNodeTypeREMOTE captures enum value "REMOTE"
 	InventoryNodeTypeREMOTE InventoryNodeType = "REMOTE"
 
-	// InventoryNodeTypeREMOTERDS captures enum value "REMOTE_RDS"
-	InventoryNodeTypeREMOTERDS InventoryNodeType = "REMOTE_RDS"
+	// InventoryNodeTypeRDS captures enum value "RDS"
+	InventoryNodeTypeRDS InventoryNodeType = "RDS"
 )
 
 // for schema
@@ -44,7 +44,7 @@ var inventoryNodeTypeEnum []interface{}
 
 func init() {
 	var res []InventoryNodeType
-	if err := json.Unmarshal([]byte(`["NODE_TYPE_INVALID","BARE_METAL","VIRTUAL_MACHINE","CONTAINER","REMOTE","REMOTE_RDS"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["NODE_TYPE_INVALID","BARE_METAL","VIRTUAL_MACHINE","CONTAINER","REMOTE","RDS"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

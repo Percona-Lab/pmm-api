@@ -25,86 +25,170 @@ type Client struct {
 }
 
 /*
-AddBareMetal adds bare metal adds bare metal node
+AddNode adds node adds bare metal virtual machine or container node node
 */
-func (a *Client) AddBareMetal(params *AddBareMetalParams) (*AddBareMetalOK, error) {
+func (a *Client) AddNode(params *AddNodeParams) (*AddNodeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewAddBareMetalParams()
+		params = NewAddNodeParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "AddBareMetal",
+		ID:                 "AddNode",
 		Method:             "POST",
-		PathPattern:        "/v0/inventory/Nodes/AddBareMetal",
+		PathPattern:        "/v0/inventory/Nodes/AddNode",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http", "https"},
 		Params:             params,
-		Reader:             &AddBareMetalReader{formats: a.formats},
+		Reader:             &AddNodeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*AddBareMetalOK), nil
+	return result.(*AddNodeOK), nil
 
 }
 
 /*
-Get gets returns a single node by ID
+AddRDSNode adds RDS node adds a w s RDS node
 */
-func (a *Client) Get(params *GetParams) (*GetOK, error) {
+func (a *Client) AddRDSNode(params *AddRDSNodeParams) (*AddRDSNodeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetParams()
+		params = NewAddRDSNodeParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "Get",
+		ID:                 "AddRDSNode",
 		Method:             "POST",
-		PathPattern:        "/v0/inventory/Nodes/Get",
+		PathPattern:        "/v0/inventory/Nodes/AddRDSNode",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http", "https"},
 		Params:             params,
-		Reader:             &GetReader{formats: a.formats},
+		Reader:             &AddRDSNodeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetOK), nil
+	return result.(*AddRDSNodeOK), nil
 
 }
 
 /*
-List lists returns a list of all nodes
+AddRemoveNode adds remove node adds remote node
 */
-func (a *Client) List(params *ListParams) (*ListOK, error) {
+func (a *Client) AddRemoveNode(params *AddRemoveNodeParams) (*AddRemoveNodeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewListParams()
+		params = NewAddRemoveNodeParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "List",
+		ID:                 "AddRemoveNode",
 		Method:             "POST",
-		PathPattern:        "/v0/inventory/Nodes/List",
+		PathPattern:        "/v0/inventory/Nodes/AddRemoveNode",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http", "https"},
 		Params:             params,
-		Reader:             &ListReader{formats: a.formats},
+		Reader:             &AddRemoveNodeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ListOK), nil
+	return result.(*AddRemoveNodeOK), nil
+
+}
+
+/*
+GetNode gets node returns a single node by ID
+*/
+func (a *Client) GetNode(params *GetNodeParams) (*GetNodeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetNodeParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetNode",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Nodes/GetNode",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &GetNodeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetNodeOK), nil
+
+}
+
+/*
+ListNodes lists nodes returns a list of all nodes
+*/
+func (a *Client) ListNodes(params *ListNodesParams) (*ListNodesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListNodesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "ListNodes",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Nodes/ListNodes",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &ListNodesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ListNodesOK), nil
+
+}
+
+/*
+RemoveNode removes node removes node without any agents and services
+*/
+func (a *Client) RemoveNode(params *RemoveNodeParams) (*RemoveNodeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRemoveNodeParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "RemoveNode",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Nodes/RemoveNode",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &RemoveNodeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*RemoveNodeOK), nil
 
 }
 

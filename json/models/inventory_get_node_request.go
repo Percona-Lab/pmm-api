@@ -11,21 +11,21 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryNodesGetRequest inventory nodes get request
-// swagger:model inventoryNodesGetRequest
-type InventoryNodesGetRequest struct {
+// InventoryGetNodeRequest inventory get node request
+// swagger:model inventoryGetNodeRequest
+type InventoryGetNodeRequest struct {
 
 	// Unique node identifier.
 	ID int64 `json:"id,omitempty"`
 }
 
-// Validate validates this inventory nodes get request
-func (m *InventoryNodesGetRequest) Validate(formats strfmt.Registry) error {
+// Validate validates this inventory get node request
+func (m *InventoryGetNodeRequest) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *InventoryNodesGetRequest) MarshalBinary() ([]byte, error) {
+func (m *InventoryGetNodeRequest) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -33,8 +33,8 @@ func (m *InventoryNodesGetRequest) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InventoryNodesGetRequest) UnmarshalBinary(b []byte) error {
-	var res InventoryNodesGetRequest
+func (m *InventoryGetNodeRequest) UnmarshalBinary(b []byte) error {
+	var res InventoryGetNodeRequest
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

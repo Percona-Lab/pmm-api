@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryMySqldExporter MySQLdExporter represents mysqld_exporter configuration.
+// InventoryMySqldExporter MySQLdExporter represents mysqld_exporter Agent configuration.
 // swagger:model inventoryMySQLdExporter
 type InventoryMySqldExporter struct {
 
@@ -26,6 +26,9 @@ type InventoryMySqldExporter struct {
 
 	// Node identifier where agent runs.
 	RunsOnNodeID int64 `json:"runs_on_node_id,omitempty"`
+
+	// Service identifier for extracting metrics.
+	ServiceID int64 `json:"service_id,omitempty"`
 
 	// MySQL username for extracting metrics.
 	Username string `json:"username,omitempty"`

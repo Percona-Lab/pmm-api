@@ -16,17 +16,17 @@ import (
 	models "github.com/Percona-Lab/pmm-api/json/models"
 )
 
-// ListReader is a Reader for the List structure.
-type ListReader struct {
+// AddNodeReader is a Reader for the AddNode structure.
+type AddNodeReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ListReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *AddNodeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
 	case 200:
-		result := NewListOK()
+		result := NewAddNodeOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,26 +37,26 @@ func (o *ListReader) ReadResponse(response runtime.ClientResponse, consumer runt
 	}
 }
 
-// NewListOK creates a ListOK with default headers values
-func NewListOK() *ListOK {
-	return &ListOK{}
+// NewAddNodeOK creates a AddNodeOK with default headers values
+func NewAddNodeOK() *AddNodeOK {
+	return &AddNodeOK{}
 }
 
-/*ListOK handles this case with default header values.
+/*AddNodeOK handles this case with default header values.
 
 (empty)
 */
-type ListOK struct {
-	Payload *models.InventoryNodesListResponse
+type AddNodeOK struct {
+	Payload *models.InventoryAddNodeResponse
 }
 
-func (o *ListOK) Error() string {
-	return fmt.Sprintf("[POST /v0/inventory/Nodes/List][%d] listOK  %+v", 200, o.Payload)
+func (o *AddNodeOK) Error() string {
+	return fmt.Sprintf("[POST /v0/inventory/Nodes/AddNode][%d] addNodeOK  %+v", 200, o.Payload)
 }
 
-func (o *ListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *AddNodeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.InventoryNodesListResponse)
+	o.Payload = new(models.InventoryAddNodeResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

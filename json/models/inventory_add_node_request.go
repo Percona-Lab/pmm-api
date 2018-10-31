@@ -12,12 +12,12 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryNode Node represents a thing where Services and Agents are running.
-// swagger:model inventoryNode
-type InventoryNode struct {
+// InventoryAddNodeRequest inventory add node request
+// swagger:model inventoryAddNodeRequest
+type InventoryAddNodeRequest struct {
 
-	// Unique node identifier.
-	ID int64 `json:"id,omitempty"`
+	// Hostname. Is not unique.
+	Hostname string `json:"hostname,omitempty"`
 
 	// Unique node name.
 	Name string `json:"name,omitempty"`
@@ -26,8 +26,8 @@ type InventoryNode struct {
 	Type InventoryNodeType `json:"type,omitempty"`
 }
 
-// Validate validates this inventory node
-func (m *InventoryNode) Validate(formats strfmt.Registry) error {
+// Validate validates this inventory add node request
+func (m *InventoryAddNodeRequest) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateType(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *InventoryNode) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *InventoryNode) validateType(formats strfmt.Registry) error {
+func (m *InventoryAddNodeRequest) validateType(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Type) { // not required
 		return nil
@@ -57,7 +57,7 @@ func (m *InventoryNode) validateType(formats strfmt.Registry) error {
 }
 
 // MarshalBinary interface implementation
-func (m *InventoryNode) MarshalBinary() ([]byte, error) {
+func (m *InventoryAddNodeRequest) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -65,8 +65,8 @@ func (m *InventoryNode) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InventoryNode) UnmarshalBinary(b []byte) error {
-	var res InventoryNode
+func (m *InventoryAddNodeRequest) UnmarshalBinary(b []byte) error {
+	var res InventoryAddNodeRequest
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

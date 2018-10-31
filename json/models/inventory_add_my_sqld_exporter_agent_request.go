@@ -11,9 +11,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InventoryAddMySqldExporterRequest inventory add my sqld exporter request
-// swagger:model inventoryAddMySQLdExporterRequest
-type InventoryAddMySqldExporterRequest struct {
+// InventoryAddMySqldExporterAgentRequest inventory add my sqld exporter agent request
+// swagger:model inventoryAddMySQLdExporterAgentRequest
+type InventoryAddMySqldExporterAgentRequest struct {
 
 	// MySQL password for extracting metrics.
 	Password string `json:"password,omitempty"`
@@ -21,17 +21,20 @@ type InventoryAddMySqldExporterRequest struct {
 	// Node identifier where agent should run.
 	RunsOnNodeID int64 `json:"runs_on_node_id,omitempty"`
 
+	// Service identifier for extracting metrics.
+	ServiceID int64 `json:"service_id,omitempty"`
+
 	// MySQL username for extracting metrics.
 	Username string `json:"username,omitempty"`
 }
 
-// Validate validates this inventory add my sqld exporter request
-func (m *InventoryAddMySqldExporterRequest) Validate(formats strfmt.Registry) error {
+// Validate validates this inventory add my sqld exporter agent request
+func (m *InventoryAddMySqldExporterAgentRequest) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *InventoryAddMySqldExporterRequest) MarshalBinary() ([]byte, error) {
+func (m *InventoryAddMySqldExporterAgentRequest) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -39,8 +42,8 @@ func (m *InventoryAddMySqldExporterRequest) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InventoryAddMySqldExporterRequest) UnmarshalBinary(b []byte) error {
-	var res InventoryAddMySqldExporterRequest
+func (m *InventoryAddMySqldExporterAgentRequest) UnmarshalBinary(b []byte) error {
+	var res InventoryAddMySqldExporterAgentRequest
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

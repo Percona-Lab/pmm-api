@@ -15,20 +15,20 @@
     "version": "version 0"
   },
   "paths": {
-    "/v0/inventory/Agents/AddMySQLdExporter": {
+    "/v0/inventory/Agents/AddMySQLdExporterAgent": {
       "post": {
         "tags": [
           "Agents"
         ],
-        "summary": "AddMySQLdExporter adds mysqld_exporter agent.",
-        "operationId": "AddMySQLdExporter",
+        "summary": "AddMySQLdExporterAgent adds mysqld_exporter Agent.",
+        "operationId": "AddMySQLdExporterAgent",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/inventoryAddMySQLdExporterRequest"
+              "$ref": "#/definitions/inventoryAddMySQLdExporterAgentRequest"
             }
           }
         ],
@@ -36,26 +36,26 @@
           "200": {
             "description": "(empty)",
             "schema": {
-              "$ref": "#/definitions/inventoryAddMySQLdExporterResponse"
+              "$ref": "#/definitions/inventoryAddMySQLdExporterAgentResponse"
             }
           }
         }
       }
     },
-    "/v0/inventory/Nodes/AddBareMetal": {
+    "/v0/inventory/Agents/RemoveAgent": {
       "post": {
         "tags": [
-          "Nodes"
+          "Agents"
         ],
-        "summary": "AddBareMetal adds bare metal Node.",
-        "operationId": "AddBareMetal",
+        "summary": "RemoveAgent removes Agent.",
+        "operationId": "RemoveAgent",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/inventoryAddBareMetalRequest"
+              "$ref": "#/definitions/inventoryRemoveAgentRequest"
             }
           }
         ],
@@ -63,26 +63,26 @@
           "200": {
             "description": "(empty)",
             "schema": {
-              "$ref": "#/definitions/inventoryAddBareMetalResponse"
+              "$ref": "#/definitions/inventoryRemoveAgentResponse"
             }
           }
         }
       }
     },
-    "/v0/inventory/Nodes/Get": {
+    "/v0/inventory/Nodes/AddNode": {
       "post": {
         "tags": [
           "Nodes"
         ],
-        "summary": "Get returns a single Node by ID.",
-        "operationId": "Get",
+        "summary": "AddNode adds bare metal, virtual machine, or container node Node.",
+        "operationId": "AddNode",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/inventoryNodesGetRequest"
+              "$ref": "#/definitions/inventoryAddNodeRequest"
             }
           }
         ],
@@ -90,26 +90,26 @@
           "200": {
             "description": "(empty)",
             "schema": {
-              "$ref": "#/definitions/inventoryNodesGetResponse"
+              "$ref": "#/definitions/inventoryAddNodeResponse"
             }
           }
         }
       }
     },
-    "/v0/inventory/Nodes/List": {
+    "/v0/inventory/Nodes/AddRDSNode": {
       "post": {
         "tags": [
           "Nodes"
         ],
-        "summary": "List returns a list of all Nodes.",
-        "operationId": "List",
+        "summary": "AddRDSNode adds AWS RDS Node.",
+        "operationId": "AddRDSNode",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/inventoryNodesListRequest"
+              "$ref": "#/definitions/inventoryAddRDSNodeRequest"
             }
           }
         ],
@@ -117,7 +117,169 @@
           "200": {
             "description": "(empty)",
             "schema": {
-              "$ref": "#/definitions/inventoryNodesListResponse"
+              "$ref": "#/definitions/inventoryAddRDSNodeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Nodes/AddRemoveNode": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "AddRemoveNode adds remote Node.",
+        "operationId": "AddRemoveNode",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryAddRemoveNodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryAddRemoveNodeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Nodes/GetNode": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "GetNode returns a single Node by ID.",
+        "operationId": "GetNode",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryGetNodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryGetNodeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Nodes/ListNodes": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "ListNodes returns a list of all Nodes.",
+        "operationId": "ListNodes",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryListNodesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryListNodesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Nodes/RemoveNode": {
+      "post": {
+        "tags": [
+          "Nodes"
+        ],
+        "summary": "RemoveNode removes Node without any Agents and Services.",
+        "operationId": "RemoveNode",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryRemoveNodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryRemoveNodeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Services/AddMySQLService": {
+      "post": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "AddMySQLService adds MySQL Service.",
+        "operationId": "AddMySQLService",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryAddMySQLServiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryAddMySQLServiceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Services/RemoveService": {
+      "post": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "RemoveService removes Service without any Agents.",
+        "operationId": "RemoveService",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryRemoveServiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryRemoveServiceResponse"
             }
           }
         }
@@ -125,28 +287,18 @@
     }
   },
   "definitions": {
-    "inventoryAddBareMetalRequest": {
+    "inventoryAddMySQLServiceRequest": {
+      "type": "object"
+    },
+    "inventoryAddMySQLServiceResponse": {
       "type": "object",
       "properties": {
-        "hostname": {
-          "description": "Hostname. Is not unique.",
-          "type": "string"
-        },
-        "name": {
-          "description": "Unique node name.",
-          "type": "string"
+        "mysql": {
+          "$ref": "#/definitions/inventoryMySQLService"
         }
       }
     },
-    "inventoryAddBareMetalResponse": {
-      "type": "object",
-      "properties": {
-        "node": {
-          "$ref": "#/definitions/inventoryBareMetalNode"
-        }
-      }
-    },
-    "inventoryAddMySQLdExporterRequest": {
+    "inventoryAddMySQLdExporterAgentRequest": {
       "type": "object",
       "properties": {
         "password": {
@@ -158,17 +310,87 @@
           "type": "integer",
           "format": "int64"
         },
+        "service_id": {
+          "description": "Service identifier for extracting metrics.",
+          "type": "integer",
+          "format": "int64"
+        },
         "username": {
           "description": "MySQL username for extracting metrics.",
           "type": "string"
         }
       }
     },
-    "inventoryAddMySQLdExporterResponse": {
+    "inventoryAddMySQLdExporterAgentResponse": {
       "type": "object",
       "properties": {
-        "agent": {
+        "mysqld_exporter": {
           "$ref": "#/definitions/inventoryMySQLdExporter"
+        }
+      }
+    },
+    "inventoryAddNodeRequest": {
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "description": "Hostname. Is not unique.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Unique node name.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Node type.",
+          "$ref": "#/definitions/inventoryNodeType"
+        }
+      }
+    },
+    "inventoryAddNodeResponse": {
+      "type": "object",
+      "properties": {
+        "bare_metal": {
+          "$ref": "#/definitions/inventoryBareMetalNode"
+        },
+        "container": {
+          "$ref": "#/definitions/inventoryContainerNode"
+        },
+        "virtual_machine": {
+          "$ref": "#/definitions/inventoryVirtualMachineNode"
+        }
+      }
+    },
+    "inventoryAddRDSNodeRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Unique node name.",
+          "type": "string"
+        }
+      }
+    },
+    "inventoryAddRDSNodeResponse": {
+      "type": "object",
+      "properties": {
+        "rds": {
+          "$ref": "#/definitions/inventoryRDSNode"
+        }
+      }
+    },
+    "inventoryAddRemoveNodeRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Unique node name.",
+          "type": "string"
+        }
+      }
+    },
+    "inventoryAddRemoveNodeResponse": {
+      "type": "object",
+      "properties": {
+        "remote": {
+          "$ref": "#/definitions/inventoryRemoteNode"
         }
       }
     },
@@ -206,8 +428,91 @@
         }
       }
     },
+    "inventoryGetNodeRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique node identifier.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "inventoryGetNodeResponse": {
+      "type": "object",
+      "properties": {
+        "bare_metal": {
+          "$ref": "#/definitions/inventoryBareMetalNode"
+        },
+        "container": {
+          "$ref": "#/definitions/inventoryContainerNode"
+        },
+        "rds": {
+          "$ref": "#/definitions/inventoryRDSNode"
+        },
+        "remote": {
+          "$ref": "#/definitions/inventoryRemoteNode"
+        },
+        "virtual_machine": {
+          "$ref": "#/definitions/inventoryVirtualMachineNode"
+        }
+      }
+    },
+    "inventoryListNodesRequest": {
+      "type": "object"
+    },
+    "inventoryListNodesResponse": {
+      "type": "object",
+      "properties": {
+        "bare_metal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryBareMetalNode"
+          }
+        },
+        "container": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryContainerNode"
+          }
+        },
+        "rds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryRDSNode"
+          }
+        },
+        "remote": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryRemoteNode"
+          }
+        },
+        "virtual_machine": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryVirtualMachineNode"
+          }
+        }
+      }
+    },
+    "inventoryMySQLService": {
+      "description": "MySQLService represents MySQL service configuration.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique service identifier.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Unique service name.",
+          "type": "string"
+        }
+      }
+    },
     "inventoryMySQLdExporter": {
-      "description": "MySQLdExporter represents mysqld_exporter configuration.",
+      "description": "MySQLdExporter represents mysqld_exporter Agent configuration.",
       "type": "object",
       "properties": {
         "id": {
@@ -229,28 +534,14 @@
           "type": "integer",
           "format": "int64"
         },
-        "username": {
-          "description": "MySQL username for extracting metrics.",
-          "type": "string"
-        }
-      }
-    },
-    "inventoryNode": {
-      "description": "Node represents a thing where Services and Agents are running.",
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Unique node identifier.",
+        "service_id": {
+          "description": "Service identifier for extracting metrics.",
           "type": "integer",
           "format": "int64"
         },
-        "name": {
-          "description": "Unique node name.",
+        "username": {
+          "description": "MySQL username for extracting metrics.",
           "type": "string"
-        },
-        "type": {
-          "description": "Node type.",
-          "$ref": "#/definitions/inventoryNodeType"
         }
       }
     },
@@ -264,56 +555,94 @@
         "VIRTUAL_MACHINE",
         "CONTAINER",
         "REMOTE",
-        "REMOTE_RDS"
+        "RDS"
       ]
     },
-    "inventoryNodesGetRequest": {
+    "inventoryRDSNode": {
+      "description": "RDSNode represents AWS RDS Node.",
       "type": "object",
       "properties": {
         "id": {
           "description": "Unique node identifier.",
           "type": "integer",
           "format": "int64"
+        },
+        "name": {
+          "description": "Unique node name.",
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
         }
       }
     },
-    "inventoryNodesGetResponse": {
+    "inventoryRemoteNode": {
+      "description": "RemoteNode represents a generic remote Node.",
       "type": "object",
       "properties": {
-        "bare_metal": {
-          "$ref": "#/definitions/inventoryBareMetalNode"
+        "id": {
+          "description": "Unique node identifier.",
+          "type": "integer",
+          "format": "int64"
         },
-        "container": {
-          "$ref": "#/definitions/inventoryContainerNode"
-        },
-        "node": {
-          "$ref": "#/definitions/inventoryNode"
+        "name": {
+          "description": "Unique node name.",
+          "type": "string"
         }
       }
     },
-    "inventoryNodesListRequest": {
+    "inventoryRemoveAgentRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "inventoryRemoveAgentResponse": {
       "type": "object"
     },
-    "inventoryNodesListResponse": {
+    "inventoryRemoveNodeRequest": {
       "type": "object",
       "properties": {
-        "bare_metal": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/inventoryBareMetalNode"
-          }
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "inventoryRemoveNodeResponse": {
+      "type": "object"
+    },
+    "inventoryRemoveServiceRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "inventoryRemoveServiceResponse": {
+      "type": "object"
+    },
+    "inventoryVirtualMachineNode": {
+      "description": "VirtualMachineNode represents virtual machine Node.",
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "description": "Hostname. Is not unique.",
+          "type": "string"
         },
-        "container": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/inventoryContainerNode"
-          }
+        "id": {
+          "description": "Unique node identifier.",
+          "type": "integer",
+          "format": "int64"
         },
-        "node": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/inventoryNode"
-          }
+        "name": {
+          "description": "Unique node name.",
+          "type": "string"
         }
       }
     }

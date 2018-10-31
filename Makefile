@@ -30,7 +30,8 @@ gen: clean   ## Generate files.
 
 	mkdir json
 	swagger generate client --spec=inventory.swagger.json --target=json \
-		--additional-initialism=pmm
+		--additional-initialism=pmm \
+		--additional-initialism=rds
 	go install -v ./...
 
 clean:       ## Remove generated files.

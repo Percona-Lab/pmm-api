@@ -4,39 +4,47 @@ package inventory;
 
 import "google/api/annotations.proto";
 
+// ServiceType represents Service type.
+enum ServiceType {
+  SERVICE_TYPE_INVALID = 0;
+  MYSQL = 1;
+}
+
 // MySQLService represents MySQL service configuration.
 message MySQLService {
   // Unique service identifier.
   uint32 id = 1;
+  reserved 2; // type
   // Unique service name.
-  string name = 2;
+  string name = 3;
 }
 
-// message AddMySQLServiceRequest {}
+message AddMySQLServiceRequest {}
 
-// message AddMySQLServiceResponse {
-//   MySQLService service = 1;
-// }
+message AddMySQLServiceResponse {
+  MySQLService mysql = 1;
+}
 
-// message RemoveMySQLServiceRequest {
-//   uint32 id = 1;
-// }
+message RemoveServiceRequest {
+  uint32 id = 1;
+}
 
-// message RemoveMySQLServiceResponse {}
+message RemoveServiceResponse {}
 
-// Services service provides public methods for managing services.
+// Services service provides public methods for managing Services.
 service Services {
-  // rpc AddMySQL(AddMySQLServiceRequest) returns (AddMySQLServiceResponse) {
-  //   option (google.api.http) = {
-  //     post: "/v0/inventory/Services/AddMySQL"
-  //     body: "*"
-  //   };
-  // }
-  //   rpc RemoveMySQL(RemoveMySQLServiceRequest) returns (RemoveMySQLServiceResponse) {
-  //     option (google.api.http) = {
-  //       post: "/v0/inventory/Services/RemoveMySQL"
-  //       body: "*"
-  //     };
-  //   }
-
+  // AddMySQLService adds MySQL Service.
+  rpc AddMySQLService(AddMySQLServiceRequest) returns (AddMySQLServiceResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Services/AddMySQLService"
+      body: "*"
+    };
+  }
+  // RemoveService removes Service without any Agents.
+  rpc RemoveService(RemoveServiceRequest) returns (RemoveServiceResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Services/RemoveService"
+      body: "*"
+    };
+  }
 }

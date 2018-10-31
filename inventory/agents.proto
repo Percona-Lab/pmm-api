@@ -4,74 +4,76 @@ package inventory;
 
 import "google/api/annotations.proto";
 
-// AgentType represents agent type.
+// AgentType represents Agent type.
 enum AgentType {
   AGENT_TYPE_INVALID = 0;
   MYSQLD_EXPORTER = 1;
-  RDS_EXPORTER = 2;
 }
 
 // AgentProcessStatus represents agent process state.
 enum AgentProcessStatus {
   AGENT_PROCESS_STATUS_INVALID = 0;
-  RUNNING = 1;
+  DISABLED = 1;
+  RUNNING = 2;
   // TODO adopt http://supervisord.org/subprocess.html#process-states ?
 
 }
 
-// message Agent {
-//   uint32 id = 1;
-//   AgentType type = 2;
-//   uint32 runs_on_node_id = 3;
-// }
-
-// MySQLdExporter represents mysqld_exporter configuration.
+// MySQLdExporter represents mysqld_exporter Agent configuration.
 message MySQLdExporter {
   // Unique agent identifier.
   uint32 id = 1;
+  reserved 2; // type
   // Node identifier where agent runs.
-  uint32 runs_on_node_id = 2;
+  uint32 runs_on_node_id = 3;
+  // Service identifier for extracting metrics.
+  uint32 service_id = 4;
   // MySQL username for extracting metrics.
-  string username = 3;
+  string username = 5;
   // MySQL password for extracting metrics.
-  string password = 4;
+  string password = 6;
   // HTTP listen port for exposing metrics.
-  uint32 listen_port = 5;
+  uint32 listen_port = 7;
 }
 
-message AddMySQLdExporterRequest {
+message AddMySQLdExporterAgentRequest {
+  reserved 1; // id
+  reserved 2; // type
   // Node identifier where agent should run.
-  uint32 runs_on_node_id = 1;
+  uint32 runs_on_node_id = 3;
+  // Service identifier for extracting metrics.
+  uint32 service_id = 4;
   // MySQL username for extracting metrics.
-  string username = 2;
+  string username = 5;
   // MySQL password for extracting metrics.
-  string password = 3;
+  string password = 6;
+  reserved 7; // listen_port
 }
 
-message AddMySQLdExporterResponse {
-  MySQLdExporter agent = 1;
+message AddMySQLdExporterAgentResponse {
+  MySQLdExporter mysqld_exporter = 1;
 }
 
-// message RemoveMySQLdExporterRequest {
-//   uint32 id = 1;
-// }
+message RemoveAgentRequest {
+  uint32 id = 1;
+}
 
-// message RemoveMySQLdExporterResponse {}
+message RemoveAgentResponse {}
 
-// Agents service provides public methods for managing agents.
+// Agents service provides public methods for managing Agents.
 service Agents {
-  // AddMySQLdExporter adds mysqld_exporter agent.
-  rpc AddMySQLdExporter(AddMySQLdExporterRequest) returns (AddMySQLdExporterResponse) {
+  // AddMySQLdExporterAgent adds mysqld_exporter Agent.
+  rpc AddMySQLdExporterAgent(AddMySQLdExporterAgentRequest) returns (AddMySQLdExporterAgentResponse) {
     option (google.api.http) = {
-      post: "/v0/inventory/Agents/AddMySQLdExporter"
+      post: "/v0/inventory/Agents/AddMySQLdExporterAgent"
       body: "*"
     };
   }
-  // rpc RemoveMySQLdExporter(RemoveMySQLdExporterRequest) returns (RemoveMySQLdExporterResponse) {
-  //   option (google.api.http) = {
-  //     post: "/v0/inventory/Agents/RemoveMySQLdExporter"
-  //     body: "*"
-  //   };
-  // }
-
+  // RemoveAgent removes Agent.
+  rpc RemoveAgent(RemoveAgentRequest) returns (RemoveAgentResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Agents/RemoveAgent"
+      body: "*"
+    };
+  }
 }
