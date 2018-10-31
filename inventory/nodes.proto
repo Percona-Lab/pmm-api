@@ -16,10 +16,10 @@ enum NodeType {
 
 // BareMetalNode represents bare metal Node.
 message BareMetalNode {
-  // Unique node identifier.
+  // Unique Node identifier.
   uint32 id = 1;
   reserved 2; // type
-  // Unique node name.
+  // Unique Node name.
   string name = 3;
   // Hostname. Is not unique.
   string hostname = 4;
@@ -27,10 +27,10 @@ message BareMetalNode {
 
 // VirtualMachineNode represents virtual machine Node.
 message VirtualMachineNode {
-  // Unique node identifier.
+  // Unique Node identifier.
   uint32 id = 1;
   reserved 2; // type
-  // Unique node name.
+  // Unique Node name.
   string name = 3;
   // Hostname. Is not unique.
   string hostname = 4;
@@ -38,30 +38,30 @@ message VirtualMachineNode {
 
 // ContainerNode represents a container (Docker) Node.
 message ContainerNode {
-  // Unique node identifier.
+  // Unique Node identifier.
   uint32 id = 1;
   reserved 2; // type
-  // Unique node name.
+  // Unique Node name.
   string name = 3;
   reserved 4; // hostname
 }
 
 // RemoteNode represents a generic remote Node.
 message RemoteNode {
-  // Unique node identifier.
+  // Unique Node identifier.
   uint32 id = 1;
   reserved 2; // type
-  // Unique node name.
+  // Unique Node name.
   string name = 3;
   reserved 4; // hostname
 }
 
 // RDSNode represents AWS RDS Node.
 message RDSNode {
-  // Unique node identifier.
+  // Unique Node identifier.
   uint32 id = 1;
   reserved 2; // type
-  // Unique node name.
+  // Unique Node name.
   string name = 3;
   reserved 4; // hostname
   string region = 5;
@@ -78,7 +78,7 @@ message ListNodesResponse {
 }
 
 message GetNodeRequest {
-  // Unique node identifier.
+  // Unique Node identifier.
   uint32 id = 1;
 }
 
@@ -96,7 +96,7 @@ message AddNodeRequest {
   reserved 1; // id
   // Node type.
   NodeType type = 2;
-  // Unique node name.
+  // Unique Node name.
   string name = 3;
   // Hostname. Is not unique.
   string hostname = 4;
@@ -113,7 +113,7 @@ message AddNodeResponse {
 message AddRemoveNodeRequest {
   reserved 1; // id
   reserved 2; // type
-  // Unique node name.
+  // Unique Node name.
   string name = 3;
   reserved 4; // hostname
 }
@@ -125,7 +125,7 @@ message AddRemoveNodeResponse {
 message AddRDSNodeRequest {
   reserved 1; // id
   reserved 2; // type
-  // Unique node name.
+  // Unique Node name.
   string name = 3;
   reserved 4; // hostname
 }

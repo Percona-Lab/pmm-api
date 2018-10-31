@@ -57,14 +57,14 @@ func (x NodeType) String() string {
 	return proto.EnumName(NodeType_name, int32(x))
 }
 func (NodeType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{0}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{0}
 }
 
 // BareMetalNode represents bare metal Node.
 type BareMetalNode struct {
-	// Unique node identifier.
+	// Unique Node identifier.
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Unique node name.
+	// Unique Node name.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Hostname. Is not unique.
 	Hostname             string   `protobuf:"bytes,4,opt,name=hostname,proto3" json:"hostname,omitempty"`
@@ -77,7 +77,7 @@ func (m *BareMetalNode) Reset()         { *m = BareMetalNode{} }
 func (m *BareMetalNode) String() string { return proto.CompactTextString(m) }
 func (*BareMetalNode) ProtoMessage()    {}
 func (*BareMetalNode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{0}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{0}
 }
 func (m *BareMetalNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BareMetalNode.Unmarshal(m, b)
@@ -120,9 +120,9 @@ func (m *BareMetalNode) GetHostname() string {
 
 // VirtualMachineNode represents virtual machine Node.
 type VirtualMachineNode struct {
-	// Unique node identifier.
+	// Unique Node identifier.
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Unique node name.
+	// Unique Node name.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Hostname. Is not unique.
 	Hostname             string   `protobuf:"bytes,4,opt,name=hostname,proto3" json:"hostname,omitempty"`
@@ -135,7 +135,7 @@ func (m *VirtualMachineNode) Reset()         { *m = VirtualMachineNode{} }
 func (m *VirtualMachineNode) String() string { return proto.CompactTextString(m) }
 func (*VirtualMachineNode) ProtoMessage()    {}
 func (*VirtualMachineNode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{1}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{1}
 }
 func (m *VirtualMachineNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VirtualMachineNode.Unmarshal(m, b)
@@ -178,9 +178,9 @@ func (m *VirtualMachineNode) GetHostname() string {
 
 // ContainerNode represents a container (Docker) Node.
 type ContainerNode struct {
-	// Unique node identifier.
+	// Unique Node identifier.
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Unique node name.
+	// Unique Node name.
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -191,7 +191,7 @@ func (m *ContainerNode) Reset()         { *m = ContainerNode{} }
 func (m *ContainerNode) String() string { return proto.CompactTextString(m) }
 func (*ContainerNode) ProtoMessage()    {}
 func (*ContainerNode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{2}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{2}
 }
 func (m *ContainerNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ContainerNode.Unmarshal(m, b)
@@ -227,9 +227,9 @@ func (m *ContainerNode) GetName() string {
 
 // RemoteNode represents a generic remote Node.
 type RemoteNode struct {
-	// Unique node identifier.
+	// Unique Node identifier.
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Unique node name.
+	// Unique Node name.
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -240,7 +240,7 @@ func (m *RemoteNode) Reset()         { *m = RemoteNode{} }
 func (m *RemoteNode) String() string { return proto.CompactTextString(m) }
 func (*RemoteNode) ProtoMessage()    {}
 func (*RemoteNode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{3}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{3}
 }
 func (m *RemoteNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoteNode.Unmarshal(m, b)
@@ -276,9 +276,9 @@ func (m *RemoteNode) GetName() string {
 
 // RDSNode represents AWS RDS Node.
 type RDSNode struct {
-	// Unique node identifier.
+	// Unique Node identifier.
 	Id uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Unique node name.
+	// Unique Node name.
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Region               string   `protobuf:"bytes,5,opt,name=region,proto3" json:"region,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -290,7 +290,7 @@ func (m *RDSNode) Reset()         { *m = RDSNode{} }
 func (m *RDSNode) String() string { return proto.CompactTextString(m) }
 func (*RDSNode) ProtoMessage()    {}
 func (*RDSNode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{4}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{4}
 }
 func (m *RDSNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RDSNode.Unmarshal(m, b)
@@ -341,7 +341,7 @@ func (m *ListNodesRequest) Reset()         { *m = ListNodesRequest{} }
 func (m *ListNodesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListNodesRequest) ProtoMessage()    {}
 func (*ListNodesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{5}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{5}
 }
 func (m *ListNodesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNodesRequest.Unmarshal(m, b)
@@ -376,7 +376,7 @@ func (m *ListNodesResponse) Reset()         { *m = ListNodesResponse{} }
 func (m *ListNodesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListNodesResponse) ProtoMessage()    {}
 func (*ListNodesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{6}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{6}
 }
 func (m *ListNodesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNodesResponse.Unmarshal(m, b)
@@ -432,7 +432,7 @@ func (m *ListNodesResponse) GetRds() []*RDSNode {
 }
 
 type GetNodeRequest struct {
-	// Unique node identifier.
+	// Unique Node identifier.
 	Id                   uint32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -443,7 +443,7 @@ func (m *GetNodeRequest) Reset()         { *m = GetNodeRequest{} }
 func (m *GetNodeRequest) String() string { return proto.CompactTextString(m) }
 func (*GetNodeRequest) ProtoMessage()    {}
 func (*GetNodeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{7}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{7}
 }
 func (m *GetNodeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNodeRequest.Unmarshal(m, b)
@@ -487,7 +487,7 @@ func (m *GetNodeResponse) Reset()         { *m = GetNodeResponse{} }
 func (m *GetNodeResponse) String() string { return proto.CompactTextString(m) }
 func (*GetNodeResponse) ProtoMessage()    {}
 func (*GetNodeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{8}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{8}
 }
 func (m *GetNodeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNodeResponse.Unmarshal(m, b)
@@ -717,7 +717,7 @@ func _GetNodeResponse_OneofSizer(msg proto.Message) (n int) {
 type AddNodeRequest struct {
 	// Node type.
 	Type NodeType `protobuf:"varint,2,opt,name=type,proto3,enum=inventory.NodeType" json:"type,omitempty"`
-	// Unique node name.
+	// Unique Node name.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Hostname. Is not unique.
 	Hostname             string   `protobuf:"bytes,4,opt,name=hostname,proto3" json:"hostname,omitempty"`
@@ -730,7 +730,7 @@ func (m *AddNodeRequest) Reset()         { *m = AddNodeRequest{} }
 func (m *AddNodeRequest) String() string { return proto.CompactTextString(m) }
 func (*AddNodeRequest) ProtoMessage()    {}
 func (*AddNodeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{9}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{9}
 }
 func (m *AddNodeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddNodeRequest.Unmarshal(m, b)
@@ -786,7 +786,7 @@ func (m *AddNodeResponse) Reset()         { *m = AddNodeResponse{} }
 func (m *AddNodeResponse) String() string { return proto.CompactTextString(m) }
 func (*AddNodeResponse) ProtoMessage()    {}
 func (*AddNodeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{10}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{10}
 }
 func (m *AddNodeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddNodeResponse.Unmarshal(m, b)
@@ -950,7 +950,7 @@ func _AddNodeResponse_OneofSizer(msg proto.Message) (n int) {
 }
 
 type AddRemoveNodeRequest struct {
-	// Unique node name.
+	// Unique Node name.
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -961,7 +961,7 @@ func (m *AddRemoveNodeRequest) Reset()         { *m = AddRemoveNodeRequest{} }
 func (m *AddRemoveNodeRequest) String() string { return proto.CompactTextString(m) }
 func (*AddRemoveNodeRequest) ProtoMessage()    {}
 func (*AddRemoveNodeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{11}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{11}
 }
 func (m *AddRemoveNodeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddRemoveNodeRequest.Unmarshal(m, b)
@@ -999,7 +999,7 @@ func (m *AddRemoveNodeResponse) Reset()         { *m = AddRemoveNodeResponse{} }
 func (m *AddRemoveNodeResponse) String() string { return proto.CompactTextString(m) }
 func (*AddRemoveNodeResponse) ProtoMessage()    {}
 func (*AddRemoveNodeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{12}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{12}
 }
 func (m *AddRemoveNodeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddRemoveNodeResponse.Unmarshal(m, b)
@@ -1027,7 +1027,7 @@ func (m *AddRemoveNodeResponse) GetRemote() *RemoteNode {
 }
 
 type AddRDSNodeRequest struct {
-	// Unique node name.
+	// Unique Node name.
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1038,7 +1038,7 @@ func (m *AddRDSNodeRequest) Reset()         { *m = AddRDSNodeRequest{} }
 func (m *AddRDSNodeRequest) String() string { return proto.CompactTextString(m) }
 func (*AddRDSNodeRequest) ProtoMessage()    {}
 func (*AddRDSNodeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{13}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{13}
 }
 func (m *AddRDSNodeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddRDSNodeRequest.Unmarshal(m, b)
@@ -1076,7 +1076,7 @@ func (m *AddRDSNodeResponse) Reset()         { *m = AddRDSNodeResponse{} }
 func (m *AddRDSNodeResponse) String() string { return proto.CompactTextString(m) }
 func (*AddRDSNodeResponse) ProtoMessage()    {}
 func (*AddRDSNodeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{14}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{14}
 }
 func (m *AddRDSNodeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddRDSNodeResponse.Unmarshal(m, b)
@@ -1114,7 +1114,7 @@ func (m *RemoveNodeRequest) Reset()         { *m = RemoveNodeRequest{} }
 func (m *RemoveNodeRequest) String() string { return proto.CompactTextString(m) }
 func (*RemoveNodeRequest) ProtoMessage()    {}
 func (*RemoveNodeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{15}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{15}
 }
 func (m *RemoveNodeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoveNodeRequest.Unmarshal(m, b)
@@ -1151,7 +1151,7 @@ func (m *RemoveNodeResponse) Reset()         { *m = RemoveNodeResponse{} }
 func (m *RemoveNodeResponse) String() string { return proto.CompactTextString(m) }
 func (*RemoveNodeResponse) ProtoMessage()    {}
 func (*RemoveNodeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_nodes_8ce9422768f8c75c, []int{16}
+	return fileDescriptor_nodes_c79059c91c0f32b3, []int{16}
 }
 func (m *RemoveNodeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoveNodeResponse.Unmarshal(m, b)
@@ -1441,9 +1441,9 @@ var _Nodes_serviceDesc = grpc.ServiceDesc{
 	Metadata: "inventory/nodes.proto",
 }
 
-func init() { proto.RegisterFile("inventory/nodes.proto", fileDescriptor_nodes_8ce9422768f8c75c) }
+func init() { proto.RegisterFile("inventory/nodes.proto", fileDescriptor_nodes_c79059c91c0f32b3) }
 
-var fileDescriptor_nodes_8ce9422768f8c75c = []byte{
+var fileDescriptor_nodes_c79059c91c0f32b3 = []byte{
 	// 827 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x96, 0x5d, 0x6e, 0xeb, 0x44,
 	0x14, 0xc7, 0x33, 0x8e, 0x93, 0x26, 0x07, 0x25, 0x71, 0xa6, 0x0d, 0x32, 0x69, 0x02, 0xc1, 0x45,

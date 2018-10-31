@@ -36,6 +36,23 @@ message MySQLdExporter {
   uint32 listen_port = 7;
 }
 
+message ListAgentsRequest {}
+
+message ListAgentsResponse {
+  repeated MySQLdExporter mysqld_exporter = 1;
+}
+
+message GetAgentRequest {
+  // Unique Agent identifier.
+  uint32 id = 1;
+}
+
+message GetAgentResponse {
+  oneof agent {
+    MySQLdExporter mysqld_exporter = 1;
+  }
+}
+
 message AddMySQLdExporterAgentRequest {
   reserved 1; // id
   reserved 2; // type
@@ -62,6 +79,20 @@ message RemoveAgentResponse {}
 
 // Agents service provides public methods for managing Agents.
 service Agents {
+  // ListAgents returns a list of all Agents.
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Agents/ListAgents"
+      body: "*"
+    };
+  }
+  // GetAgent returns a single Agent by ID.
+  rpc GetAgent(GetAgentRequest) returns (GetAgentResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Agents/GetAgent"
+      body: "*"
+    };
+  }
   // AddMySQLdExporterAgent adds mysqld_exporter Agent.
   rpc AddMySQLdExporterAgent(AddMySQLdExporterAgentRequest) returns (AddMySQLdExporterAgentResponse) {
     option (google.api.http) = {

@@ -19,6 +19,23 @@ message MySQLService {
   string name = 3;
 }
 
+message ListServicesRequest {}
+
+message ListServicesResponse {
+  repeated MySQLService mysql = 1;
+}
+
+message GetServiceRequest {
+  // Unique Service identifier.
+  uint32 id = 1;
+}
+
+message GetServiceResponse {
+  oneof service {
+    MySQLService mysql = 1;
+  }
+}
+
 message AddMySQLServiceRequest {}
 
 message AddMySQLServiceResponse {
@@ -33,6 +50,20 @@ message RemoveServiceResponse {}
 
 // Services service provides public methods for managing Services.
 service Services {
+  // ListServices returns a list of all Services.
+  rpc ListServices(ListServicesRequest) returns (ListServicesResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Services/ListServices"
+      body: "*"
+    };
+  }
+  // GetService returns a single Service by ID.
+  rpc GetService(GetServiceRequest) returns (GetServiceResponse) {
+    option (google.api.http) = {
+      post: "/v0/inventory/Services/GetService"
+      body: "*"
+    };
+  }
   // AddMySQLService adds MySQL Service.
   rpc AddMySQLService(AddMySQLServiceRequest) returns (AddMySQLServiceResponse) {
     option (google.api.http) = {

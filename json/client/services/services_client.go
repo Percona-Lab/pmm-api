@@ -53,6 +53,62 @@ func (a *Client) AddMySQLService(params *AddMySQLServiceParams) (*AddMySQLServic
 }
 
 /*
+GetService gets service returns a single service by ID
+*/
+func (a *Client) GetService(params *GetServiceParams) (*GetServiceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetServiceParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetService",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Services/GetService",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &GetServiceReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetServiceOK), nil
+
+}
+
+/*
+ListServices lists services returns a list of all services
+*/
+func (a *Client) ListServices(params *ListServicesParams) (*ListServicesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListServicesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "ListServices",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Services/ListServices",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &ListServicesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ListServicesOK), nil
+
+}
+
+/*
 RemoveService removes service removes service without any agents
 */
 func (a *Client) RemoveService(params *RemoveServiceParams) (*RemoveServiceOK, error) {

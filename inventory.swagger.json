@@ -42,6 +42,60 @@
         }
       }
     },
+    "/v0/inventory/Agents/GetAgent": {
+      "post": {
+        "tags": [
+          "Agents"
+        ],
+        "summary": "GetAgent returns a single Agent by ID.",
+        "operationId": "GetAgent",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryGetAgentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryGetAgentResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Agents/ListAgents": {
+      "post": {
+        "tags": [
+          "Agents"
+        ],
+        "summary": "ListAgents returns a list of all Agents.",
+        "operationId": "ListAgents",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryListAgentsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryListAgentsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v0/inventory/Agents/RemoveAgent": {
       "post": {
         "tags": [
@@ -258,6 +312,60 @@
         }
       }
     },
+    "/v0/inventory/Services/GetService": {
+      "post": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "GetService returns a single Service by ID.",
+        "operationId": "GetService",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryGetServiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryGetServiceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v0/inventory/Services/ListServices": {
+      "post": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "ListServices returns a list of all Services.",
+        "operationId": "ListServices",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/inventoryListServicesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/inventoryListServicesResponse"
+            }
+          }
+        }
+      }
+    },
     "/v0/inventory/Services/RemoveService": {
       "post": {
         "tags": [
@@ -337,7 +445,7 @@
           "type": "string"
         },
         "name": {
-          "description": "Unique node name.",
+          "description": "Unique Node name.",
           "type": "string"
         },
         "type": {
@@ -364,7 +472,7 @@
       "type": "object",
       "properties": {
         "name": {
-          "description": "Unique node name.",
+          "description": "Unique Node name.",
           "type": "string"
         }
       }
@@ -381,7 +489,7 @@
       "type": "object",
       "properties": {
         "name": {
-          "description": "Unique node name.",
+          "description": "Unique Node name.",
           "type": "string"
         }
       }
@@ -403,12 +511,12 @@
           "type": "string"
         },
         "id": {
-          "description": "Unique node identifier.",
+          "description": "Unique Node identifier.",
           "type": "integer",
           "format": "int64"
         },
         "name": {
-          "description": "Unique node name.",
+          "description": "Unique Node name.",
           "type": "string"
         }
       }
@@ -418,13 +526,31 @@
       "type": "object",
       "properties": {
         "id": {
-          "description": "Unique node identifier.",
+          "description": "Unique Node identifier.",
           "type": "integer",
           "format": "int64"
         },
         "name": {
-          "description": "Unique node name.",
+          "description": "Unique Node name.",
           "type": "string"
+        }
+      }
+    },
+    "inventoryGetAgentRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique Agent identifier.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "inventoryGetAgentResponse": {
+      "type": "object",
+      "properties": {
+        "mysqld_exporter": {
+          "$ref": "#/definitions/inventoryMySQLdExporter"
         }
       }
     },
@@ -432,7 +558,7 @@
       "type": "object",
       "properties": {
         "id": {
-          "description": "Unique node identifier.",
+          "description": "Unique Node identifier.",
           "type": "integer",
           "format": "int64"
         }
@@ -455,6 +581,38 @@
         },
         "virtual_machine": {
           "$ref": "#/definitions/inventoryVirtualMachineNode"
+        }
+      }
+    },
+    "inventoryGetServiceRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique Service identifier.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "inventoryGetServiceResponse": {
+      "type": "object",
+      "properties": {
+        "mysql": {
+          "$ref": "#/definitions/inventoryMySQLService"
+        }
+      }
+    },
+    "inventoryListAgentsRequest": {
+      "type": "object"
+    },
+    "inventoryListAgentsResponse": {
+      "type": "object",
+      "properties": {
+        "mysqld_exporter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryMySQLdExporter"
+          }
         }
       }
     },
@@ -492,6 +650,20 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/inventoryVirtualMachineNode"
+          }
+        }
+      }
+    },
+    "inventoryListServicesRequest": {
+      "type": "object"
+    },
+    "inventoryListServicesResponse": {
+      "type": "object",
+      "properties": {
+        "mysql": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryMySQLService"
           }
         }
       }
@@ -563,12 +735,12 @@
       "type": "object",
       "properties": {
         "id": {
-          "description": "Unique node identifier.",
+          "description": "Unique Node identifier.",
           "type": "integer",
           "format": "int64"
         },
         "name": {
-          "description": "Unique node name.",
+          "description": "Unique Node name.",
           "type": "string"
         },
         "region": {
@@ -581,12 +753,12 @@
       "type": "object",
       "properties": {
         "id": {
-          "description": "Unique node identifier.",
+          "description": "Unique Node identifier.",
           "type": "integer",
           "format": "int64"
         },
         "name": {
-          "description": "Unique node name.",
+          "description": "Unique Node name.",
           "type": "string"
         }
       }
@@ -636,12 +808,12 @@
           "type": "string"
         },
         "id": {
-          "description": "Unique node identifier.",
+          "description": "Unique Node identifier.",
           "type": "integer",
           "format": "int64"
         },
         "name": {
-          "description": "Unique node name.",
+          "description": "Unique Node name.",
           "type": "string"
         }
       }

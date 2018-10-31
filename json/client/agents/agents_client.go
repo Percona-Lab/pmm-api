@@ -53,6 +53,62 @@ func (a *Client) AddMySqldExporterAgent(params *AddMySqldExporterAgentParams) (*
 }
 
 /*
+GetAgent gets agent returns a single agent by ID
+*/
+func (a *Client) GetAgent(params *GetAgentParams) (*GetAgentOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAgentParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetAgent",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Agents/GetAgent",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &GetAgentReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetAgentOK), nil
+
+}
+
+/*
+ListAgents lists agents returns a list of all agents
+*/
+func (a *Client) ListAgents(params *ListAgentsParams) (*ListAgentsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListAgentsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "ListAgents",
+		Method:             "POST",
+		PathPattern:        "/v0/inventory/Agents/ListAgents",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &ListAgentsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ListAgentsOK), nil
+
+}
+
+/*
 RemoveAgent removes agent removes agent
 */
 func (a *Client) RemoveAgent(params *RemoveAgentParams) (*RemoveAgentOK, error) {

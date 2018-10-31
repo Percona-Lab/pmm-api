@@ -18,10 +18,10 @@ type InventoryVirtualMachineNode struct {
 	// Hostname. Is not unique.
 	Hostname string `json:"hostname,omitempty"`
 
-	// Unique node identifier.
+	// Unique Node identifier.
 	ID int64 `json:"id,omitempty"`
 
-	// Unique node name.
+	// Unique Node name.
 	Name string `json:"name,omitempty"`
 }
 

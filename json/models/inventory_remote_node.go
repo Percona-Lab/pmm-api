@@ -15,10 +15,10 @@ import (
 // swagger:model inventoryRemoteNode
 type InventoryRemoteNode struct {
 
-	// Unique node identifier.
+	// Unique Node identifier.
 	ID int64 `json:"id,omitempty"`
 
-	// Unique node name.
+	// Unique Node name.
 	Name string `json:"name,omitempty"`
 }
 

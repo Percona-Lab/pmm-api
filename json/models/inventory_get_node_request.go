@@ -15,7 +15,7 @@ import (
 // swagger:model inventoryGetNodeRequest
 type InventoryGetNodeRequest struct {
 
-	// Unique node identifier.
+	// Unique Node identifier.
 	ID int64 `json:"id,omitempty"`
 }
 

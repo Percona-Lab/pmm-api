@@ -15,7 +15,7 @@ import (
 // swagger:model inventoryAddRDSNodeRequest
 type InventoryAddRDSNodeRequest struct {
 
-	// Unique node name.
+	// Unique Node name.
 	Name string `json:"name,omitempty"`
 }
 

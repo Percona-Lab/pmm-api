@@ -19,7 +19,7 @@ type InventoryAddNodeRequest struct {
 	// Hostname. Is not unique.
 	Hostname string `json:"hostname,omitempty"`
 
-	// Unique node name.
+	// Unique Node name.
 	Name string `json:"name,omitempty"`
 
 	// Node type.
